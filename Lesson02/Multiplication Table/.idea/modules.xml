@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Multiplication Table.iml" filepath="$PROJECT_DIR$/.idea/Multiplication Table.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MultiplicationTable/MultiplicationTable.iml" filepath="$PROJECT_DIR$/MultiplicationTable/MultiplicationTable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Multiplication Table.iml" filepath="$PROJECT_DIR$/Multiplication Table.iml" />
     </modules>
   </component>
 </project>
