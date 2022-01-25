@@ -1,4 +1,4 @@
-package lt.codeacademy;
+package lt.codeacademy.Task1;
 
 public class Main {
     public static void main(String[] args) {
