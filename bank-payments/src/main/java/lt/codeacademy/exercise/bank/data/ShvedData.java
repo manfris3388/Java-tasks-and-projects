@@ -9,4 +9,7 @@ public class ShvedData {
             {"15.01.2022", "LT16333333330000002222", "140,50"},
             {"24.01.2022", "LT16444444440000033333", "36,99"},
     };
+    public static String[][] getMockData(){
+        return MOCK_DATA;
+    }
 }

@@ -1,6 +1,6 @@
 package lt.codeacademy.exercise.menu.console;
 
-import static lt.codeacademy.ConsolePrinter.print;
+
 
 public class MainMenu implements ConsoleMenu {
 
@@ -15,6 +15,6 @@ public class MainMenu implements ConsoleMenu {
 
     @Override
     public void generateMenu() {
-        print(MENU_TEXT);
+        System.out.println(MENU_TEXT);
     }
 }

@@ -9,4 +9,7 @@ public class SepData {
             {"15.01.2022", "Luise S", "SP16333333330000002222", "140.50"},
             {"14.01.2022", "Luise S", "SP16333333330000002222", "10.12"},
     };
+    public static String[][] getMockData(){
+        return MOCK_DATA;
+    }
 }
