@@ -3,6 +3,7 @@ package lt.codeacademy.exercise.menu.console;
 
 import lt.codeacademy.exercise.menu.Menu;
 
+import java.awt.*;
 import java.util.Scanner;
 /**
  * Every console menu's should use this interface
