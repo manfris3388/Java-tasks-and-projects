@@ -1,7 +1,7 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ExpensesRecord extends Record{
-    public ExpensesRecord(float amount, LocalDate date, int categoryIndex, boolean transferToBankAccount, String additionalInfo) {
+    public ExpensesRecord(String amount, String date, String categoryIndex, String transferToBankAccount, String additionalInfo) {
         super(amount, date, categoryIndex, transferToBankAccount, additionalInfo);
     }
 }

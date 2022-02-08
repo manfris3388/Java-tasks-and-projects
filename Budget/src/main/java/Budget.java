@@ -1,23 +1,24 @@
 public class Budget {
-    IncomeRecord[] income = new IncomeRecord[0];
-    ExpensesRecord[] expenses = new ExpensesRecord[0];
+    IncomeRecord[] income = new IncomeRecord[100];
+    ExpensesRecord[] expenses = new ExpensesRecord[100];
 
     public IncomeRecord[] addIncome(IncomeRecord incomeRecord){
-        int length = income.length;
-        IncomeRecord[] newArr = new IncomeRecord[length + 1];
-        for (int i = 0; i < length; i++) {
+        IncomeRecord[] newArr = new IncomeRecord[income.length + 1];
+        int i;
+        for (i = 0; i < income.length; i++) {
             newArr[i] = income[i];
         }
-        newArr[length+1] = incomeRecord;
+        newArr[i] = incomeRecord;
+    System.out.println("pridejau turbut");
         return newArr;
     }
     public ExpensesRecord[] addExpenses(ExpensesRecord expensesRecord){
-        int length = expenses.length;
-        ExpensesRecord[] newArr = new ExpensesRecord[length + 1];
-        for (int i = 0; i < length; i++) {
-            newArr[i] = expenses[i];
+        ExpensesRecord[] newArr = new ExpensesRecord[expenses.length + 1];
+        int i;
+        for (i = 0; i < expenses.length; i++) {
+            newArr[i] = expensesRecord;
         }
-        newArr[length+1] = expensesRecord;
+        newArr[expenses.length + 1] = expensesRecord;
         return newArr;
     }
 }

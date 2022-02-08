@@ -1,13 +1,14 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Record {
-    private float amount;
-    private LocalDate date;
-    private int categoryIndex;
-    private boolean transferToBankAccount;
-    private String additionalInfo;
+    private final String amount;
+    private final String date;
+    private final String categoryIndex;
+    private final String transferToBankAccount;
+    private final String additionalInfo;
 
-    public Record(float amount, LocalDate date, int categoryIndex, boolean transferToBankAccount, String additionalInfo) {
+    public Record(String amount, String date, String categoryIndex, String transferToBankAccount, String additionalInfo) {
         this.amount = amount;
         this.date = date;
         this.categoryIndex = categoryIndex;
