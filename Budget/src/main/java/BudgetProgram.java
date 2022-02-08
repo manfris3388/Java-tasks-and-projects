@@ -1,5 +1,5 @@
 public class BudgetProgram {
-    public static void main(String[] args) {
-        BudgetRun.run();
-    }
+  public static void main(String[] args) {
+    BudgetRun.run();
+  }
 }
