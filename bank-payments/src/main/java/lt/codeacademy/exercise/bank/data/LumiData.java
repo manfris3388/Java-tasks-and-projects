@@ -9,10 +9,4 @@ public class LumiData {
     {"Karlson GmbH", "2022-01-24", "DE16444444440000033333", "36.99"},
     {"Karlson und Meier KG", "2022-01-15", "DE16333333330000002222", "140.50"},
   };
-
-
-
-  public static String[][] getMockData() {
-      return MOCK_DATA;
-  }
 }
