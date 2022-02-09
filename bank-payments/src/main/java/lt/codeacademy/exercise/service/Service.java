@@ -1,6 +1,9 @@
 package lt.codeacademy.exercise.service;
 
-public class Service {
+import lt.codeacademy.exercise.interfaces.DateFormating;
+import lt.codeacademy.exercise.interfaces.FormatMoney;
+
+public class Service implements DateFormating, FormatMoney {
   public void getFormatedData(String[][] rawData, int date, int amount, int client, int account) {
     int i = 0;
     String newLine = "";

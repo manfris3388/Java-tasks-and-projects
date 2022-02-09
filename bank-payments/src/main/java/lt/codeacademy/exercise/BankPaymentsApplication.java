@@ -29,7 +29,9 @@ public class BankPaymentsApplication {
         String[][] dataRawLumi = LumiData.MOCK_DATA;
         String [][] dataRawSep = SepData.MOCK_DATA;
         String [][] dataRawShved = ShvedData.MOCK_DATA;
-        dataRawSep = sepService.formatSepData(dataRawSep);
+        dataRawSep = sepService.formatDate(dataRawSep, 0);
+        dataRawShved = shvedService.formatDate(dataRawShved, 0);
+        dataRawShved = shvedService.formatMoney(dataRawShved, 2);
         lumiService.getFormatedData(dataRawLumi, 0, 0, 0, 0);
         sepService.getFormatedData(dataRawSep, 0, 0, 0, 0);
         shvedService.getFormatedData(dataRawShved, 0, 0, 0, 0);
