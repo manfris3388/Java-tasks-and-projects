@@ -1,4 +1,4 @@
-package lt.codeacademy.exercise.service;
+package lt.codeacademy.exercise.BankService;
 
 import lt.codeacademy.exercise.interfaces.DateFormating;
 import lt.codeacademy.exercise.interfaces.FormatMoney;
