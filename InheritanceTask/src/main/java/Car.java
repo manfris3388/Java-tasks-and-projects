@@ -9,4 +9,11 @@ public class Car extends Vehicle {
         this.fuelType = fuelType;
         this.cylinders = cylinders;
     }
+
+    @Override
+    public void vehiclePrint() {
+        super.vehiclePrint();
+        System.out.print(", variklio tūris " + engineSize + ", kuro tipas " + fuelType +
+                ", cilindrų skaičius " + cylinders);
+    }
 }

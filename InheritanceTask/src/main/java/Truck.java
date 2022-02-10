@@ -6,4 +6,10 @@ public class Truck extends Car{
         this.carriageSize = carriageSize;
         this.carriageVolume = carriageVolume;
     }
+
+    @Override
+    public void vehiclePrint() {
+        super.vehiclePrint();
+        System.out.print(", krovinio talpa " + carriageVolume + ", krovinio svoris " + carriageSize);
+    }
 }

@@ -6,4 +6,8 @@ public class Vehicle{
         this.wheelNumber = wheelNumber;
         this.colour = colour;
     }
+
+    public void vehiclePrint(){
+        System.out.print("\nRatų skaičius " + wheelNumber + ", spalva " + colour);
+    }
 }
