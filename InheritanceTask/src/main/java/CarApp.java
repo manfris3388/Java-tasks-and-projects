@@ -1,8 +1,7 @@
 public class CarApp {
     public static void main(String[] args) {
-        System.out.println("hello");
-        Vehicle vehicle = new Vehicle(0, "nežinoma");
-        vehicle.vehiclePrint();
+        Vehicle vehicleDefault = new Vehicle();
+        vehicleDefault.vehiclePrint();
         Car car = new Car(4, "pilka", 2000, FuelType.PETROL, 4);
         car.vehiclePrint();
         Bycicle bycicle = new Bycicle(2, "mėlyna", 3);
