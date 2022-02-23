@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Budget/Budget.iml" filepath="$PROJECT_DIR$/Budget/Budget.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Java-tasks-and-projects.iml" filepath="$PROJECT_DIR$/.idea/Java-tasks-and-projects.iml" />
       <module fileurl="file://$PROJECT_DIR$/bank-payments/target/maven-archiver/maven-archiver.iml" filepath="$PROJECT_DIR$/bank-payments/target/maven-archiver/maven-archiver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stream-task/stream-task.iml" filepath="$PROJECT_DIR$/stream-task/stream-task.iml" />
     </modules>
   </component>
 </project>

@@ -1,3 +1,7 @@
+package lt.codeacademy;
+
+import lt.codeacademy.Budget;
+
 import java.time.LocalDateTime;
 import java.util.Scanner;
 

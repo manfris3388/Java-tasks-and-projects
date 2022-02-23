@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/bank-payments/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/Budget/pom.xml" />
+        <option value="$PROJECT_DIR$/stream-task/pom.xml" />
       </list>
     </option>
   </component>

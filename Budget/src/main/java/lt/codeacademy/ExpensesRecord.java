@@ -1,8 +1,9 @@
+package lt.codeacademy;
+
 import java.time.LocalDateTime;
 
-public class IncomeRecord extends Record {
-
-  public IncomeRecord(
+public class ExpensesRecord extends Record {
+  public ExpensesRecord(
       String amount,
       String date,
       String categoryIndex,

@@ -1,3 +1,5 @@
+package lt.codeacademy;
+
 public class Record {
   private final String amount;
   private final String date;
@@ -20,7 +22,7 @@ public class Record {
 
   @Override
   public String toString() {
-    return "Record{"
+    return "lt.codeacademy.Record{"
         + "amount="
         + amount
         + ", date="

@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="maven-archiver" />
         <module name="Budget" />
+        <module name="stream-task" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Budget" target="17" />
       <module name="maven-archiver" target="1.5" />
+      <module name="stream-task" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
