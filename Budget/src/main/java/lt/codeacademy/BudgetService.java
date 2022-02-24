@@ -2,7 +2,7 @@ package lt.codeacademy;
 
 import java.util.ArrayList;
 
-public class Budget {
+public class BudgetService {
   private Double balance = 0D;
   private final ArrayList<IncomeRecord> incomeRecords = new ArrayList<>();
   private final ArrayList<ExpensesRecord> expensesRecords = new ArrayList<>();
@@ -33,5 +33,20 @@ public class Budget {
 
   public Double getBalance() {
     return balance;
+  }
+
+  public void deleteRecord(Integer id){
+    for (IncomeRecord inc : incomeRecords) {
+      if(inc.getId().equals(id)){
+        incomeRecords.remove(inc);
+        break;
+      }
+    }
+    for (ExpensesRecord exp : expensesRecords) {
+      if(exp.getId().equals(id)){
+        expensesRecords.remove(exp);
+        break;
+      }
+    }
   }
 }

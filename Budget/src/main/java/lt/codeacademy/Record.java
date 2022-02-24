@@ -6,6 +6,8 @@ public class Record {
   private final String categoryIndex;
   private final String transactionMethod;
   private final String additionalInfo;
+  private static Integer recordIndex = 1;
+  private final Integer id;
 
   public Record(
       String amount,
@@ -18,26 +20,16 @@ public class Record {
     this.categoryIndex = categoryIndex;
     this.transactionMethod = transactionMethod;
     this.additionalInfo = additionalInfo;
+    id = recordIndex;
+    recordIndex++;
   }
 
   public String getAmount() {
     return amount;
   }
 
-  public String getDate() {
-    return date;
-  }
-
-  public String getCategoryIndex() {
-    return categoryIndex;
-  }
-
-  public String getTransactionMethod() {
-    return transactionMethod;
-  }
-
-  public String getAdditionalInfo() {
-    return additionalInfo;
+  public Integer getId() {
+    return id;
   }
 
   @Override
@@ -53,6 +45,8 @@ public class Record {
         + transactionMethod
         + ", additionalInfo='"
         + additionalInfo
+            + ", transaction id = "
+            + id
         + '\''
         + '}';
   }

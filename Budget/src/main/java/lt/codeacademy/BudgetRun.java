@@ -1,13 +1,11 @@
 package lt.codeacademy;
 
-import lt.codeacademy.Budget;
-
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class BudgetRun {
   static Scanner scanner = new Scanner(System.in);
-  static Budget budget = new Budget();
+  static BudgetService budget = new BudgetService();
   static boolean runApp = true;
 
   public static void run() {
@@ -19,6 +17,7 @@ public class BudgetRun {
       System.out.println("Jei norite peržiūrėti pajamas, spauskite 3");
       System.out.println("Jei norite peržiūrėti išlaidas, spauskite 4");
       System.out.println("Jei norite gauti balansą, spauskite 5");
+      System.out.println("Jei norite ištrinti įrašą, spauskite 6, po to suveskite pasirinktos transakcijos indeksą");
       System.out.println("Jei norite atsijunti spauskite q");
       String choice = scanner.nextLine();
       makechoice(choice);
@@ -32,6 +31,7 @@ public class BudgetRun {
       case "3" -> budget.printData(1);
       case "4" -> budget.printData(2);
       case "5" -> System.out.println("Jūsų sąskaitos balansas yra " + budget.getBalance());
+      case "6" -> budget.deleteRecord(scanner.nextInt());
       case "q" -> runApp = false;
       default -> System.out.println("Neteisinga įvestis");
     }
