@@ -20,6 +20,26 @@ public class Record {
     this.additionalInfo = additionalInfo;
   }
 
+  public String getAmount() {
+    return amount;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public String getCategoryIndex() {
+    return categoryIndex;
+  }
+
+  public String getTransactionMethod() {
+    return transactionMethod;
+  }
+
+  public String getAdditionalInfo() {
+    return additionalInfo;
+  }
+
   @Override
   public String toString() {
     return "lt.codeacademy.Record{"

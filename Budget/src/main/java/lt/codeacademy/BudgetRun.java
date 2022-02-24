@@ -18,6 +18,7 @@ public class BudgetRun {
       System.out.println("Jei norite įvesti išlaidas spauskite 2");
       System.out.println("Jei norite peržiūrėti pajamas, spauskite 3");
       System.out.println("Jei norite peržiūrėti išlaidas, spauskite 4");
+      System.out.println("Jei norite gauti balansą, spauskite 5");
       System.out.println("Jei norite atsijunti spauskite q");
       String choice = scanner.nextLine();
       makechoice(choice);
@@ -30,6 +31,7 @@ public class BudgetRun {
       case "2" -> enterData(2);
       case "3" -> budget.printData(1);
       case "4" -> budget.printData(2);
+      case "5" -> System.out.println("Jūsų sąskaitos balansas yra " + budget.getBalance());
       case "q" -> runApp = false;
       default -> System.out.println("Neteisinga įvestis");
     }
