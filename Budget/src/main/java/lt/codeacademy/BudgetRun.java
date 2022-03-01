@@ -1,5 +1,10 @@
 package lt.codeacademy;
 
+import lt.codeacademy.model.ExpensesRecord;
+import lt.codeacademy.model.Record;
+import lt.codeacademy.model.RecordType;
+import lt.codeacademy.service.BudgetService;
+
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -19,17 +24,18 @@ public class BudgetRun {
       System.out.println("Jei norite gauti balansą, spauskite 5");
       System.out.println("Jei norite ištrinti įrašą, spauskite 6, po to suveskite pasirinktos transakcijos indeksą");
       System.out.println("Jei norite atsijunti spauskite q");
-      String choice = scanner.nextLine();
-      makechoice(choice);
+      String menuChoice = scanner.nextLine();
+      makechoice(menuChoice);
     }
+    scanner.close();
   }
 
-  private static void makechoice(String choice) {
-    switch (choice) {
+  private static void makechoice(String menuChoice) {
+    switch (menuChoice) {
       case "1" -> enterData(1);
       case "2" -> enterData(2);
-      case "3" -> budget.printData(1);
-      case "4" -> budget.printData(2);
+      case "3" -> budget.printData(3);
+      case "4" -> budget.printData(4);
       case "5" -> System.out.println("Jūsų sąskaitos balansas yra " + budget.getBalance());
       case "6" -> budget.deleteRecord(scanner.nextInt());
       case "q" -> runApp = false;
@@ -38,7 +44,7 @@ public class BudgetRun {
   }
 
 
-  private static void enterData(int choice) {
+  private static void enterData(int menuChoice) {
     System.out.println("Įveskite sumą");
     String amount = scanner.nextLine();
     String data = String.valueOf(LocalDateTime.now());
@@ -54,11 +60,10 @@ public class BudgetRun {
     }
     System.out.println("Įveskite papildomą informaciją");
     String additionalInfo = scanner.nextLine();
-    if (choice == 1) {
-      budget.addIncome(new IncomeRecord(amount, data, categoryInd, transactionMethod, additionalInfo));
-    } else {
-      budget.addExpenses(new ExpensesRecord(amount, data, categoryInd, transactionMethod, additionalInfo));
+    if (menuChoice == 1) {
+      budget.addRecord(new Record(amount, data, categoryInd, transactionMethod, additionalInfo, RecordType.INCOME));
+    } else if (menuChoice == 2) {
+      budget.addRecord(new Record(amount, data, categoryInd, transactionMethod, additionalInfo, RecordType.EXPENSES));
     }
-    String input = amount + " " + data + " " + categoryInd + " " + transactionMethod + " " + additionalInfo;
   }
 }
