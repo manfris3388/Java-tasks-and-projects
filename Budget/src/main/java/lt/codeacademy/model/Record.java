@@ -1,11 +1,11 @@
 package lt.codeacademy.model;
 
 public class Record {
-  private final String amount;
+  private String amount;
   private final String date;
   private final String categoryIndex;
-  private final String transactionMethod;
-  private final String additionalInfo;
+  private String transactionMethod;
+  private String additionalInfo;
   private static Integer recordIndex = 1;
   private final Integer id;
   private final RecordType recordType;
@@ -37,6 +37,26 @@ public class Record {
 
   public RecordType getRecordType() {
     return recordType;
+  }
+
+  public String getTransactionMethod() {
+    return transactionMethod;
+  }
+
+  public String getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+  public void setTransactionMethod(String transactionMethod) {
+    this.transactionMethod = transactionMethod;
+  }
+
+  public void setAdditionalInfo(String additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
+  public void setAmount(String amount) {
+    this.amount = amount;
   }
 
   @Override

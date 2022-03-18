@@ -19,6 +19,7 @@ public class Menu {
             System.out.println("Jei norite peržiūrėti išlaidas, spauskite 4");
             System.out.println("Jei norite gauti balansą, spauskite 5");
             System.out.println("Jei norite ištrinti įrašą, spauskite 6, po to suveskite pasirinktos transakcijos indeksą");
+            System.out.println("Jei norite koreguoti įrašą spauskite 7, po to suveskite pasirinktos transakcijos indeksą");
             System.out.println("Jei norite atsijunti spauskite q");
             String menuChoice = scanner.nextLine();
             makechoice(menuChoice);
@@ -33,7 +34,8 @@ public class Menu {
             case "3" -> budgetService.printRecords(3);
             case "4" -> budgetService.printRecords(4);
             case "5" -> System.out.println("Jūsų sąskaitos balansas yra " + budgetService.getBalance());
-            case "6" -> budgetService.deleteRecord(scanner.nextInt());
+            case "6" -> budgetService.deleteRecord(Integer.parseInt(scanner.nextLine()));
+            case "7" -> BudgetService.modifyRecord(Integer.parseInt(scanner.nextLine()));
             case "q" -> runApp = false;
             default -> System.out.println("Neteisinga įvestis");
         }
