@@ -1,5 +1,6 @@
 package lt.codeacademy;
 
+import lt.codeacademy.fileProcessing.ReadFromFile;
 import lt.codeacademy.service.BudgetRun;
 import lt.codeacademy.service.BudgetService;
 
@@ -20,6 +21,7 @@ public class Menu {
             System.out.println("Jei norite gauti balansą, spauskite 5");
             System.out.println("Jei norite ištrinti įrašą, spauskite 6, po to suveskite pasirinktos transakcijos indeksą");
             System.out.println("Jei norite koreguoti įrašą spauskite 7, po to suveskite pasirinktos transakcijos indeksą");
+            System.out.println("Jei norite nuskaityti failo įrašus spaiskite 8");
             System.out.println("Jei norite atsijunti spauskite q");
             String menuChoice = scanner.nextLine();
             makechoice(menuChoice);
@@ -36,6 +38,7 @@ public class Menu {
             case "5" -> System.out.println("Jūsų sąskaitos balansas yra " + budgetService.getBalance());
             case "6" -> budgetService.deleteRecord(Integer.parseInt(scanner.nextLine()));
             case "7" -> BudgetService.modifyRecord(Integer.parseInt(scanner.nextLine()));
+            case "8" -> ReadFromFile.readFromFile();
             case "q" -> runApp = false;
             default -> System.out.println("Neteisinga įvestis");
         }
