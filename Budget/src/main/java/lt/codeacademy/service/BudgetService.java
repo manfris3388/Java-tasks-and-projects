@@ -2,6 +2,7 @@ package lt.codeacademy.service;
 
 import lt.codeacademy.model.Record;
 import lt.codeacademy.model.RecordType;
+import lt.codeacademy.utils.ValidateEntry;
 
 import java.util.ArrayList;
 
@@ -45,9 +46,9 @@ public class BudgetService {
 
   private static void calculateBalance(Record record) {
     if (record.getRecordType().equals(RecordType.INCOME)) {
-      balance += Double.parseDouble(record.getAmount());
+      balance += record.getAmount();
     } else {
-      balance -= Double.parseDouble(record.getAmount());
+      balance -= record.getAmount();
     }
   }
 
@@ -63,7 +64,7 @@ public class BudgetService {
     int choice1 = Integer.parseInt(scanner.nextLine());
     if (choice1 == 1){
       System.out.println("Įveskite naują sumą");
-      record.setAmount(scanner.nextLine());
+      record.setAmount(ValidateEntry.validateEntry(scanner.nextLine()));
     }
     System.out.println(record.getTransactionMethod());
     int choice2 = Integer.parseInt(scanner.nextLine());

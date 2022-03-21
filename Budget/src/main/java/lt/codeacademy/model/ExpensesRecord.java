@@ -3,7 +3,7 @@ package lt.codeacademy.model;
 public class ExpensesRecord extends Record {
 
   public ExpensesRecord(
-      String amount,
+      Double amount,
       String date,
       String categoryIndex,
       String transactionMethod,

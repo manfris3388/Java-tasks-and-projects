@@ -3,7 +3,7 @@ package lt.codeacademy.model;
 public class IncomeRecord extends Record {
 
   public IncomeRecord(
-      String amount,
+      Double amount,
       String date,
       String categoryIndex,
       String transactionMethod,

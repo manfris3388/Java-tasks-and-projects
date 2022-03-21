@@ -1,7 +1,7 @@
 package lt.codeacademy.model;
 
 public class Record {
-  private String amount;
+  private Double amount;
   private final String date;
   private final String categoryIndex;
   private String transactionMethod;
@@ -11,7 +11,7 @@ public class Record {
   private final RecordType recordType;
 
   public Record(
-      String amount,
+      Double amount,
       String date,
       String categoryIndex,
       String transactionMethod,
@@ -27,7 +27,7 @@ public class Record {
     recordIndex++;
   }
 
-  public String getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
@@ -55,7 +55,7 @@ public class Record {
     this.additionalInfo = additionalInfo;
   }
 
-  public void setAmount(String amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
