@@ -1,6 +1,8 @@
 package lt.codeacademy.model;
 
-public class Record {
+import java.io.Serializable;
+
+public class Record implements Serializable {
   private Double amount;
   private final String date;
   private final String categoryIndex;

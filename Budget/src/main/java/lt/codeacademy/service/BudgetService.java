@@ -1,5 +1,6 @@
 package lt.codeacademy.service;
 
+import lt.codeacademy.fileProcessing.WriteToFile;
 import lt.codeacademy.model.Record;
 import lt.codeacademy.model.RecordType;
 import lt.codeacademy.utils.ValidateEntry;
@@ -14,6 +15,7 @@ public class BudgetService {
 
   public static void addRecord(Record record) {
     records.add(record);
+    WriteToFile.writeToFile(record);
     calculateBalance(record);
   }
 
