@@ -5,10 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    <h1> Anesthetic chart</h1>
-    <h3> Patient details</h3>
+    <h1> Anesthetic chart</h1><br>
     <form action="" method="post">
         <div>
+            <h3> Patient details</h3><br>
+
             <label>Name</label>
             <input type="text" placeholder="Name"><br>
 
@@ -20,9 +21,25 @@
 
             <label>Date of Birth</label>
             <input type="datetime-local" placeholder=""><br><br>
+        </div>
+        <div>
+            <h3> Preoperative Clinical Evaluation</h3><br>
+
+            <label>Past Medical History</label>
+            <textarea placeholder="Past Medical History"></textarea><br>
+
+            <label>Drug History</label>
+            <textarea placeholder="Drug History"></textarea><br>
+
+            <label>Airway Assessment</label>
+            <textarea placeholder="Airway Assessment"></textarea><br>
+
+            <label>Anesthetic Assessment</label>
+            <textarea placeholder="Anesthetic Assessment"></textarea><br><br>
+        </div>
 
             <button type="submit">Submit</button>
-        </div>
+
     </form>
 </body>
 </html>
