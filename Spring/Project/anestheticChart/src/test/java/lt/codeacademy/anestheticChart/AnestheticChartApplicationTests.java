@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticchart;
+package lt.codeacademy.anestheticChart;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

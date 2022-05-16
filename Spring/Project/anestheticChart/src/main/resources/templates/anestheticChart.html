@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Anesthetic chart</h1><br>
+    <form method="post" th:object="${chartDTO}">
+        <div>
+            <h3> Patient details</h3><br>
+
+            <label>Name</label>
+            <input type="text" placeholder="Name" th:field="*{name}"><br>
+
+            <label>Surname</label>
+            <input type="text" placeholder="Surname" th:field="*{surname}"><br>
+
+            <label>Hospital number</label>
+            <input type="text" placeholder="Hospital number" th:field="*{hospitalNumber}"><br>
+
+            <label>Date of Birth</label>
+            <input type="datetime-local" placeholder="" th:field="*{dob}"><br><br>
+        </div>
+        <div>
+            <h3> Preoperative Clinical Evaluation</h3><br>
+
+            <label>Past Medical History</label>
+            <textarea placeholder="Past Medical History" name="PMH"></textarea><br>
+
+            <label>Drug History</label>
+            <textarea placeholder="Drug History" name="DH"></textarea><br>
+
+            <label>Airway Assessment</label>
+            <textarea placeholder="Airway Assessment" name="AirwayAssessment"></textarea><br>
+
+            <label>Anesthetic Assessment</label>
+            <textarea placeholder="Anesthetic Assessment" name="AnestheticAssessment"></textarea><br><br>
+        </div>
+
+        <div>
+            <h3> Vital Parameters</h3><br>
+
+            <label>Saturation</label>
+            <input type="number" name="Sats"><br>
+
+            <label>Respiratory Rate</label>
+            <input type="number" name="RR"><br>
+
+            <label>Heart Rate</label>
+            <input type="number" name="HR"><br>
+
+            <label>Blood Pressure (Systolic/Diastolic)</label>
+            <input type="number" name="SBP">
+            <span>/</span>
+            <input type="number" name="DBP"><br>
+
+            <label>Other Vital Parameters</label>
+            <textarea name="OtherVitals"></textarea><br><br>
+        </div>
+
+        <div>
+            <h3> Laboratory Results</h3><br>
+
+            <label>Sodium</label>
+            <input type="number" name="Na"><br><br>
+
+            <label>Potassium</label>
+            <input type="number" name="K"><br><br>
+
+            <label>Urea</label>
+            <input type="number" name="Urea"><br><br>
+
+            <label>Creatinine</label>
+            <input type="number" name="Cr"><br><br>
+
+            <label>Other Laboratory Results</label>
+            <textarea name="OtherLabRes"></textarea><br><br>
+        </div>
+
+        <div>
+            <h3>Other Investigations</h3><br>
+
+            <label>ECG</label>
+            <textarea name="ECG"></textarea><br>
+
+            <label>Other Imaging Studies</label>
+            <textarea name="OtherIMG"></textarea><br><br>
+        </div>
+
+        <div>
+            <h3>Anesthetic Plan</h3><br>
+
+            <label>Anesthetic Plan</label>
+            <textarea name="AnestheticPlan"></textarea><br>
+
+            <label>Further Preoperative Investigations and Management</label>
+            <textarea name="AnestheticWorkup"></textarea><br><br>
+        </div>
+            <button type="submit">Submit</button>
+
+    </form>
+</body>
+</html>
