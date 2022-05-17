@@ -15,15 +15,21 @@ public class WriteChartController {
 
     private final ChartService chartService;
 
-    @GetMapping("/writeChart")
+    @GetMapping("/chart/open")
     public String openAnestheticForm(Model model){
         model.addAttribute("chartDTO", new ChartDTO());
         return "anestheticChart";
     }
 
-    @PostMapping("/writeChart")
+    @PostMapping("/chart/open")
     public String createAnestheticChart(Model model, ChartDTO chart){
         chartService.addCharts(chart);
         return "anestheticChart";
+    }
+
+    @GetMapping("chart/list")
+    public String getCharts(Model model){
+        model.addAttribute("patientName", chartService.getChart().get(0).getName());
+        return "anestheticCharts";
     }
 }
