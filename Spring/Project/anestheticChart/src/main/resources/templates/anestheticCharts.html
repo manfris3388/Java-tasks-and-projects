@@ -6,7 +6,25 @@
     <title>Chart List</title>
 </head>
 <body>
-    <h3 th:text="'Test - ' + ${patientName}"></h3><br><br>
-
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Hospital Number</th>
+        <th>DOB</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="patientDemographics: ${patientsDemographics}">
+        <th th:text="${patientDemographics.name}"></th>
+        <th th:text="${patientDemographics.surname}"></th>
+        <th th:text="${patientDemographics.hospitalNumber}"></th>
+        <th th:text="${patientDemographics.dob}"></th>
+        <th>Delete</th>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

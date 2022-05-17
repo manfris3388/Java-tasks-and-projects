@@ -29,7 +29,7 @@ public class WriteChartController {
 
     @GetMapping("chart/list")
     public String getCharts(Model model){
-        model.addAttribute("patientName", chartService.getChart().get(0).getName());
+        model.addAttribute("patientsDemographics", chartService.getChart());
         return "anestheticCharts";
     }
 }
