@@ -5,97 +5,100 @@
     <title>Title</title>
 </head>
 <body>
-    <h1> Anesthetic chart</h1><br>
+    <h1> Anesthetic chart</h1><br><br>
     <form method="post" th:object="${chartDTO}">
         <div>
-            <h3> Patient details</h3><br>
+            <h3> Patient details</h3><br><br>
 
             <label>Name</label>
-            <input type="text" placeholder="Name" th:field="*{name}"><br>
+            <input type="text" placeholder="Name" th:field="*{name}"><br><br>
 
             <label>Surname</label>
-            <input type="text" placeholder="Surname" th:field="*{surname}"><br>
+            <input type="text" placeholder="Surname" th:field="*{surname}"><br><br>
 
             <label>Hospital number</label>
-            <input type="text" placeholder="Hospital number" th:field="*{hospitalNumber}"><br>
+            <input type="text" placeholder="Hospital number" th:field="*{hospitalNumber}"><br><br>
 
             <label>Date of Birth</label>
-            <input type="datetime-local" placeholder="" th:field="*{dob}"><br><br>
+            <input type="text" placeholder="yyyy-mm-dd" th:field="*{dob}"><br><br>
+
+            <label>Operation</label>
+            <input type="text" placeholder="" th:field="*{dob}"><br><br><br>
         </div>
         <div>
-            <h3> Preoperative Clinical Evaluation</h3><br>
+            <h3> Preoperative Clinical Evaluation</h3><br><br>
 
             <label>Past Medical History</label>
-            <textarea placeholder="Past Medical History" name="PMH"></textarea><br>
+            <textarea placeholder="Past Medical History" name="PMH" th:field="*{pmh}"></textarea><br><br>
 
             <label>Drug History</label>
-            <textarea placeholder="Drug History" name="DH"></textarea><br>
+            <textarea placeholder="Drug History" name="DH" th:field="*{dh}"></textarea><br><br>
 
             <label>Airway Assessment</label>
-            <textarea placeholder="Airway Assessment" name="AirwayAssessment"></textarea><br>
+            <textarea placeholder="Airway Assessment" name="AirwayAssessment" th:field="*{airwayAssessment}"></textarea><br><br>
 
             <label>Anesthetic Assessment</label>
-            <textarea placeholder="Anesthetic Assessment" name="AnestheticAssessment"></textarea><br><br>
+            <textarea placeholder="Anesthetic Assessment" name="AnestheticAssessment" th:field="*{anestheticAssessment}"></textarea><br><br><br>
         </div>
 
         <div>
             <h3> Vital Parameters</h3><br>
 
             <label>Saturation</label>
-            <input type="number" name="Sats"><br>
+            <input type="number" name="Sats" th:field="*{sats}"><br><br>
 
             <label>Respiratory Rate</label>
-            <input type="number" name="RR"><br>
+            <input type="number" name="RR" th:field="*{rr}"><br><br>
 
             <label>Heart Rate</label>
-            <input type="number" name="HR"><br>
+            <input type="number" name="HR" th:field="*{hr}"><br><br>
 
             <label>Blood Pressure (Systolic/Diastolic)</label>
-            <input type="number" name="SBP">
+            <input type="number" name="SBP" th:field="*{sbp}">
             <span>/</span>
-            <input type="number" name="DBP"><br>
+            <input type="number" name="DBP" th:field="*{dbp}"><br><br>
 
             <label>Other Vital Parameters</label>
-            <textarea name="OtherVitals"></textarea><br><br>
+            <textarea name="OtherVitals" th:field="*{otherVitals}"></textarea><br><br><br>
         </div>
 
         <div>
             <h3> Laboratory Results</h3><br>
 
             <label>Sodium</label>
-            <input type="number" name="Na"><br><br>
+            <input type="number" name="Na" th:field="*{na}"><br><br>
 
             <label>Potassium</label>
-            <input type="number" name="K"><br><br>
+            <input type="text" name="K" th:field="*{k}"><br><br>
 
             <label>Urea</label>
-            <input type="number" name="Urea"><br><br>
+            <input type="text" name="Urea" th:field="*{urea}"><br><br>
 
             <label>Creatinine</label>
-            <input type="number" name="Cr"><br><br>
+            <input type="number" name="Cr" th:field="*{cr}"><br><br>
 
             <label>Other Laboratory Results</label>
-            <textarea name="OtherLabRes"></textarea><br><br>
+            <textarea name="OtherLabRes" th:field="*{otherLabRes}"></textarea><br><br><br>
         </div>
 
         <div>
             <h3>Other Investigations</h3><br>
 
             <label>ECG</label>
-            <textarea name="ECG"></textarea><br>
+            <textarea name="ECG" th:field="*{ecg}"></textarea><br><br>
 
             <label>Other Imaging Studies</label>
-            <textarea name="OtherIMG"></textarea><br><br>
+            <textarea name="OtherIMG" th:field="*{otherIMG}"></textarea><br><br><br>
         </div>
 
         <div>
-            <h3>Anesthetic Plan</h3><br>
+            <h3>Anesthetic Plan</h3><br><br>
 
             <label>Anesthetic Plan</label>
-            <textarea name="AnestheticPlan"></textarea><br>
+            <textarea name="AnestheticPlan" th:field="*{anestheticPlan}"></textarea><br><br>
 
             <label>Further Preoperative Investigations and Management</label>
-            <textarea name="AnestheticWorkup"></textarea><br><br>
+            <textarea name="AnestheticWorkup" th:field="*{anestheticWorkup}"></textarea><br><br><br>
         </div>
             <button type="submit">Submit</button>
 
