@@ -1,7 +1,7 @@
 package lt.codeacademy.anestheticChart.service;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.model.ChartDTO;
+import lt.codeacademy.anestheticChart.model.Chart;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,11 @@ public class ChartService {
 
     private final ChartRepository chartRepository;
 
-    public void addCharts(ChartDTO chartDTO){
-        chartRepository.save(chartDTO);
+    public void addCharts(Chart chart){
+        chartRepository.save(chart);
     }
 
-    public List<ChartDTO> getCharts() {
+    public List<Chart> getCharts() {
         return chartRepository.getCharts();
     }
 }

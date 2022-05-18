@@ -1,7 +1,7 @@
 package lt.codeacademy.anestheticChart.repository;
 
 import lombok.Getter;
-import lt.codeacademy.anestheticChart.model.ChartDTO;
+import lt.codeacademy.anestheticChart.model.Chart;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public class ChartRepository {
 
-    private final List<ChartDTO> charts = new ArrayList<>();
+    private final List<Chart> charts = new ArrayList<>();
 
-    public void save(ChartDTO chart){
+    public void save(Chart chart){
         charts.add(chart);
     }
 }

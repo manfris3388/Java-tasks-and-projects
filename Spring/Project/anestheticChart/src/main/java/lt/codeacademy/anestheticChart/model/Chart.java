@@ -1,9 +1,11 @@
 package lt.codeacademy.anestheticChart.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ChartDTO {
+@Builder
+public class Chart {
     private String name;
     private String surname;
     private String hospitalNumber;

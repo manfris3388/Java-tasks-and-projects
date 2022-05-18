@@ -1,7 +1,7 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.model.ChartDTO;
+import lt.codeacademy.anestheticChart.model.Chart;
 import lt.codeacademy.anestheticChart.service.ChartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +20,13 @@ public class ChartController {
     //connects ChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
     @GetMapping
     public String openAnestheticForm(Model model){
-        model.addAttribute("chartDTO", new ChartDTO());
+        model.addAttribute("chart", Chart.builder().build());
         return "anestheticChart";
     }
 
     //post data from /chart/open from Thymeleaf. Initializes ChartDTO fields. Goes to service and then to repository to write data in memory
     @PostMapping
-    public String createAnestheticChart(Model model, ChartDTO chart){
+    public String createAnestheticChart(Model model, Chart chart){
         chartService.addCharts(chart);
         return "anestheticChart";
     }
