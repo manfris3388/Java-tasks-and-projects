@@ -17,7 +17,7 @@ public class ChartService {
         chartRepository.save(chartDTO);
     }
 
-    public List<ChartDTO> getChart() {
+    public List<ChartDTO> getCharts() {
         return chartRepository.getCharts();
     }
 }

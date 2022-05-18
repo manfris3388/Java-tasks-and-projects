@@ -6,6 +6,9 @@
     <title>Chart List</title>
 </head>
 <body>
+<div th:if="${patientsDemographics.isEmpty()}"> <h3>There are no anaesthetic charts</h3></div>
+
+<div th:unless="${patientsDemographics.isEmpty}">
 <table>
     <thead>
     <tr>
@@ -22,9 +25,10 @@
         <th th:text="${patientDemographics.surname}"></th>
         <th th:text="${patientDemographics.hospitalNumber}"></th>
         <th th:text="${patientDemographics.dob}"></th>
-        <th>Delete</th>
+        <th> Delete</th>
     </tr>
     </tbody>
 </table>
+</div>
 </body>
 </html>
