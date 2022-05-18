@@ -18,14 +18,14 @@ public class ChartController {
     private final ChartService chartService;
 
     //connects ChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
-    @GetMapping("")
+    @GetMapping
     public String openAnestheticForm(Model model){
         model.addAttribute("chartDTO", new ChartDTO());
         return "anestheticChart";
     }
 
     //post data from /chart/open from Thymeleaf. Initializes ChartDTO fields. Goes to service and then to repository to write data in memory
-    @PostMapping("")
+    @PostMapping
     public String createAnestheticChart(Model model, ChartDTO chart){
         chartService.addCharts(chart);
         return "anestheticChart";
