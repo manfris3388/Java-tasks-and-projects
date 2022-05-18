@@ -1,21 +1,23 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
-
-import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.model.ChartDTO;
 import lt.codeacademy.anestheticChart.service.ChartService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequiredArgsConstructor
 @Controller
 @RequestMapping("/chart")
 public class ChartController {
 
     private final ChartService chartService;
+
+    public ChartController(@Qualifier("chartServiceMock") ChartService chartService) {
+        this.chartService = chartService;
+    }
 
     //connects ChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
     @GetMapping
