@@ -28,13 +28,15 @@ public class ChartController {
     }
 
     //post data from /chart/open from Thymeleaf. Initializes ChartDTO fields. Goes to service and then to repository to write data in memory
+    //adding message after successful commit
     @PostMapping
     public String createAnestheticChart(Model model, Chart chart){
         chartService.addCharts(chart);
+        model.addAttribute("message", "Anesthetic chart added successfully");
         return "anestheticChart";
     }
 
-    //gets data from memory. Sets up another Thymeleaf object. Connects to html template.
+    //gets data from memory. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML.
     @GetMapping("/list")
     public String getCharts(Model model){
         model.addAttribute("patientsDemographics", chartService.getCharts());
