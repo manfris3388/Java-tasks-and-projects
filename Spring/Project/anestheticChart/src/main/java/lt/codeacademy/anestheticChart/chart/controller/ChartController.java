@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,5 +39,11 @@ public class ChartController {
     public String getCharts(Model model){
         model.addAttribute("patientsDemographics", chartService.getCharts());
         return "anestheticCharts";
+    }
+
+    @GetMapping("/update")
+    public String getChartUpdate(Model model, @RequestParam UUID uuid){
+        model.addAttribute("chart", chartService.getChartByUUID(uuid));
+        return "anestheticChart";
     }
 }

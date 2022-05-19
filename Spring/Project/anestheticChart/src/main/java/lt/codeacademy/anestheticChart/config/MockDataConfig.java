@@ -27,7 +27,7 @@ public class MockDataConfig {
               .name("Jonas" + count)
               .surname("Jonaitis" + count * 2)
               .hospitalNumber("D54698" + count)
-              .dob("19" + count + "2-04-28")
+              .dob("1972-04-" + (count*2+1))
               .build());
       count++;
     }

@@ -21,11 +21,11 @@
     </thead>
     <tbody>
     <tr th:each="patientDemographics: ${patientsDemographics}">
-        <th th:text="${patientDemographics.name}"></th>
-        <th th:text="${patientDemographics.surname}"></th>
-        <th th:text="${patientDemographics.hospitalNumber}"></th>
-        <th th:text="${patientDemographics.dob}"></th>
-        <th> Delete</th>
+        <td><a th:href="@{'/chart/update?uuid=' + ${patientDemographics.uuid}}" th:text="${patientDemographics.name}"></a></td>
+        <td th:text="${patientDemographics.surname}"></td>
+        <td th:text="${patientDemographics.hospitalNumber}"></td>
+        <td th:text="${patientDemographics.dob}"></td>
+        <td> Delete</td>
     </tr>
     </tbody>
 </table>
