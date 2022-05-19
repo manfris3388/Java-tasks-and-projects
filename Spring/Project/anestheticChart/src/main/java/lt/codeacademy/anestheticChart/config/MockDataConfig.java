@@ -1,6 +1,7 @@
 package lt.codeacademy.anestheticChart.config;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import lt.codeacademy.anestheticChart.model.Chart;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
+@Log4j2
 public class MockDataConfig {
 
   private static final int MAX_COUNT = 10;
@@ -27,5 +29,6 @@ public class MockDataConfig {
               .build());
       count++;
     }
+    log.atDebug().log("<=============Sukurti mock duomenys=================>");
   }
 }
