@@ -25,4 +25,12 @@ public class ChartRepository {
     public Chart getChartByUUID(UUID uuid) {
         return charts.get(uuid);
     }
+
+    public void updateChart(Chart chart) {
+        charts.put(chart.getUuid(), chart);
+    }
+
+    public void deleteChart(UUID uuid) {
+        charts.remove(uuid);
+    }
 }

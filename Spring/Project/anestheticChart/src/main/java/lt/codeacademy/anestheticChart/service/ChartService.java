@@ -25,4 +25,12 @@ public class ChartService {
     public Chart getChartByUUID(UUID uuid){
         return chartRepository.getChartByUUID(uuid);
     }
+
+    public void updateChart(Chart chart) {
+        chartRepository.updateChart(chart);
+    }
+
+    public void deleteChart(UUID uuid) {
+        chartRepository.deleteChart(uuid);
+    }
 }

@@ -25,7 +25,7 @@
         <td th:text="${patientDemographics.surname}"></td>
         <td th:text="${patientDemographics.hospitalNumber}"></td>
         <td th:text="${patientDemographics.dob}"></td>
-        <td> Delete</td>
+        <td><a th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"> Delete</a></td>
     </tr>
     </tbody>
 </table>

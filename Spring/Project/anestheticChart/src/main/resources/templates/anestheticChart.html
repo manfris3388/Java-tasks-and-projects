@@ -10,6 +10,7 @@
     <form method="post" th:object="${chart}">
         <div>
             <h3> Patient details</h3><br><br>
+            <input type="hidden" th:field="*{uuid}">
 
             <label>Name</label>
             <input type="text" placeholder="Name" th:field="*{name}"><br><br>

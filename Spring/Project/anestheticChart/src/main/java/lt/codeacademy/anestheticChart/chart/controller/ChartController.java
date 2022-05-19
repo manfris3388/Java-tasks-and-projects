@@ -42,8 +42,22 @@ public class ChartController {
     }
 
     @GetMapping("/update")
-    public String getChartUpdate(Model model, @RequestParam UUID uuid){
+    public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
         model.addAttribute("chart", chartService.getChartByUUID(uuid));
         return "anestheticChart";
+    }
+
+    @PostMapping("/update")
+    public String updateChart(Model model, Chart chart){
+        chartService.updateChart(chart);
+        model.addAttribute("patientsDemographics", chartService.getCharts());
+        return "anestheticCharts";
+    }
+
+    @GetMapping("/delete")
+    public String deleteChart(Model model, @RequestParam UUID uuid){
+        chartService.deleteChart(uuid);
+        model.addAttribute("patientsDemographics", chartService.getCharts());
+        return "anestheticCharts";
     }
 }
