@@ -3,9 +3,12 @@ package lt.codeacademy.anestheticChart.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @Builder
 public class Chart {
+    private UUID uuid;
     private String name;
     private String surname;
     private String hospitalNumber;

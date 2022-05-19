@@ -7,6 +7,8 @@ import lt.codeacademy.anestheticChart.repository.ChartRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.UUID;
+
 @Configuration
 @RequiredArgsConstructor
 @Log4j2
@@ -29,6 +31,7 @@ public class MockDataConfig {
               .build());
       count++;
     }
+    // needs .yml file configuration logging: level: (amount)::: debug
     log.atDebug().log("<=============Sukurti mock duomenys=================>");
   }
 }
