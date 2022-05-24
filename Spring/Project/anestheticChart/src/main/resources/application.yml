@@ -13,6 +13,7 @@ spring:
   sql:
     init:
       schema-locations: classpath:db/db-schema.sql
+      data-locations: classpath:db/initial-data.sql
 logging:
   level:
     lt:
