@@ -7,8 +7,8 @@
     <title>Chart</title>
 </head>
 <body>
-    <h1> Anesthetic chartDTO</h1><br><br>
-    <form method="post" th:object="${chartDTO}">
+    <h1> Create Anesthetic Chart</h1><br><br>
+    <form method="post" th:object="${chart}">
         <div>
             <h3> Patient details</h3><br><br>
             <input type="hidden" th:field="*{uuid}">
@@ -26,7 +26,7 @@
             <input type="text" placeholder="yyyy-mm-dd" th:field="*{dob}"><br><br>
 
             <label>Operation</label>
-            <input type="text" placeholder="" th:field="*{dob}"><br><br><br>
+            <input type="text" placeholder="" th:field="*{operation}"><br><br><br>
         </div>
         <div>
             <h3> Preoperative Clinical Evaluation</h3><br><br>

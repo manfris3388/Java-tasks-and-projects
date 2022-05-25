@@ -2,6 +2,7 @@ package lt.codeacademy.anestheticChart.service;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.ChartDTO;
+import lt.codeacademy.anestheticChart.entity.ChartEntity;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,16 @@ public class ChartService {
     private final ChartRepository chartRepository;
     private final ChartMapper chartMapper;
 
-    public void addCharts(ChartDTO chartDTO){
-//        chartRepository.save(chartDTO);
+    public void addChart(ChartDTO chartDTO){
+        chartRepository.save(ChartEntity
+                .builder()
+                .uuid(UUID.randomUUID())
+                .name(chartDTO.getName())
+                .surname(chartDTO.getSurname())
+                .hospitalNumber(chartDTO.getHospitalNumber())
+                .dob(chartDTO.getDob())
+                .operation(chartDTO.getOperation())
+                .build());
     }
 
     public List<ChartDTO> getCharts() {

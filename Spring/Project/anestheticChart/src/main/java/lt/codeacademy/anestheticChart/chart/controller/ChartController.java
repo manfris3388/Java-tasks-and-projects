@@ -31,7 +31,8 @@ public class ChartController {
     //adding message after successful commit
     @PostMapping
     public String createAnestheticChart(Model model, ChartDTO chartDTO){
-        chartService.addCharts(chartDTO);
+        chartService.addChart(chartDTO);
+        model.addAttribute("chart", ChartDTO.builder().build());
         model.addAttribute("message", "Anesthetic chart added successfully");
         return "anestheticChart";
     }
