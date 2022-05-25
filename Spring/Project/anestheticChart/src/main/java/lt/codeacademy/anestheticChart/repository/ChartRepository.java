@@ -29,22 +29,21 @@ public class ChartRepository {
     charts.put(uuid, chart);
   }
 
+
+  /*
+  Function needed to get data from db
+   */
   public List<Chart> getCharts() {
     return jdbcTemplate.query(
         "SELECT * FROM ANESTHETIC_CHARTS",
-        new RowMapper<Chart>() {
-          @Override
-          public Chart mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return Chart.builder()
+            (rs, rowNum) -> Chart.builder()
                 .uuid(UUID.fromString(rs.getString("uuid")))
                 .name(rs.getString("name"))
                 .surname(rs.getString("surname"))
                 .hospitalNumber(rs.getString("hospital_number"))
                 .dob(rs.getString("dob"))
                 .operation(rs.getString("operation"))
-                .build();
-          }
-        });
+                .build());
   }
 
   public Chart getChartByUUID(UUID uuid) {
