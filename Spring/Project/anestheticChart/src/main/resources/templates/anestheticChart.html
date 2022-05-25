@@ -7,8 +7,8 @@
     <title>Chart</title>
 </head>
 <body>
-    <h1> Anesthetic chart</h1><br><br>
-    <form method="post" th:object="${chart}">
+    <h1> Anesthetic chartDTO</h1><br><br>
+    <form method="post" th:object="${chartDTO}">
         <div>
             <h3> Patient details</h3><br><br>
             <input type="hidden" th:field="*{uuid}">

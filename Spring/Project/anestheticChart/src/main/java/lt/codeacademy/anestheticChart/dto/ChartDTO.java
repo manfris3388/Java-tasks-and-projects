@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.model;
+package lt.codeacademy.anestheticChart.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class Chart {
+public class ChartDTO {
     private UUID uuid;
     private String name;
     private String surname;

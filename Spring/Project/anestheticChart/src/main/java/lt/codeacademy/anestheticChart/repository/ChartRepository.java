@@ -1,60 +1,12 @@
 package lt.codeacademy.anestheticChart.repository;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.model.Chart;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import lt.codeacademy.anestheticChart.dto.ChartDTO;
+import lt.codeacademy.anestheticChart.entity.ChartEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
 
-@Getter
+
 @Repository
-public class ChartRepository {
+public interface ChartRepository extends JpaRepository<ChartEntity, Long> {
 
-  private final Map<UUID, Chart> charts;
-
-  private final JdbcTemplate jdbcTemplate;
-
-  ChartRepository(JdbcTemplate jdbcTemplate){
-      this.jdbcTemplate = jdbcTemplate;
-      this.charts = new HashMap<>();
-  }
-
-  public void save(Chart chart) {
-    UUID uuid = UUID.randomUUID();
-    chart.setUuid(uuid);
-    charts.put(uuid, chart);
-  }
-
-
-  /*
-  Function needed to get data from db
-   */
-  public List<Chart> getCharts() {
-    return jdbcTemplate.query(
-        "SELECT * FROM ANESTHETIC_CHARTS",
-            (rs, rowNum) -> Chart.builder()
-                .uuid(UUID.fromString(rs.getString("uuid")))
-                .name(rs.getString("name"))
-                .surname(rs.getString("surname"))
-                .hospitalNumber(rs.getString("hospital_number"))
-                .dob(rs.getString("dob"))
-                .operation(rs.getString("operation"))
-                .build());
-  }
-
-  public Chart getChartByUUID(UUID uuid) {
-    return charts.get(uuid);
-  }
-
-  public void updateChart(Chart chart) {
-    charts.put(chart.getUuid(), chart);
-  }
-
-  public void deleteChart(UUID uuid) {
-    charts.remove(uuid);
-  }
 }
