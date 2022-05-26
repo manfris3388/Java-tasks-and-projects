@@ -6,6 +6,7 @@ import lt.codeacademy.anestheticChart.entity.ChartEntity;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,37 +16,46 @@ import java.util.stream.Collectors;
 @Service
 public class ChartService {
 
-    private final ChartRepository chartRepository;
-    private final ChartMapper chartMapper;
+  private final ChartRepository chartRepository;
+  private final ChartMapper chartMapper;
 
-    public void addChart(ChartDTO chartDTO){
-        chartRepository.save(ChartEntity
-                .builder()
-                .uuid(UUID.randomUUID())
-                .name(chartDTO.getName())
-                .surname(chartDTO.getSurname())
-                .hospitalNumber(chartDTO.getHospitalNumber())
-                .dob(chartDTO.getDob())
-                .operation(chartDTO.getOperation())
-                .build());
-    }
+  public void addChart(ChartDTO chartDTO) {
+    chartRepository.save(
+        ChartEntity.builder()
+            .uuid(UUID.randomUUID())
+            .name(chartDTO.getName())
+            .surname(chartDTO.getSurname())
+            .hospitalNumber(chartDTO.getHospitalNumber())
+            .dob(chartDTO.getDob())
+            .operation(chartDTO.getOperation())
+            .build());
+  }
 
-    public List<ChartDTO> getCharts() {
-        return chartRepository.findAll()
-                .stream()
-                .map(chartMapper::mapToChartDTO)
-                .collect(Collectors.toList());
-    }
+  public List<ChartDTO> getCharts() {
+    return chartRepository.findAll().stream()
+        .map(chartMapper::mapToChartDTO)
+        .collect(Collectors.toList());
+  }
 
-    public ChartDTO getChartByUUID(UUID uuid){
-        return chartMapper.mapToChartDTO(chartRepository.findByUuid(uuid));
-    }
+  public ChartDTO getChartByUUID(UUID uuid) {
+    return chartMapper.mapToChartDTO(chartRepository.findByUuid(uuid));
+  }
 
-    public void updateChart(ChartDTO chartDTO) {
-//        chartRepository.updateChart(chartDTO);
-    }
+  @Transactional
+  public void updateChart(ChartDTO chartDTO) {
+    ChartEntity chartEntity =
+        chartRepository.findByUuid(chartDTO.getUuid()).toBuilder()
+            .name(chartDTO.getName())
+            .surname(chartDTO.getSurname())
+            .hospitalNumber(chartDTO.getHospitalNumber())
+            .dob(chartDTO.getDob())
+            .operation(chartDTO.getOperation())
+            .build();
+    chartRepository.save(chartEntity);
+  }
 
-    public void deleteChart(UUID uuid) {
-//        chartRepository.deleteChart(uuid);
-    }
+  @Transactional
+  public void deleteChart(UUID uuid) {
+    //        chartRepository.deleteChart(uuid);
+  }
 }
