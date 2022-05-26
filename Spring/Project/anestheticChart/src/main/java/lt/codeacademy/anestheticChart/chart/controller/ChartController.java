@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.chart.controller;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.ChartDTO;
 import lt.codeacademy.anestheticChart.service.ChartService;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,8 +40,8 @@ public class ChartController {
 
     //gets data from memory. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML.
     @GetMapping("/list")
-    public String getCharts(Model model){
-        model.addAttribute("patientsDemographics", chartService.getCharts());
+    public String getCharts(Model model, Pageable pageable){
+        model.addAttribute("patientsDemographics", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 

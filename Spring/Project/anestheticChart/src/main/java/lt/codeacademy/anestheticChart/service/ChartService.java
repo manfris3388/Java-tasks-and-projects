@@ -5,8 +5,11 @@ import lt.codeacademy.anestheticChart.dto.ChartDTO;
 import lt.codeacademy.anestheticChart.entity.ChartEntity;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -28,6 +31,10 @@ public class ChartService {
             .dob(chartDTO.getDob())
             .operation(chartDTO.getOperation())
             .build());
+  }
+
+  public Page<ChartDTO> getChartsPaginated(Pageable pageable){
+    return chartRepository.findAll(pageable).map(chartMapper::mapToChartDTO);
   }
 
   public List<ChartDTO> getCharts() {
