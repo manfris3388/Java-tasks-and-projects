@@ -7,10 +7,11 @@
     <title>Chart List</title>
 </head>
 <body>
+<h1 class="d-flex justify-content-center"> Anesthetic Charts</h1><br>
 <div th:if="${patientsDemographics.isEmpty()}"> <h3>There are no anaesthetic charts</h3></div>
 
-<div th:unless="${patientsDemographics.isEmpty}">
-<table>
+<div th:unless="${patientsDemographics.isEmpty}" class="container">
+<table class="table table-striped">
     <thead>
     <tr>
         <th>Name</th>
@@ -30,6 +31,15 @@
     </tr>
     </tbody>
 </table>
+    <div aria-label="Page navigation example" class="d-flex justify-content-center">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
