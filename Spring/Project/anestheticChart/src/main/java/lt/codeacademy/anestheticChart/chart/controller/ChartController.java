@@ -39,9 +39,9 @@ public class ChartController {
     }
 
     //gets data from memory. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML.
-    @GetMapping("/list")
+    @GetMapping("/page")
     public String getCharts(Model model, Pageable pageable){
-        model.addAttribute("patientsDemographics", chartService.getChartsPaginated(pageable));
+        model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 

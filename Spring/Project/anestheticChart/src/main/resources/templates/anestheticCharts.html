@@ -9,9 +9,11 @@
 <body>
 <h1 class="d-flex justify-content-center"> Anesthetic Charts</h1><br>
 
-<div th:if="${#lists.isEmpty(patientsDemographics)}"> <h3>There are no anaesthetic charts</h3></div>
+<div th:if="${#lists.isEmpty(chartsPage)}"> <h3>There are no anaesthetic charts</h3></div>
 
-<div th:unless="${patientsDemographics.isEmpty()}" class="container">
+<div th:unless="${chartsPage.isEmpty()}" class="container">
+    <span th:text="'Viso irasu ' + ${chartsPage.totalElements}"></span>
+    <span th:text="'Viso puslapiu ' + ${chartsPage.totalPages}"></span>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -23,7 +25,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="patientDemographics: ${patientsDemographics}">
+    <tr th:each="patientDemographics: ${chartsPage}">
         <td><a th:href="@{'/chart/update?uuid=' + ${patientDemographics.uuid}}" th:text="${patientDemographics.name}"></a></td>
         <td th:text="${patientDemographics.surname}"></td>
         <td th:text="${patientDemographics.hospitalNumber}"></td>
