@@ -8,9 +8,10 @@
 </head>
 <body>
 <h1 class="d-flex justify-content-center"> Anesthetic Charts</h1><br>
-<div th:if="${patientsDemographics.isEmpty()}"> <h3>There are no anaesthetic charts</h3></div>
 
-<div th:unless="${patientsDemographics.isEmpty}" class="container">
+<div th:if="${#lists.isEmpty(patientsDemographics)}"> <h3>There are no anaesthetic charts</h3></div>
+
+<div th:unless="${patientsDemographics.isEmpty()}" class="container">
 <table class="table table-striped">
     <thead>
     <tr>
