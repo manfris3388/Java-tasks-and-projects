@@ -56,6 +56,6 @@ public class ChartService {
 
   @Transactional
   public void deleteChart(UUID uuid) {
-    //        chartRepository.deleteChart(uuid);
+    chartRepository.delete(chartRepository.findByUuid(uuid));
   }
 }
