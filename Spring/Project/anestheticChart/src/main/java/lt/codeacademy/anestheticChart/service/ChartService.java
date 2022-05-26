@@ -38,8 +38,7 @@ public class ChartService {
     }
 
     public ChartDTO getChartByUUID(UUID uuid){
-//        return chartRepository.getChartByUUID(uuid);
-        return null;
+        return chartMapper.mapToChartDTO(chartRepository.findByUuid(uuid));
     }
 
     public void updateChart(ChartDTO chartDTO) {

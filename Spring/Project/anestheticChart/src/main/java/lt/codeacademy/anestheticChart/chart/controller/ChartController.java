@@ -44,6 +44,7 @@ public class ChartController {
         return "anestheticCharts";
     }
 
+    //get's anesthetic chart data from db using UUID and fills anesthetic chart template with it
     @GetMapping("/update")
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
         model.addAttribute("chart", chartService.getChartByUUID(uuid));
