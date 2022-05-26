@@ -38,20 +38,22 @@ public class ChartController {
         return "anestheticChart";
     }
 
-    //gets data from memory. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML.
+    //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
+    //Pageable to sort charts to pages
     @GetMapping("/page")
     public String getCharts(Model model, Pageable pageable){
         model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 
-    //get's anesthetic chart data from db using UUID and fills anesthetic chart template with it
+    //gets anesthetic chart data from db using UUID and fills anesthetic chart template with it
     @GetMapping("/update")
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
         model.addAttribute("chart", chartService.getChartByUUID(uuid));
         return "anestheticChart";
     }
 
+    //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
     @PostMapping("/update")
     public String updateChart(Model model, ChartDTO chartDTO){
         chartService.updateChart(chartDTO);
