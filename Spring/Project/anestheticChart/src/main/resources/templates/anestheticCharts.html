@@ -37,7 +37,9 @@
     <div aria-label="Page navigation example" class="d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item" th:each="pageNumbers:${#numbers.sequence(1, chartsPage.totalPages)}"><a class="page-link" th:text="${pageNumbers}"></a> </li>
+            <li class="page-item" th:each="pageNumber:${#numbers.sequence(1, chartsPage.totalPages)}">
+                <a class="page-link" th:href="@{/chart/page(page=${pageNumber - 1})}" th:text="${pageNumber}"></a>
+            </li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </div>
