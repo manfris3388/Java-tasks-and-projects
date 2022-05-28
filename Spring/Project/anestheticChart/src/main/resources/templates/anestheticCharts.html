@@ -9,8 +9,8 @@
     <title>Chart List</title>
 </head>
 <body>
-<h1 class="d-flex justify-content-center"> Anesthetic Charts</h1><br>
-<div th:if="${!chartsPage.hasContent()}"><h3>There are no anaesthetic charts</h3></div>
+<h1 class="d-flex justify-content-center" th:field="#{chart.title}"></h1><br>
+<div th:if="${!chartsPage.hasContent()}" th:field="#{chart.noCharts}"><h3></h3></div>
 <div th:if="${chartsPage.hasContent()}" class="container">
     <span th:text="'Viso irasu ' + ${chartsPage.totalElements}"></span>
     <span th:text="'Viso puslapiu ' + ${chartsPage.totalPages}"></span>
@@ -19,8 +19,8 @@
         <tr>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    Name
+                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
+                th:field="#{chart.name}">
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
@@ -28,19 +28,19 @@
             </th>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('surname')?.direction}"
-                        th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    Surname
+                        th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
+                th:field="#{chart.surname}">
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
                 </a>
             </th>
-            <th>Hospital Number</th>
-            <th>DOB</th>
+            <th th:field="#{chart.hospitalNumber}"></th>
+            <th th:field="#{chart.dob}"></th>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('operation')?.direction}"
-                        th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    Operation
+                        th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
+                th:field="#{chart.operation}">
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
@@ -57,7 +57,8 @@
             <td th:text="${patientDemographics.hospitalNumber}"></td>
             <td th:text="${patientDemographics.dob}"></td>
             <td th:text="${patientDemographics.operation}"></td>
-            <td><a type="button" class="btn btn-danger" th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"> Delete</a></td>
+            <td><a type="button" class="btn btn-danger" th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"
+            th:field="#{button.delete}"> </a></td>
         </tr>
         </tbody>
     </table>
@@ -65,7 +66,8 @@
         <ul class="pagination">
             <li class="page-item"
                 th:classappend="${!chartsPage.hasPrevious()} ? 'disabled'"
-            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} - 1)}">Previous</a>
+            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} - 1)}"
+            th:field="#{button.previous}"></a>
             </li>
 
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, chartsPage.totalPages - 1)}"
@@ -75,7 +77,8 @@
 
             <li class="page-item"
                 th:classappend="${!chartsPage.hasNext()} ? 'disabled'"
-            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} + 1)}">Next</a></li>
+            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} + 1)}"
+            th:field="#{button.next}"></a></li>
         </ul>
     </div>
 </div>
