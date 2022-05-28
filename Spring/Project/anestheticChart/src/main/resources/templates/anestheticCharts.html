@@ -19,7 +19,7 @@
         <tr>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
+                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                     Name
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
@@ -28,7 +28,7 @@
             </th>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('surname')?.direction}"
-                        th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'})}">
+                        th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                     Surname
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
@@ -39,7 +39,7 @@
             <th>DOB</th>
             <th>
                 <a th:with="direction=${chartsPage.sort.getOrderFor('operation')?.direction}"
-                        th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'})}">
+                        th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
                     Operation
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
