@@ -55,16 +55,16 @@ public class ChartController {
 
     //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
     @PostMapping("/update")
-    public String updateChart(Model model, ChartDTO chartDTO){
+    public String updateChart(Model model, ChartDTO chartDTO, Pageable pageable){
         chartService.updateChart(chartDTO);
-        model.addAttribute("patientsDemographics", chartService.getCharts());
+        model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 
     @GetMapping("/delete")
-    public String deleteChart(Model model, @RequestParam UUID uuid){
+    public String deleteChart(Model model, @RequestParam UUID uuid, Pageable pageable){
         chartService.deleteChart(uuid);
-        model.addAttribute("patientsDemographics", chartService.getCharts());
+        model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 }
