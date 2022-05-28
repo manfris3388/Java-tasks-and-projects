@@ -37,7 +37,7 @@ public class ChartController {
         chartService.addChart(chartDTO);
         model.addAttribute("chart", ChartDTO.builder().build());
         model.addAttribute("message", "Anesthetic chart added successfully");
-        return "anestheticChart";
+        return "redirect:/chart";
     }
 
     //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
@@ -60,7 +60,7 @@ public class ChartController {
     public String updateChart(Model model, ChartDTO chartDTO, Pageable pageable){
         chartService.updateChart(chartDTO);
         model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
-        return "anestheticCharts";
+        return "redirect:/chart/page";
     }
 
     @GetMapping("/delete")
