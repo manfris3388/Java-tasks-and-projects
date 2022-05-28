@@ -10,8 +10,8 @@
 </head>
 <body>
 <h1 class="d-flex justify-content-center"> Anesthetic Charts</h1><br>
-<div th:if="${#lists.isEmpty(chartsPage)}"><h3>There are no anaesthetic charts</h3></div>
-<div th:unless="${chartsPage.isEmpty()}" class="container">
+<div th:if="${!chartsPage.hasContent()}"><h3>There are no anaesthetic charts</h3></div>
+<div th:if="${chartsPage.hasContent()}" class="container">
     <span th:text="'Viso irasu ' + ${chartsPage.totalElements}"></span>
     <span th:text="'Viso puslapiu ' + ${chartsPage.totalPages}"></span>
     <table class="table table-striped">
