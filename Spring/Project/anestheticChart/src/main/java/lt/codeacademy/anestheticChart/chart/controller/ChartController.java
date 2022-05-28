@@ -25,8 +25,9 @@ public class ChartController {
 
     //connects ChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
     @GetMapping
-    public String openAnestheticForm(Model model){
+    public String openAnestheticForm(Model model, String message){
         model.addAttribute("chart", ChartDTO.builder().build());
+        model.addAttribute("message", message);
         return "anestheticChart";
     }
 
@@ -36,8 +37,7 @@ public class ChartController {
     public String createAnestheticChart(Model model, ChartDTO chartDTO){
         chartService.addChart(chartDTO);
         model.addAttribute("chart", ChartDTO.builder().build());
-        model.addAttribute("message", "Anesthetic chart added successfully");
-        return "redirect:/chart";
+        return "redirect:/chart?message=Anesthetic chart added successfully";
     }
 
     //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
