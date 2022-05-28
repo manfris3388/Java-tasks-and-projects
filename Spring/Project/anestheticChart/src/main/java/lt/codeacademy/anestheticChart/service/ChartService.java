@@ -46,11 +46,7 @@ public class ChartService {
   }
 
   public ChartDTO getChartByUUID(UUID uuid) {
-    Optional<ChartEntity> chartRepositoryOptional = chartRepository.findByUuid(uuid);
-    if (chartRepositoryOptional.isPresent()) {
-      return chartMapper.mapToChartDTO(chartRepositoryOptional.get());
-    }
-    throw new NoSuchAnestheticChartException();
+    return chartRepository.findByUuid(uuid).map(chartMapper::mapToChartDTO).orElseThrow(NoSuchAnestheticChartException::new);
   }
 
   @Transactional
