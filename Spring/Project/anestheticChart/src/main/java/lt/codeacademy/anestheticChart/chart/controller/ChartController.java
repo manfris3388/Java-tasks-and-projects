@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.ChartDTO;
 import lt.codeacademy.anestheticChart.service.ChartService;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,7 @@ public class ChartController {
     //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
     //Pageable to sort charts to pages
     @GetMapping("/page")
-    public String getCharts(Model model, Pageable pageable){
+    public String getCharts(Model model, @PageableDefault(size = 3, sort = {"surname"}, direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
