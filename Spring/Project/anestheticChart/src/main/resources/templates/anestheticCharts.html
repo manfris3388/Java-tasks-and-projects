@@ -57,7 +57,7 @@
             <td th:text="${patientDemographics.hospitalNumber}"></td>
             <td th:text="${patientDemographics.dob}"></td>
             <td th:text="${patientDemographics.operation}"></td>
-            <td><a th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"> Delete</a></td>
+            <td><a type="button" class="btn btn-danger" th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"> Delete</a></td>
         </tr>
         </tbody>
     </table>
