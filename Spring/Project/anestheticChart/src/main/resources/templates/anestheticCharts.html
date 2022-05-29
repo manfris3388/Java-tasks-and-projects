@@ -6,12 +6,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    <title>Chart List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/language.js"></script>
+    <title>Product list</title>
 </head>
 <body>
 <select id="languageSelector">
+    <option value="" th:text="#{lang.options}"></option>
     <option value="LT" th:text="Lietuvių"></option>
-    <option value="EN" th:text="English"></option>
+    <option value="US" th:text="English"></option>
 </select>
 <h1 class="d-flex justify-content-center" th:field="#{chart.title}"></h1><br>
 <div th:if="${!chartsPage.hasContent()}" th:field="#{chart.noCharts}"><h3></h3></div>
