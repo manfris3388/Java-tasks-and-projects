@@ -9,6 +9,10 @@
     <title>Chart List</title>
 </head>
 <body>
+<select id="languageSelector">
+    <option value="LT" th:text="Lietuvių"></option>
+    <option value="EN" th:text="English"></option>
+</select>
 <h1 class="d-flex justify-content-center" th:field="#{chart.title}"></h1><br>
 <div th:if="${!chartsPage.hasContent()}" th:field="#{chart.noCharts}"><h3></h3></div>
 <div th:if="${chartsPage.hasContent()}" class="container">
@@ -66,8 +70,8 @@
         <ul class="pagination">
             <li class="page-item"
                 th:classappend="${!chartsPage.hasPrevious()} ? 'disabled'"
-            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} - 1)}"
-            th:field="#{button.previous}"></a>
+            ><a class="page-link" th:field="#{button.previous}"
+                th:href="@{/chart/page(page=${chartsPage.number} - 1)}"></a>
             </li>
 
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, chartsPage.totalPages - 1)}"
