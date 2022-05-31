@@ -16,8 +16,8 @@
     <option value="LT" th:text="Lietuvių"></option>
     <option value="US" th:text="English"></option>
 </select>
-<h1 class="d-flex justify-content-center" th:field="#{chart.title}"></h1><br>
-<div th:if="${!chartsPage.hasContent()}" th:field="#{chart.noCharts}"><h3></h3></div>
+<h1 class="d-flex justify-content-center" th:text="#{chart.title}"></h1><br>
+<div th:if="${!chartsPage.hasContent()}" th:text="#{chart.noCharts}"><h3></h3></div>
 <div th:if="${chartsPage.hasContent()}" class="container">
     <span th:text="'Viso irasu ' + ${chartsPage.totalElements}"></span>
     <span th:text="'Viso puslapiu ' + ${chartsPage.totalPages}"></span>
@@ -26,28 +26,28 @@
         <tr>
             <th scope="col">
                 <a th:with="direction=${chartsPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
-                th:field="#{chart.name}">
-                    <i class="fa-solid"
+                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                    <span th:text="#{chart.name}"></span>
+                    <i class="fa-solid" th:if="${direction ne null}"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                       th:if="${direction ne null}"></i>
+                    ></i>
                 </a>
             </th>
             <th scope="col">
                 <a th:with="direction=${chartsPage.sort.getOrderFor('surname')?.direction}"
-                        th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
-                th:field="#{chart.surname}">
+                   th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                    <span th:text="#{chart.surname}"></span>
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
                 </a>
             </th>
-            <th scope="col" th:field="#{chart.hospitalNumber}"></th>
-            <th scope="col" th:field="#{chart.dob}"></th>
+            <th scope="col" th:text="#{chart.hospitalNumber}"></th>
+            <th scope="col" th:text="#{chart.dob}"></th>
             <th scope="col">
                 <a th:with="direction=${chartsPage.sort.getOrderFor('operation')?.direction}"
-                        th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}"
-                th:field="#{chart.operation}">
+                   th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
+                    <span th:text="#{chart.operation}"></span>
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
@@ -65,7 +65,7 @@
             <td th:text="${patientDemographics.dob}"></td>
             <td th:text="${patientDemographics.operation}"></td>
             <td><a type="button" class="btn btn-danger" th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"
-            th:field="#{button.delete}"> </a></td>
+                   th:text="#{button.delete}"> </a></td>
         </tr>
         </tbody>
     </table>
@@ -75,19 +75,20 @@
             sortParam=${orderParam.property + ',' + orderParam.direction + ',ignorecase'}">
             <li class="page-item"
                 th:classappend="${!chartsPage.hasPrevious()} ? 'disabled'"
-            ><a class="page-link" th:field="#{button.previous}"
+            ><a class="page-link" th:text="#{button.previous}"
                 th:href="@{/chart/page(page=${chartsPage.number} - 1,sort=${sortParam})}"></a>
             </li>
 
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, chartsPage.totalPages - 1)}"
                 th:classappend="${pageNumber == chartsPage.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/chart/page(page=${pageNumber},sort=${sortParam})}" th:text="${pageNumber + 1}"></a>
+                <a class="page-link" th:href="@{/chart/page(page=${pageNumber},sort=${sortParam})}"
+                   th:text="${pageNumber + 1}"></a>
             </li>
 
             <li class="page-item"
                 th:classappend="${!chartsPage.hasNext()} ? 'disabled'"
             ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} + 1,sort=${sortParam})}"
-            th:field="#{button.next}"></a></li>
+                th:text="#{button.next}"></a></li>
         </ul>
     </div>
 </div>
