@@ -3,108 +3,116 @@
         lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/language.js"></script>
     <title>Chart</title>
 </head>
 <body>
-    <h1> Create Anesthetic Chart</h1><br><br>
+<select id="languageSelector">
+    <option value="" th:text="#{lang.options}"></option>
+    <option value="LT" th:text="Lietuvių"></option>
+    <option value="US" th:text="English"></option>
+</select>
+    <h1 th:text="#{chart.create}"></h1><br><br>
     <form method="post" th:object="${chart}">
         <div>
             <h3> Patient details</h3><br><br>
             <input type="hidden" th:field="*{uuid}">
 
-            <label>Name</label>
-            <input type="text" placeholder="Name" th:field="*{name}"><br><br>
+            <label th:text="#{chart.name}"></label>
+            <input type="text" placeholder="" th:field="*{name}"><br><br>
 
-            <label>Surname</label>
-            <input type="text" placeholder="Surname" th:field="*{surname}"><br><br>
+            <label th:text="#{chart.surname}">Surname</label>
+            <input type="text" placeholder="" th:field="*{surname}"><br><br>
 
-            <label>Hospital number</label>
-            <input type="text" placeholder="Hospital number" th:field="*{hospitalNumber}"><br><br>
+            <label th:text="#{chart.hospitalNumber}"></label>
+            <input type="text" placeholder="D123456" th:field="*{hospitalNumber}"><br><br>
 
-            <label>Date of Birth</label>
-            <input type="text" placeholder="yyyy-mm-dd" th:field="*{dob}"><br><br>
+            <label th:text="#{chart.dob}"></label>
+            <input type="text" th:placeholder="#{placeholder.dob}" th:field="*{dob}"><br><br>
 
-            <label>Operation</label>
+            <label th:text="#{chart.operation}"></label>
             <input type="text" placeholder="" th:field="*{operation}"><br><br><br>
         </div>
         <div>
-            <h3> Preoperative Clinical Evaluation</h3><br><br>
+            <h3 th:text="#{chart.evaluation.clinical}"></h3><br><br>
 
-            <label>Past Medical History</label>
-            <textarea placeholder="Past Medical History" name="PMH" th:field="*{pmh}"></textarea><br><br>
+            <label th:text="#{chart.pmh}"></label>
+            <textarea placeholder="" name="PMH" th:field="*{pmh}"></textarea><br><br>
 
-            <label>Drug History</label>
-            <textarea placeholder="Drug History" name="DH" th:field="*{dh}"></textarea><br><br>
+            <label th:text="#{chart.dh}"></label>
+            <textarea placeholder="" name="DH" th:field="*{dh}"></textarea><br><br>
 
-            <label>Airway Assessment</label>
-            <textarea placeholder="Airway Assessment" name="AirwayAssessment" th:field="*{airwayAssessment}"></textarea><br><br>
+            <label th:text="#{chart.assessment.airway}"></label>
+            <textarea placeholder="" name="AirwayAssessment" th:field="*{airwayAssessment}"></textarea><br><br>
 
-            <label>Anesthetic Assessment</label>
-            <textarea placeholder="Anesthetic Assessment" name="AnestheticAssessment" th:field="*{anestheticAssessment}"></textarea><br><br><br>
+            <label th:text="#{chart.assessment.anesthetic}"></label>
+            <textarea placeholder="" name="AnestheticAssessment" th:field="*{anestheticAssessment}"></textarea><br><br><br>
         </div>
 
         <div>
-            <h3> Vital Parameters</h3><br>
+            <h3 th:text="#{chart.param.vital}"></h3><br>
 
-            <label>Saturation</label>
+            <label th:text="#{chart.param.vital.sats}"></label>
             <input type="number" name="Sats" th:field="*{sats}"><br><br>
 
-            <label>Respiratory Rate</label>
+            <label th:text="#{chart.param.vital.rr}"></label>
             <input type="number" name="RR" th:field="*{rr}"><br><br>
 
-            <label>Heart Rate</label>
+            <label th:text="#{chart.param.vital.hr}"></label>
             <input type="number" name="HR" th:field="*{hr}"><br><br>
 
-            <label>Blood Pressure (Systolic/Diastolic)</label>
+            <label th:text="#{chart.param.vital.bp}"></label>
             <input type="number" name="SBP" th:field="*{sbp}">
             <span>/</span>
             <input type="number" name="DBP" th:field="*{dbp}"><br><br>
 
-            <label>Other Vital Parameters</label>
+            <label th:text="#{chart.param.vital.other}"></label>
             <textarea name="OtherVitals" th:field="*{otherVitals}"></textarea><br><br><br>
         </div>
 
         <div>
-            <h3> Laboratory Results</h3><br>
+            <h3 th:text="#{chart.param.lab}"></h3><br>
 
-            <label>Sodium</label>
+            <label th:text="#{chart.param.lab.sodium}"></label>
             <input type="number" name="Na" th:field="*{na}"><br><br>
 
-            <label>Potassium</label>
+            <label th:text="#{chart.param.lab.potasium}"></label>
             <input type="text" name="K" th:field="*{k}"><br><br>
 
-            <label>Urea</label>
+            <label th:text="#{chart.param.lab.urea}"></label>
             <input type="text" name="Urea" th:field="*{urea}"><br><br>
 
-            <label>Creatinine</label>
+            <label th:text="#{chart.param.lab.creatinine}"></label>
             <input type="number" name="Cr" th:field="*{cr}"><br><br>
 
-            <label>Other Laboratory Results</label>
+            <label th:text="#{chart.param.lab.other}"></label>
             <textarea name="OtherLabRes" th:field="*{otherLabRes}"></textarea><br><br><br>
         </div>
 
         <div>
-            <h3>Other Investigations</h3><br>
+            <h3 th:text="#{chart.param.other}"></h3><br>
 
-            <label>ECG</label>
+            <label th:text="#{chart.param.other.ECG}"></label>
             <textarea name="ECG" th:field="*{ecg}"></textarea><br><br>
 
-            <label>Other Imaging Studies</label>
+            <label th:text="#{chart.param.other.imaging}"></label>
             <textarea name="OtherIMG" th:field="*{otherIMG}"></textarea><br><br><br>
         </div>
 
         <div>
-            <h3>Anesthetic Plan</h3><br><br>
+            <h3 th:text="#{chart.plan.preoperative}"></h3><br><br>
 
-            <label>Anesthetic Plan</label>
+            <label th:text="#{chart.plan.preoperative.anesthetic}"></label>
             <textarea name="AnestheticPlan" th:field="*{anestheticPlan}"></textarea><br><br>
 
-            <label>Further Preoperative Investigations and Management</label>
+            <label th:text="#{chart.plan.preoperative.furtherInvestigationAndManagement}"></label>
             <textarea name="AnestheticWorkup" th:field="*{anestheticWorkup}"></textarea><br><br><br>
         </div>
         <div th:text="${message}"></div>
-            <button type="submit">Submit</button>
+            <button type="submit" th:text="#{chart.submit}"></button>
     </form>
 </body>
 </html>
