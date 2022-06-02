@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
-    <meta th:replace="fragements/fragments::head(#{chart.create})">
+    <meta th:replace="fragements/layout::head(#{chart.create})">
 </head>
 <body>
-<div th:replace="fragements/fragments::navbar">Cia yra navbar (menu)</div>
+<div th:replace="fragements/layout::navbar">Cia yra navbar (menu)</div>
 <h1 th:text="#{chart.create}"></h1><br><br>
 <form method="post" th:object="${chart}">
     <div>
@@ -105,6 +105,6 @@
     <div th:text="${message}"></div>
     <button type="submit" th:text="#{chart.submit}"></button>
 </form>
-<div th:replace="fragements/fragments::footer"></div>
+<div th:replace="fragements/layout::footer"></div>
 </body>
 </html>

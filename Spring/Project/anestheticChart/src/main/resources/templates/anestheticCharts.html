@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragements/fragments :: head(#{chart.title})">
+<head th:replace="fragements/layout :: head(#{chart.title})">
 </head>
 <body>
-<div th:replace="fragements/fragments::navbar">Cia yra navbar (menu)</div>
+<div th:replace="fragements/layout::navbar">Cia yra navbar (menu)</div>
 <h1 class="d-flex justify-content-center" th:text="#{chart.title}"></h1><br>
 <div th:if="${!chartsPage.hasContent()}" th:text="#{chart.noCharts}"><h3></h3></div>
 <div th:if="${chartsPage.hasContent()}" class="container">
@@ -14,33 +14,15 @@
         <thead>
         <tr>
             <th scope="col">
-                <a th:with="direction=${chartsPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/chart/page(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    <span th:text="#{chart.name}"></span>
-                    <i class="fa-solid" th:if="${direction ne null}"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                    ></i>
-                </a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='name', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.name})"></a>
             </th>
             <th scope="col">
-                <a th:with="direction=${chartsPage.sort.getOrderFor('surname')?.direction}"
-                   th:href="@{/chart/page(sort='surname,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    <span th:text="#{chart.surname}"></span>
-                    <i class="fa-solid"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                       th:if="${direction ne null}"></i>
-                </a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='surname', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.surname})"></a>
             </th>
             <th scope="col" th:text="#{chart.hospitalNumber}"></th>
             <th scope="col" th:text="#{chart.dob}"></th>
             <th scope="col">
-                <a th:with="direction=${chartsPage.sort.getOrderFor('operation')?.direction}"
-                   th:href="@{/chart/page(sort='operation,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase')}">
-                    <span th:text="#{chart.operation}"></span>
-                    <i class="fa-solid"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                       th:if="${direction ne null}"></i>
-                </a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='operation', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.operation})"></a>
             </th>
             <th scope="col"></th>
         </tr>
@@ -81,6 +63,6 @@
         </ul>
     </div>
 </div>
-<div th:replace="fragements/fragments::footer"></div>
+<div th:replace="fragements/layout::footer"></div>
 </body>
 </html>
