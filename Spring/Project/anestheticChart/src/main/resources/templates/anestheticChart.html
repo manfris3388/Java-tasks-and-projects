@@ -7,6 +7,20 @@
 <body>
 <div th:replace="fragements/layout::navbar">Cia yra navbar (menu)</div>
 <h1 th:text="#{chart.create}"></h1><br><br>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
 <form method="post" th:object="${chart}">
     <div>
         <h3> Patient details</h3><br><br>
