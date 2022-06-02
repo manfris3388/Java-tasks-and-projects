@@ -3,22 +3,21 @@ package lt.codeacademy.anestheticChart.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Getter
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ANESTHETIC_CHARTS")
-public class ChartEntity {
+@Table(name = "CLINICAL_ASSESSMENT")
+public class LabResultsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-    private UUID uuid;
-    private String name;
-    private String surname;
-    private String hospitalNumber;
-    private String dob;
-    private String operation;
+    private Integer na;
+    private Double k;
+    private Double urea;
+    private Integer cr;
+    private String otherLabRes;
 }
