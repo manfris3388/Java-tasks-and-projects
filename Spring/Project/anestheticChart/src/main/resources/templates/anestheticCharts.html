@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragements/fragments :: head">
-    <title>Anesthetic Charts</title>
+<head th:replace="fragements/fragments :: head(#{chart.title})">
 </head>
 <body>
 <div th:replace="fragements/fragments::navbar">Cia yra navbar (menu)</div>
-<select id="languageSelector">
-    <option value="" th:text="#{lang.options}"></option>
-    <option value="LT" th:text="Lietuvių"></option>
-    <option value="US" th:text="English"></option>
-</select>
 <h1 class="d-flex justify-content-center" th:text="#{chart.title}"></h1><br>
 <div th:if="${!chartsPage.hasContent()}" th:text="#{chart.noCharts}"><h3></h3></div>
 <div th:if="${chartsPage.hasContent()}" class="container">
