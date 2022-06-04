@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "patient_vitals")
 public class PatientVitalsEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,8 @@ public class PatientVitalsEntity {
   private Integer hr;
   private Integer sbp;
   private Integer dbp;
+  @Column(name = "other_vitals")
   private String otherVitals;
-  @ManyToMany(mappedBy = "patientVitalsEntities")
-  private Set<ChartEntity> chartEntities;
+//  @ManyToMany(mappedBy = "patientVitalsEntities")
+//  private Set<ChartEntity> chartEntities;
 }

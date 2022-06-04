@@ -24,6 +24,7 @@ public class ChartService {
   private final ChartMapper chartMapper;
 
   public void addChart(ChartDTO chartDTO) {
+
     chartRepository.save(
         ChartEntity.builder()
             .uuid(UUID.randomUUID())
