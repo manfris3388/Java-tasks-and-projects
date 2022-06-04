@@ -1,8 +1,14 @@
 package lt.codeacademy.anestheticChart.entity;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +27,6 @@ public class ChartEntity {
     private String hospitalNumber;
     private String dob;
     private String operation;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<PatientVitalsEntity>patientVitalsEntities;
 }
