@@ -21,6 +21,6 @@ public class PatientVitalsEntity {
   private Integer dbp;
   @Column(name = "other_vitals")
   private String otherVitals;
-  @ManyToMany(mappedBy = "patientVitalsEntities")
-  private Set<ChartEntity> chartEntities;
+//  @ManyToMany(mappedBy = "patientVitalsEntities")
+//  private Set<ChartEntity> chartEntities;
 }
