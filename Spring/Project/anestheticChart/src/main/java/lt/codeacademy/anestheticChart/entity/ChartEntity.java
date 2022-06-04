@@ -27,6 +27,6 @@ public class ChartEntity {
     private String hospitalNumber;
     private String dob;
     private String operation;
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    private Set<PatientVitalsEntity>patientVitalsEntities;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<PatientVitalsEntity>patientVitalsEntities;
 }
