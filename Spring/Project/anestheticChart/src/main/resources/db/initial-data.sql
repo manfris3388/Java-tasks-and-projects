@@ -52,3 +52,14 @@ values (1, 'SR74, no ischemic changes', 'none'),
        (7, 'SR74, no ischemic changes', 'none'),
        (8, 'SR74, no ischemic changes', 'none'),
        (9, 'SR74, no ischemic changes', 'none');
+
+insert into plans(chart_id, anesthetic_plan, anesthetic_workup)
+values (1, 'GA', 'None'),
+       (2, 'RA', 'needs ECHO'),
+       (3, 'LA', 'None'),
+       (4, 'RA', 'needs ECHO'),
+       (5, 'LA', 'None'),
+       (6, 'RA', 'needs ECHO'),
+       (7, 'LA', 'None'),
+       (8, 'RA', 'needs ECHO'),
+       (9, 'LA', 'None');
