@@ -1,7 +1,7 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.dto.ChartDTO;
+import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.helper.MessageService;
 import lt.codeacademy.anestheticChart.service.ChartService;
 import org.springframework.data.domain.Pageable;
@@ -25,20 +25,20 @@ public class ChartController {
     private final MessageService messageService;
 
 
-    //connects ChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
+    //connects FullChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
     @GetMapping
     public String openAnestheticForm(Model model, String message){
-        model.addAttribute("chart", ChartDTO.builder().build());
+        model.addAttribute("chart", FullChartDTO.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
         return "anestheticChart";
     }
 
-    //post data from /chart/open from Thymeleaf. Initializes ChartDTO fields. Goes to service and then to repository to write data in memory
+    //post data from /chart/open from Thymeleaf. Initializes FullChartDTO fields. Goes to service and then to repository to write data in memory
     //adding message after successful commit
     @PostMapping
-    public String createAnestheticChart(Model model, ChartDTO chartDTO){
-        chartService.addChart(chartDTO);
-        model.addAttribute("chart", ChartDTO.builder().build());
+    public String createAnestheticChart(Model model, FullChartDTO fullChartDTO){
+        chartService.addChart(fullChartDTO);
+        model.addAttribute("chart", FullChartDTO.builder().build());
         return "redirect:/chart?message=chart.create.message.success";
     }
 
@@ -53,14 +53,14 @@ public class ChartController {
     //gets anesthetic chart data from db using UUID and fills anesthetic chart template with it
     @GetMapping("/update")
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
-        model.addAttribute("chart", chartService.getChartByUUID(uuid));
+        model.addAttribute("chart", chartService.getFullChartByUUID(uuid));
         return "anestheticChart";
     }
 
     //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
     @PostMapping("/update")
-    public String updateChart(Model model, ChartDTO chartDTO){
-        chartService.updateChart(chartDTO);
+    public String updateChart(Model model, FullChartDTO fullChartDTO){
+        chartService.updateChart(fullChartDTO);
         return "redirect:/chart/page";
     }
 

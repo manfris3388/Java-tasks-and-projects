@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class ChartDTO {
+public class FullChartDTO {
     private UUID uuid;
     private String name;
     private String surname;

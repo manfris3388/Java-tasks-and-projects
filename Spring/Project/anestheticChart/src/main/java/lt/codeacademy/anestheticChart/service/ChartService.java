@@ -1,11 +1,11 @@
 package lt.codeacademy.anestheticChart.service;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.dto.ChartDTO;
-import lt.codeacademy.anestheticChart.entity.Chart;
+import lt.codeacademy.anestheticChart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.entity.*;
 import lt.codeacademy.anestheticChart.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
-import lt.codeacademy.anestheticChart.repository.ChartRepository;
+import lt.codeacademy.anestheticChart.repository.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,46 +21,57 @@ import java.util.stream.Collectors;
 public class ChartService {
 
   private final ChartRepository chartRepository;
+  private final AssesmentRepository assesmentRepository;
   private final ChartMapper chartMapper;
+  private final ImagingRepository imagingRepository;
+  private final LabResRepository labResRepository;
+  private final PlanRepository planRepository;
+  private final VitalRepository vitalRepository;
 
-  public void addChart(ChartDTO chartDTO) {
+  public void addChart(FullChartDTO fullChartDTO) {
 
     chartRepository.save(
         Chart.builder()
             .uuid(UUID.randomUUID())
-            .name(chartDTO.getName())
-            .surname(chartDTO.getSurname())
-            .hospitalNumber(chartDTO.getHospitalNumber())
-            .dob(chartDTO.getDob())
-            .operation(chartDTO.getOperation())
+            .name(fullChartDTO.getName())
+            .surname(fullChartDTO.getSurname())
+            .hospitalNumber(fullChartDTO.getHospitalNumber())
+            .dob(fullChartDTO.getDob())
+            .operation(fullChartDTO.getOperation())
             .build());
   }
 
-  public Page<ChartDTO> getChartsPaginated(Pageable pageable) {
+  public Page<FullChartDTO> getChartsPaginated(Pageable pageable) {
     return chartRepository.findAll(pageable).map(chartMapper::mapToChartDTO);
   }
 
-  public List<ChartDTO> getCharts() {
+  public List<FullChartDTO> getCharts() {
     return chartRepository.findAll().stream()
         .map(chartMapper::mapToChartDTO)
         .collect(Collectors.toList());
   }
 
-  public ChartDTO getChartByUUID(UUID uuid) {
+  public FullChartDTO getFullChartByUUID(UUID uuid) {
+    Long id = chartRepository.findByUuid(uuid).get().getId();
+    Optional<Assesment> assesment = assesmentRepository.findById(id);
+    Optional<Imaging> imaging = imagingRepository.findById(id);
+    Optional<LabRes> labRes = labResRepository.findById(id);
+    Optional<Plan> plan = planRepository.findById(id);
+    Optional<Vitals>vitals = vitalRepository.findById(id);
     return chartRepository.findByUuid(uuid).map(chartMapper::mapToChartDTO).orElseThrow(NoSuchAnestheticChartException::new);
   }
 
   @Transactional
-  public void updateChart(ChartDTO chartDTO) {
-    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(chartDTO.getUuid());
+  public void updateChart(FullChartDTO fullChartDTO) {
+    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
     if (chartEntityOptional.isPresent()) {
       Chart chart =
           chartEntityOptional.get().toBuilder()
-              .name(chartDTO.getName())
-              .surname(chartDTO.getSurname())
-              .hospitalNumber(chartDTO.getHospitalNumber())
-              .dob(chartDTO.getDob())
-              .operation(chartDTO.getOperation())
+              .name(fullChartDTO.getName())
+              .surname(fullChartDTO.getSurname())
+              .hospitalNumber(fullChartDTO.getHospitalNumber())
+              .dob(fullChartDTO.getDob())
+              .operation(fullChartDTO.getOperation())
               .build();
       chartRepository.save(chart);
     }

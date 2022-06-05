@@ -1,13 +1,13 @@
 package lt.codeacademy.anestheticChart.mapper;
 
-import lt.codeacademy.anestheticChart.dto.ChartDTO;
+import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.entity.Chart;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ChartMapper {
-  public ChartDTO mapToChartDTO(Chart chart) {
-    return ChartDTO.builder()
+  public FullChartDTO mapToChartDTO(Chart chart) {
+    return FullChartDTO.builder()
         .uuid(chart.getUuid())
         .name(chart.getName())
         .surname(chart.getSurname())
