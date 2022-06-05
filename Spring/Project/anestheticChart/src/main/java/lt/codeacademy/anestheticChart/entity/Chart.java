@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "charts")
-public class ChartEntity {
+public class Chart {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,18 +25,10 @@ public class ChartEntity {
     private String hospitalNumber;
     private String dob;
     private String operation;
-    @OneToOne(mappedBy = "chartEntity", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "chart", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    private VitalsEntity vitalsEntity;
-
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinTable(name = "charts_vitals",
-//            joinColumns =
-//                    { @JoinColumn(name = "chart_id", referencedColumnName = "id") },
-//            inverseJoinColumns =
-//                    { @JoinColumn(name = "vitals_id", referencedColumnName = "id") })
-//    PatientVitalsEntity patientVitalsEntity;
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    private Set<PatientVitalsEntity>patientVitalsEntities;
+    private Vitals vitals;
+    @OneToOne(mappedBy = "chart", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private LabRes labRes;
 }

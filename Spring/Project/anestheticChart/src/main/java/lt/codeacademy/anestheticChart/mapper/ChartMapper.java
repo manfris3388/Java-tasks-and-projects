@@ -1,19 +1,19 @@
 package lt.codeacademy.anestheticChart.mapper;
 
 import lt.codeacademy.anestheticChart.dto.ChartDTO;
-import lt.codeacademy.anestheticChart.entity.ChartEntity;
+import lt.codeacademy.anestheticChart.entity.Chart;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ChartMapper {
-  public ChartDTO mapToChartDTO(ChartEntity chartEntity) {
+  public ChartDTO mapToChartDTO(Chart chart) {
     return ChartDTO.builder()
-        .uuid(chartEntity.getUuid())
-        .name(chartEntity.getName())
-        .surname(chartEntity.getSurname())
-        .hospitalNumber(chartEntity.getHospitalNumber())
-        .dob(chartEntity.getDob())
-        .operation(chartEntity.getOperation())
+        .uuid(chart.getUuid())
+        .name(chart.getName())
+        .surname(chart.getSurname())
+        .hospitalNumber(chart.getHospitalNumber())
+        .dob(chart.getDob())
+        .operation(chart.getOperation())
         .build();
   }
 }

@@ -12,19 +12,19 @@ import javax.persistence.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "vitals")
-public class VitalsEntity {
+@Table(name = "lab_res")
+public class LabRes {
     @Id
     @Column(name = "chart_id")
     private Long id;
-    private Integer sats;
-    private Integer rr;
-    private Integer hr;
-    private Integer sbp;
-    private Integer dbp;
-    private String otherVitals;
+    private Integer na;
+    private Double k;
+    private Double urea;
+    private Integer cr;
+    @Column(name = "other_lab_res")
+    private String otherLabRes;
     @OneToOne
     @MapsId
     @JoinColumn(name = "chart_id")
-    private ChartEntity chartEntity;
+    private Chart chart;
 }

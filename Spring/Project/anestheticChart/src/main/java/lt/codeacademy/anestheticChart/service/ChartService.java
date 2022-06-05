@@ -2,7 +2,7 @@ package lt.codeacademy.anestheticChart.service;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.ChartDTO;
-import lt.codeacademy.anestheticChart.entity.ChartEntity;
+import lt.codeacademy.anestheticChart.entity.Chart;
 import lt.codeacademy.anestheticChart.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.ChartRepository;
@@ -26,7 +26,7 @@ public class ChartService {
   public void addChart(ChartDTO chartDTO) {
 
     chartRepository.save(
-        ChartEntity.builder()
+        Chart.builder()
             .uuid(UUID.randomUUID())
             .name(chartDTO.getName())
             .surname(chartDTO.getSurname())
@@ -52,9 +52,9 @@ public class ChartService {
 
   @Transactional
   public void updateChart(ChartDTO chartDTO) {
-    Optional<ChartEntity> chartEntityOptional = chartRepository.findByUuid(chartDTO.getUuid());
+    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(chartDTO.getUuid());
     if (chartEntityOptional.isPresent()) {
-      ChartEntity chartEntity =
+      Chart chart =
           chartEntityOptional.get().toBuilder()
               .name(chartDTO.getName())
               .surname(chartDTO.getSurname())
@@ -62,14 +62,14 @@ public class ChartService {
               .dob(chartDTO.getDob())
               .operation(chartDTO.getOperation())
               .build();
-      chartRepository.save(chartEntity);
+      chartRepository.save(chart);
     }
   }
 
   //makes a check if entity is present and deletes it if it is not null
   @Transactional
   public void deleteChart(UUID uuid) {
-    Optional<ChartEntity> chartEntityOptional = chartRepository.findByUuid(uuid);
+    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(uuid);
     chartEntityOptional.ifPresent(chartRepository::delete);
   }
 }
