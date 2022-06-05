@@ -30,3 +30,14 @@ values (1, 145, 4.5, 9.0, 90, 'clotting normal'),
        (7, 125, 3.2, 14.0, 225, 'clotting normal'),
        (8, 130, 4.3, 9.8, 101, 'clotting normal'),
        (9, 125, 3.2, 14.0, 225, 'clotting normal');
+
+insert into assesment(chart_id, pmh, dh, airway_assesment, anesthetic_assesment)
+values (1, 'COPD', 'Salbutamol', 'Mallampati 3', 'ASA 3'),
+       (2, 'AAA', 'Labetalol', 'Mallampati 2, edentulous', 'ASA 3'),
+       (3, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3'),
+       (4, 'AAA', 'Labetalol', 'Mallampati 2, edentulous', 'ASA 3'),
+       (5, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3'),
+       (6, 'AAA', 'Labetalol', 'Mallampati 2, edentulous', 'ASA 3'),
+       (7, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3'),
+       (8, 'AAA', 'Labetalol', 'Mallampati 2, edentulous', 'ASA 3'),
+       (9, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3');

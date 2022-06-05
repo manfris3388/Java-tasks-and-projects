@@ -31,4 +31,7 @@ public class Chart {
     @OneToOne(mappedBy = "chart", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private LabRes labRes;
+    @OneToOne(mappedBy = "chart", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Assesment assesment;
 }
