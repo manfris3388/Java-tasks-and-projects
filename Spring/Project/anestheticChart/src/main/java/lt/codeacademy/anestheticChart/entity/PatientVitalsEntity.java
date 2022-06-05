@@ -8,11 +8,11 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "patient_vitals")
+@Table(name = "vitals")
 public class PatientVitalsEntity {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false)
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "chart_id")
   private Long id;
   private Integer sats;
   private Integer rr;
@@ -21,6 +21,14 @@ public class PatientVitalsEntity {
   private Integer dbp;
   @Column(name = "other_vitals")
   private String otherVitals;
+  @OneToOne
+  @MapsId
+  @JoinColumn(name = "chart_id")
+  private ChartEntity chartEntity;
+//  @OneToOne
+//  @MapsId
+//  @JoinColumn(name = "ANESTHETIC_CHARTS_id")
+//  ChartEntity chartEntity;
 //  @ManyToMany(mappedBy = "patientVitalsEntities")
 //  private Set<ChartEntity> chartEntities;
 }

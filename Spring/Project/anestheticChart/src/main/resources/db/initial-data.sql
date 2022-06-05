@@ -1,4 +1,4 @@
-INSERT INTO anesthetic_charts(uuid, name, surname, hospital_number, dob, operation)
+INSERT INTO CHARTS(uuid, name, surname, hospital_number, dob, operation)
 VALUES
 ('47ab05ac-db6e-11ec-9d64-0242ac120002', 'Jonas', 'Jonaitis', 'D123456', '1972-05-27', 'Appendectomy'),
 ('47ab0796-db6e-11ec-9d64-0242ac120002', 'Petras', 'Petraitis', 'D654321', '1984-04-11', 'Tonsillectomy'),
@@ -10,7 +10,14 @@ VALUES
 ('47ab0796-db6e-11ec-9d64-0242ac120008', 'Giedrius', 'Puidokas', 'D986431', '1979-10-25', 'TURP'),
 ('47ab0796-db6e-11ec-9d64-0242ac120009', 'Kentauras', 'Karvelis', 'D597614', '1975-02-05', 'Tibia ORIF');
 
-insert into patient_vitals(sats, rr, hr, sbp, dbp, other_vitals)
+insert into vitals(sats, rr, hr, sbp, dbp, other_vitals)
 values
-(100,18,78,140,90,'GCS15'),
-(99,14,94,128,75,'GCS15');
+(100,11,78,140,90,'GCS15'),
+(99,12,94,128,75,'GCS15'),
+(100,13,78,140,90,'GCS15'),
+(99,14,94,128,75,'GCS15'),
+(100,15,78,140,90,'GCS15'),
+(99,16,94,128,75,'GCS15'),
+(100,17,78,140,90,'GCS15'),
+(99,18,94,128,75,'GCS15'),
+(99,19,94,128,75,'GCS15');
