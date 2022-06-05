@@ -41,3 +41,14 @@ values (1, 'COPD', 'Salbutamol', 'Mallampati 3', 'ASA 3'),
        (7, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3'),
        (8, 'AAA', 'Labetalol', 'Mallampati 2, edentulous', 'ASA 3'),
        (9, 'HTN', 'Amlodipine', 'Mallampati 2, Teeth Healthy', 'ASA 3');
+
+insert into imaging(chart_id, ecg, other_img)
+values (1, 'SR74, no ischemic changes', 'none'),
+       (2, 'SR74, no ischemic changes', 'none'),
+       (3, 'SR74, no ischemic changes', 'none'),
+       (4, 'SR74, no ischemic changes', 'none'),
+       (5, 'SR74, no ischemic changes', 'none'),
+       (6, 'SR74, no ischemic changes', 'none'),
+       (7, 'SR74, no ischemic changes', 'none'),
+       (8, 'SR74, no ischemic changes', 'none'),
+       (9, 'SR74, no ischemic changes', 'none');
