@@ -32,9 +32,6 @@ public class Chart {
 //    @OneToOne(cascade = CascadeType.ALL)
 //    private LabRes labRes;
 
-    @OneToOne(mappedBy = "chart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Assesment assesment;
-
 //    @OneToOne(cascade = CascadeType.ALL)
 //    private Imaging imaging;
 //

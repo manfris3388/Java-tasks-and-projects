@@ -22,7 +22,7 @@ public class Assesment {
     private String airwayAssesment;
     private String anestheticAssesment;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     private Chart chart;
 }

@@ -56,7 +56,7 @@ public class ChartMapper {
   }
 
   public void saveAllCharts(FullChartDTO chart) {
-    saveChart(chart);
+    //    saveChart(chart);
     //    saveAssesment(chart, count);
     //    saveImaging(chart, count);
     //    saveToLabResRepo(chart, count);
@@ -74,13 +74,6 @@ public class ChartMapper {
             .hospitalNumber(chart.getHospitalNumber())
             .dob(chart.getDob())
             .operation(chart.getOperation())
-            .assesment(
-                Assesment.builder()
-                    .pmh(chart.getPmh())
-                    .dh(chart.getDh())
-                    .airwayAssesment(chart.getAirwayAssessment())
-                    .anestheticAssesment(chart.getAnestheticAssessment())
-                    .build())
             .build());
   }
 

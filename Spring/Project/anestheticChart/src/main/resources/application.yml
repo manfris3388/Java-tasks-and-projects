@@ -1,16 +1,6 @@
 spring:
   main:
     banner-mode: console
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: root
-  sql:
-    init:
-#      schema-locations: classpath:db/db-schema.sql
-      data-locations: classpath:db/initial-data.sql
-      platform: postgresql
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -28,3 +18,28 @@ logging:
       codeacademy:
         anestheticChart:
           config: debug
+
+---
+spring:
+  profiles:
+    active: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+  sql:
+    init:
+      #      schema-locations: classpath:db/db-schema.sql
+      #      data-locations: classpath:db/initial-data.sql
+      platform: postgresql
+
+---
+spring:
+  profiles:
+    active: h2
+  datasource:
+    url: jdbc:h2:mem:anestheticChart
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
