@@ -21,24 +21,10 @@ import java.util.stream.Collectors;
 public class ChartService {
 
   private final ChartRepository chartRepository;
-  private final AssesmentRepository assesmentRepository;
   private final ChartMapper chartMapper;
-  private final ImagingRepository imagingRepository;
-  private final LabResRepository labResRepository;
-  private final PlanRepository planRepository;
-  private final VitalRepository vitalRepository;
 
   public void addChart(FullChartDTO fullChartDTO) {
-
-    chartRepository.save(
-        Chart.builder()
-            .uuid(UUID.randomUUID())
-            .name(fullChartDTO.getName())
-            .surname(fullChartDTO.getSurname())
-            .hospitalNumber(fullChartDTO.getHospitalNumber())
-            .dob(fullChartDTO.getDob())
-            .operation(fullChartDTO.getOperation())
-            .build());
+    chartMapper.saveAllCharts(fullChartDTO);
   }
 
   public Page<FullChartDTO> getChartsPaginated(Pageable pageable) {
@@ -52,12 +38,6 @@ public class ChartService {
   }
 
   public FullChartDTO getFullChartByUUID(UUID uuid) {
-    Long id = chartRepository.findByUuid(uuid).get().getId();
-    Optional<Assesment> assesment = assesmentRepository.findById(id);
-    Optional<Imaging> imaging = imagingRepository.findById(id);
-    Optional<LabRes> labRes = labResRepository.findById(id);
-    Optional<Plan> plan = planRepository.findById(id);
-    Optional<Vitals>vitals = vitalRepository.findById(id);
     return chartRepository.findByUuid(uuid).map(chartMapper::mapToChartDTO).orElseThrow(NoSuchAnestheticChartException::new);
   }
 

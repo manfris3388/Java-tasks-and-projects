@@ -15,14 +15,13 @@ import javax.persistence.*;
 @Table(name = "PLANS")
 public class Plan {
   @Id
-  @Column(name = "chart_id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
+//  @Column(name = "chart_id")
   private Long id;
-
   private String anestheticPlan;
   private String anestheticWorkup;
-
-  @OneToOne
-  @MapsId
-  @JoinColumn(name = "chart_id")
-  private Chart chart;
+//  @OneToOne(mappedBy = "plan")
+//  @MapsId
+////  @JoinColumn(name = "chart_id")
+//  private Chart chart;
 }

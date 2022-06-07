@@ -14,13 +14,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Imaging {
     @Id
-    @Column(name = "chart_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "chart_id")
     private Long id;
     private String ecg;
     @Column(name = "other_img")
     private String otherIMG;
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "chart_id")
-    private Chart chart;
+//    @OneToOne(mappedBy = "imaging")
+//    @MapsId
+////    @JoinColumn(name = "chart_id")
+//    private Chart chart;
 }

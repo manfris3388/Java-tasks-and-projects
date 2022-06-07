@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Table(name = "vitals")
 public class Vitals {
     @Id
-    @Column(name = "chart_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "chart_id")
     private Long id;
     private Integer sats;
     private Integer rr;
@@ -23,8 +24,8 @@ public class Vitals {
     private Integer sbp;
     private Integer dbp;
     private String otherVitals;
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "chart_id")
-    private Chart chart;
+//    @OneToOne(mappedBy = "vitals")
+//    @MapsId
+////    @JoinColumn(name = "chart_id")
+//    private Chart chart;
 }
