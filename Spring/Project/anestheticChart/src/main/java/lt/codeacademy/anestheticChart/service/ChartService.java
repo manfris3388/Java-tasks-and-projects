@@ -20,67 +20,69 @@ import java.util.stream.Collectors;
 @Service
 public class ChartService {
 
-  private final ChartRepository chartRepository;
-  private final AssesmentRepository assesmentRepository;
-  private final ChartMapper chartMapper;
-  private final ImagingRepository imagingRepository;
-  private final LabResRepository labResRepository;
-  private final PlanRepository planRepository;
-  private final VitalRepository vitalRepository;
+    private final ChartRepository chartRepository;
 
-  public void addChart(FullChartDTO fullChartDTO) {
+    private final AssesmentRepository assesmentRepository;
 
-    chartRepository.save(
-        Chart.builder()
-            .uuid(UUID.randomUUID())
-            .name(fullChartDTO.getName())
-            .surname(fullChartDTO.getSurname())
-            .hospitalNumber(fullChartDTO.getHospitalNumber())
-            .dob(fullChartDTO.getDob())
-            .operation(fullChartDTO.getOperation())
-            .build());
-  }
+    private final ChartMapper chartMapper;
 
-  public Page<FullChartDTO> getChartsPaginated(Pageable pageable) {
-    return chartRepository.findAll(pageable).map(chartMapper::mapToChartDTO);
-  }
+    @Transactional
+    public void addChart(FullChartDTO fullChartDTO) {
+        // TODO: refactor this in other services, not mappers
+        Chart chart = chartRepository.save(
+                Chart.builder()
+                        .uuid(UUID.randomUUID())
+                        .name(fullChartDTO.getName())
+                        .surname(fullChartDTO.getSurname())
+                        .hospitalNumber(fullChartDTO.getHospitalNumber())
+                        .dob(fullChartDTO.getDob())
+                        .operation(fullChartDTO.getOperation())
+                        .build());
 
-  public List<FullChartDTO> getCharts() {
-    return chartRepository.findAll().stream()
-        .map(chartMapper::mapToChartDTO)
-        .collect(Collectors.toList());
-  }
-
-  public FullChartDTO getFullChartByUUID(UUID uuid) {
-    Long id = chartRepository.findByUuid(uuid).get().getId();
-    Optional<Assesment> assesment = assesmentRepository.findById(id);
-    Optional<Imaging> imaging = imagingRepository.findById(id);
-    Optional<LabRes> labRes = labResRepository.findById(id);
-    Optional<Plan> plan = planRepository.findById(id);
-    Optional<Vitals>vitals = vitalRepository.findById(id);
-    return chartRepository.findByUuid(uuid).map(chartMapper::mapToChartDTO).orElseThrow(NoSuchAnestheticChartException::new);
-  }
-
-  @Transactional
-  public void updateChart(FullChartDTO fullChartDTO) {
-    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
-    if (chartEntityOptional.isPresent()) {
-      Chart chart =
-          chartEntityOptional.get().toBuilder()
-              .name(fullChartDTO.getName())
-              .surname(fullChartDTO.getSurname())
-              .hospitalNumber(fullChartDTO.getHospitalNumber())
-              .dob(fullChartDTO.getDob())
-              .operation(fullChartDTO.getOperation())
-              .build();
-      chartRepository.save(chart);
+        assesmentRepository.save(
+                Assesment.builder()
+                        .pmh(fullChartDTO.getPmh())
+                        .dh(fullChartDTO.getDh())
+                        .airwayAssesment(fullChartDTO.getAirwayAssessment())
+                        .anestheticAssesment(fullChartDTO.getAnestheticAssessment())
+                        .chart(chart)
+                        .build());
     }
-  }
 
-  //makes a check if entity is present and deletes it if it is not null
-  @Transactional
-  public void deleteChart(UUID uuid) {
-    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(uuid);
-    chartEntityOptional.ifPresent(chartRepository::delete);
-  }
+    public Page<FullChartDTO> getChartsPaginated(Pageable pageable) {
+        return chartRepository.findAll(pageable).map(chartMapper::mapToChartDTO);
+    }
+
+    public List<FullChartDTO> getCharts() {
+        return chartRepository.findAll().stream()
+                .map(chartMapper::mapToChartDTO)
+                .collect(Collectors.toList());
+    }
+
+    public FullChartDTO getFullChartByUUID(UUID uuid) {
+        return chartRepository.findByUuid(uuid).map(chartMapper::mapToChartDTO).orElseThrow(NoSuchAnestheticChartException::new);
+    }
+
+    @Transactional
+    public void updateChart(FullChartDTO fullChartDTO) {
+        Optional<Chart> chartEntityOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
+        if (chartEntityOptional.isPresent()) {
+            Chart chart =
+                    chartEntityOptional.get().toBuilder()
+                            .name(fullChartDTO.getName())
+                            .surname(fullChartDTO.getSurname())
+                            .hospitalNumber(fullChartDTO.getHospitalNumber())
+                            .dob(fullChartDTO.getDob())
+                            .operation(fullChartDTO.getOperation())
+                            .build();
+            chartRepository.save(chart);
+        }
+    }
+
+    //makes a check if entity is present and deletes it if it is not null
+    @Transactional
+    public void deleteChart(UUID uuid) {
+        Optional<Chart> chartEntityOptional = chartRepository.findByUuid(uuid);
+        chartEntityOptional.ifPresent(chartRepository::delete);
+    }
 }

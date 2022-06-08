@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Table(name = "lab_res")
 public class LabRes {
     @Id
-    @Column(name = "chart_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "chart_id")
     private Long id;
     private Integer na;
     private Double k;
@@ -23,8 +24,8 @@ public class LabRes {
     private Integer cr;
     @Column(name = "other_lab_res")
     private String otherLabRes;
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "chart_id")
-    private Chart chart;
+//    @OneToOne(mappedBy = "labRes")
+//    @MapsId
+////    @JoinColumn(name = "chart_id")
+//    private Chart chart;
 }
