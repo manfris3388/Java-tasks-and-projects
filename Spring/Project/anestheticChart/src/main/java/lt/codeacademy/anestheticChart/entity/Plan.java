@@ -20,6 +20,10 @@ public class Plan {
   private Long id;
   private String anestheticPlan;
   private String anestheticWorkup;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @MapsId
+  private Chart chart;
 //  @OneToOne(mappedBy = "plan")
 //  @MapsId
 ////  @JoinColumn(name = "chart_id")

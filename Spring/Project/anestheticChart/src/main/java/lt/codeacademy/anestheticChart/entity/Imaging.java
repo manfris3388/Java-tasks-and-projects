@@ -20,6 +20,10 @@ public class Imaging {
     private String ecg;
     @Column(name = "other_img")
     private String otherIMG;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Chart chart;
 //    @OneToOne(mappedBy = "imaging")
 //    @MapsId
 ////    @JoinColumn(name = "chart_id")

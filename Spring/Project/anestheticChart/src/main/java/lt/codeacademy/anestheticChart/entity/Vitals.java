@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "vitals")
+@Table(name = "VITALS")
 public class Vitals {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +24,10 @@ public class Vitals {
     private Integer sbp;
     private Integer dbp;
     private String otherVitals;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Chart chart;
 //    @OneToOne(mappedBy = "vitals")
 //    @MapsId
 ////    @JoinColumn(name = "chart_id")
