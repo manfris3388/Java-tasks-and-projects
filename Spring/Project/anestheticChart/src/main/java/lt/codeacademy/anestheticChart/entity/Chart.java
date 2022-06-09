@@ -26,6 +26,10 @@ public class Chart {
     private String dob;
     private String operation;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Assesment assesment;
+
 //    @OneToOne(cascade = CascadeType.ALL)
 //    private Vitals vitals;
 //

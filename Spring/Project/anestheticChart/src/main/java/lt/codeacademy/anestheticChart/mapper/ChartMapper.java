@@ -80,7 +80,7 @@ public class ChartMapper {
   public void saveAssesment(FullChartDTO chart, Long id) {
     assesmentRepository.save(
         Assesment.builder()
-            .id(id)
+//            .id(id)
             .pmh(chart.getPmh())
             .dh(chart.getDh())
             .airwayAssesment(chart.getAirwayAssessment())
