@@ -7,5 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface ImagingRepository extends JpaRepository<Imaging, Long> {
-        Optional<Imaging> findById(Id id);
         }

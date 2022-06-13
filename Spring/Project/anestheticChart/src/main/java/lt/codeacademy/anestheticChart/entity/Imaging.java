@@ -13,19 +13,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Imaging {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "chart_id")
-    private Long id;
+    private Long chartId;
     private String ecg;
+
     @Column(name = "other_img")
     private String otherIMG;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @JoinColumn(name = "chart_id")
     private Chart chart;
-//    @OneToOne(mappedBy = "imaging")
-//    @MapsId
-////    @JoinColumn(name = "chart_id")
-//    private Chart chart;
 }

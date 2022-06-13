@@ -14,18 +14,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "PLANS")
 public class Plan {
+
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-//  @Column(name = "chart_id")
-  private Long id;
+  private Long chartId;
   private String anestheticPlan;
   private String anestheticWorkup;
 
   @OneToOne(fetch = FetchType.LAZY)
   @MapsId
+  @JoinColumn
   private Chart chart;
-//  @OneToOne(mappedBy = "plan")
-//  @MapsId
-////  @JoinColumn(name = "chart_id")
-//  private Chart chart;
 }

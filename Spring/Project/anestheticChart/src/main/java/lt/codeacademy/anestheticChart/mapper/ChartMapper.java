@@ -65,65 +65,65 @@ public class ChartMapper {
     count++;
   }
 
-  private void saveChart(FullChartDTO chart) {
-    chartRepository.save(
-        Chart.builder()
-            .uuid(UUID.randomUUID())
-            .name(chart.getName())
-            .surname(chart.getSurname())
-            .hospitalNumber(chart.getHospitalNumber())
-            .dob(chart.getDob())
-            .operation(chart.getOperation())
-            .build());
-  }
+//  private void saveChart(FullChartDTO chart) {
+//    chartRepository.save(
+//        Chart.builder()
+//            .uuid(UUID.randomUUID())
+//            .name(chart.getName())
+//            .surname(chart.getSurname())
+//            .hospitalNumber(chart.getHospitalNumber())
+//            .dob(chart.getDob())
+//            .operation(chart.getOperation())
+//            .build());
+//  }
+//
+//  public void saveAssesment(FullChartDTO chart, Long id) {
+//    assesmentRepository.save(
+//        Assesment.builder()
+////            .id(id)
+//            .pmh(chart.getPmh())
+//            .dh(chart.getDh())
+//            .airwayAssesment(chart.getAirwayAssessment())
+//            .anestheticAssesment(chart.getAnestheticAssessment())
+//            .build());
+//  }
 
-  public void saveAssesment(FullChartDTO chart, Long id) {
-    assesmentRepository.save(
-        Assesment.builder()
+//  public void saveImaging(FullChartDTO chart, Long id) {
+//    imagingRepository.save(
+//        Imaging.builder().id(id).ecg(chart.getEcg()).otherIMG(chart.getOtherIMG()).build());
+//  }
+//
+//  public void saveToLabResRepo(FullChartDTO chart, Long id) {
+//    labResRepository.save(
+//        LabRes.builder()
 //            .id(id)
-            .pmh(chart.getPmh())
-            .dh(chart.getDh())
-            .airwayAssesment(chart.getAirwayAssessment())
-            .anestheticAssesment(chart.getAnestheticAssessment())
-            .build());
-  }
-
-  public void saveImaging(FullChartDTO chart, Long id) {
-    imagingRepository.save(
-        Imaging.builder().id(id).ecg(chart.getEcg()).otherIMG(chart.getOtherIMG()).build());
-  }
-
-  public void saveToLabResRepo(FullChartDTO chart, Long id) {
-    labResRepository.save(
-        LabRes.builder()
-            .id(id)
-            .na(chart.getNa())
-            .k(chart.getK())
-            .urea(chart.getUrea())
-            .cr(chart.getCr())
-            .otherLabRes(chart.getOtherLabRes())
-            .build());
-  }
-
-  public void saveToPlanRepo(FullChartDTO chart, Long id) {
-    planRepository.save(
-        Plan.builder()
-            .id(id)
-            .anestheticPlan(chart.getAnestheticPlan())
-            .anestheticWorkup(chart.getAnestheticWorkup())
-            .build());
-  }
-
-  public void saveToVitalsRepo(FullChartDTO chart, Long id) {
-    vitalRepository.save(
-        Vitals.builder()
-            .id(id)
-            .sats(chart.getSats())
-            .rr(chart.getRr())
-            .hr(chart.getHr())
-            .sbp(chart.getSbp())
-            .dbp(chart.getDbp())
-            .otherVitals(chart.getOtherVitals())
-            .build());
-  }
+//            .na(chart.getNa())
+//            .k(chart.getK())
+//            .urea(chart.getUrea())
+//            .cr(chart.getCr())
+//            .otherLabRes(chart.getOtherLabRes())
+//            .build());
+//  }
+//
+//  public void saveToPlanRepo(FullChartDTO chart, Long id) {
+//    planRepository.save(
+//        Plan.builder()
+//            .id(id)
+//            .anestheticPlan(chart.getAnestheticPlan())
+//            .anestheticWorkup(chart.getAnestheticWorkup())
+//            .build());
+//  }
+//
+//  public void saveToVitalsRepo(FullChartDTO chart, Long id) {
+//    vitalRepository.save(
+//        Vitals.builder()
+//            .id(id)
+//            .sats(chart.getSats())
+//            .rr(chart.getRr())
+//            .hr(chart.getHr())
+//            .sbp(chart.getSbp())
+//            .dbp(chart.getDbp())
+//            .otherVitals(chart.getOtherVitals())
+//            .build());
+//  }
 }

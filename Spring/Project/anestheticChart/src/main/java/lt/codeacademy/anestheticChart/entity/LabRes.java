@@ -14,10 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "LAB_RES")
 public class LabRes {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "chart_id")
-    private Long id;
+    private Long chartId;
     private Integer na;
     private Double k;
     private Double urea;
@@ -27,6 +26,7 @@ public class LabRes {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @JoinColumn
     private Chart chart;
 //    @OneToOne(mappedBy = "labRes")
 //    @MapsId

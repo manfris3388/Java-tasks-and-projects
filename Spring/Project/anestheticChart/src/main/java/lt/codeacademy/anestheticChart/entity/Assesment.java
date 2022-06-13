@@ -15,17 +15,14 @@ import javax.persistence.*;
 @Table(name = "ASSESMENT")
 public class Assesment {
 
-
-
     @Id
     private Long chartId;
-
     private String pmh;
     private String dh;
     private String airwayAssesment;
     private String anestheticAssesment;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name="chart_id")
     private Chart chart;
