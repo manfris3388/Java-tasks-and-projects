@@ -14,15 +14,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "ASSESMENT")
 public class Assesment {
+
+
+
     @Id
-    private Long id;
+    private Long chartId;
 
     private String pmh;
     private String dh;
     private String airwayAssesment;
     private String anestheticAssesment;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @MapsId
+    @JoinColumn(name="chart_id")
     private Chart chart;
 }
