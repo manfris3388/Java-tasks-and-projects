@@ -129,7 +129,7 @@ public class ChartService {
   // makes a check if entity is present and deletes it if it is not null
   @Transactional
   public void deleteChart(UUID uuid) {
-    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(uuid);
-    chartEntityOptional.ifPresent(chartRepository::delete);
+    Optional<Chart> chartOptional = chartRepository.findByUuid(uuid);
+    chartOptional.ifPresent(chartRepository::delete);
   }
 }

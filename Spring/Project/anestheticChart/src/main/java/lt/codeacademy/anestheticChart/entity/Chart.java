@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -30,15 +31,19 @@ public class Chart {
     @PrimaryKeyJoinColumn
     private Assesment assesment;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Vitals vitals;
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private LabRes labRes;
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Imaging imaging;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Imaging imaging;
-//
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Plan plan;
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Vitals vitals;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private LabRes labRes;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Plan plan;
 }
