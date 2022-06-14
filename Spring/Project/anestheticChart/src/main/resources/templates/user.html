@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta th:replace="fragements/layout::head(#{user.create})">
+</head>
+<body>
+
+<div th:replace="fragements/layout::navbar">Cia yra navbar (menu)</div>
+
+<div class="container">
+    <h3 th:text="#{user.create}"></h3>
+    <form method="POST" th:object="${userDto}">
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.name}"></label>
+            <input class="form-control" placeholder="Name"
+                   th:field="*{name}" type="text"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.surname}"></label>
+            <input class="form-control" placeholder="Surname"
+                   th:field="*{surname}" type="text"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.email}"></label>
+            <input class="form-control" placeholder="Email"
+                   th:field="*{email}" type="text"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.password}"></label>
+            <input class="form-control" placeholder="Password"
+                   th:field="*{password}" type="password"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.password.repeated}"></label>
+            <input class="form-control" placeholder="Repeat Password"
+                   th:field="*{repeatedPassword}" type="password"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.zip}"></label>
+            <input class="form-control" placeholder="Zip code"
+                   th:field="*{zipCode}" type="text"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" th:text="#{user.create.phoneNumber}"></label>
+            <input class="form-control"
+                   placeholder="Phone number" th:field="*{phoneNumber}" type="text"/>
+        </div>
+        <button class="btn btn-primary" th:text="#{user.create.add}" type="submit"></button>
+    </form>
+</div>
+
+<div th:replace="fragements/layout::footer"></div>
+
+</body>
+</html>

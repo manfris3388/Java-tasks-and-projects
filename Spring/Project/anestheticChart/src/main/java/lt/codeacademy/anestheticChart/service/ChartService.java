@@ -3,7 +3,7 @@ package lt.codeacademy.anestheticChart.service;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.entity.*;
-import lt.codeacademy.anestheticChart.exceptions.NoSuchAnestheticChartException;
+import lt.codeacademy.anestheticChart.entity.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.*;
 import org.springframework.data.domain.Page;
