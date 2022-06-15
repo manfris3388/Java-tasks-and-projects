@@ -17,6 +17,7 @@ public class LabRes {
 
     @Id
     private Long chartId;
+
     private Integer na;
     private Double k;
     private Double urea;
@@ -26,7 +27,7 @@ public class LabRes {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn
+    @JoinColumn(name="chart_id")
     private Chart chart;
 //    @OneToOne(mappedBy = "labRes")
 //    @MapsId

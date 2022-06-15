@@ -14,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "VITALS")
 public class Vitals {
+
     @Id
     private Long chartId;
     private Integer sats;
@@ -25,7 +26,7 @@ public class Vitals {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn
+    @JoinColumn(name="chart_id")
     private Chart chart;
 //    @OneToOne(mappedBy = "vitals")
 //    @MapsId

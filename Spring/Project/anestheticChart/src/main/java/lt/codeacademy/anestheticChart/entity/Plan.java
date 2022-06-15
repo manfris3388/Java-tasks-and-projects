@@ -22,6 +22,6 @@ public class Plan {
 
   @OneToOne(fetch = FetchType.LAZY)
   @MapsId
-  @JoinColumn
+  @JoinColumn(name="chart_id")
   private Chart chart;
 }
