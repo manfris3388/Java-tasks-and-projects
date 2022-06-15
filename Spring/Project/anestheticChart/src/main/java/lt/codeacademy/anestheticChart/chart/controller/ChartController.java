@@ -65,7 +65,7 @@ public class ChartController {
     }
 
     @GetMapping("/delete")
-    public String deleteChart(Model model, @RequestParam UUID uuid){
+    public String deleteChart(@RequestParam UUID uuid){
         chartService.deleteChart(uuid);
         return "redirect:/chart/page";
     }

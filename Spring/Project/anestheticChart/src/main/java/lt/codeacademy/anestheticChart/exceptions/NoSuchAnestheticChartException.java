@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.entity.exceptions;
+package lt.codeacademy.anestheticChart.exceptions;
 
 public class NoSuchAnestheticChartException extends RuntimeException {
 

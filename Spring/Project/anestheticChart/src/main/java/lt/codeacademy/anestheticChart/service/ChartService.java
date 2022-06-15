@@ -3,7 +3,7 @@ package lt.codeacademy.anestheticChart.service;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.entity.*;
-import lt.codeacademy.anestheticChart.entity.exceptions.NoSuchAnestheticChartException;
+import lt.codeacademy.anestheticChart.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.repository.*;
 import org.springframework.data.domain.Page;
@@ -112,10 +112,10 @@ public class ChartService {
 
   @Transactional
   public void updateChart(FullChartDTO fullChartDTO) {
-    Optional<Chart> chartEntityOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
-    if (chartEntityOptional.isPresent()) {
+    Optional<Chart> chartOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
+    if (chartOptional.isPresent()) {
       Chart chart =
-          chartEntityOptional.get().toBuilder()
+          chartOptional.get().toBuilder()
               .name(fullChartDTO.getName())
               .surname(fullChartDTO.getSurname())
               .hospitalNumber(fullChartDTO.getHospitalNumber())
@@ -123,6 +123,62 @@ public class ChartService {
               .operation(fullChartDTO.getOperation())
               .build();
       chartRepository.save(chart);
+
+      Long id = chart.getId();
+
+      Assesment assesment = assesmentRepository.getById(id);
+      assesment =
+              assesment.toBuilder()
+                      .pmh(fullChartDTO.getPmh())
+                      .dh(fullChartDTO.getDh())
+                      .airwayAssesment(fullChartDTO.getAirwayAssessment())
+                      .anestheticAssesment(fullChartDTO.getAnestheticAssessment())
+                      .chart(chart)
+                      .build();
+      assesmentRepository.save(assesment);
+
+      Vitals vitals =vitalRepository.getById(id);
+      vitals =
+              vitals.toBuilder()
+                      .sats(fullChartDTO.getSats())
+                      .rr(fullChartDTO.getRr())
+                      .hr(fullChartDTO.getHr())
+                      .sbp(fullChartDTO.getSbp())
+                      .dbp(fullChartDTO.getDbp())
+                      .otherVitals(fullChartDTO.getOtherVitals())
+                      .chart(chart)
+                      .build();
+      vitalRepository.save(vitals);
+
+      LabRes labRes = labResRepository.getById(id);
+      labRes =
+              labRes.toBuilder()
+                      .na(fullChartDTO.getNa())
+                      .k(fullChartDTO.getK())
+                      .urea(fullChartDTO.getUrea())
+                      .cr(fullChartDTO.getCr())
+                      .otherLabRes(fullChartDTO.getOtherLabRes())
+                      .chart(chart)
+                      .build();
+      labResRepository.save(labRes);
+
+      Imaging imaging = imagingRepository.getById(id);
+      imaging =
+              imaging.toBuilder()
+                      .ecg(fullChartDTO.getEcg())
+                      .otherIMG(fullChartDTO.getOtherIMG())
+                      .chart(chart)
+                      .build();
+      imagingRepository.save(imaging);
+
+      Plan plan = planRepository.getById(id);
+      plan =
+              plan.toBuilder()
+                      .anestheticPlan(fullChartDTO.getAnestheticPlan())
+                      .anestheticWorkup(fullChartDTO.getAnestheticWorkup())
+                      .chart(chart)
+                      .build();
+      planRepository.save(plan);
     }
   }
 
@@ -130,8 +186,15 @@ public class ChartService {
   @Transactional
   public void deleteChart(UUID uuid) {
     Optional<Chart> chartOptional = chartRepository.findByUuid(uuid);
+    Long id = chartOptional.get().getId();
+    assesmentRepository.deleteById(id);
+    imagingRepository.deleteById(id);
+    labResRepository.deleteById(id);
+    planRepository.deleteById(id);
+    vitalRepository.deleteById(id);
+    chartRepository.deleteById(id);
 //    Chart chart = chartOptional.get();
 //    chartRepository.delete(chart);
-    chartOptional.ifPresent(chartRepository::delete);
+//    chartOptional.ifPresent(chartRepository::delete);
   }
 }
