@@ -1,5 +1,5 @@
 INSERT INTO charts(uuid, name, surname, hospital_number, dob, operation)
-VALUES ('47ab05ac-db6e-11ec-9d64-0242ac120002', 'Jonas', 'Jonaitis', 'D123456', '1972-05-27', 'Appendectomy'),
+VALUES ('47ab05ac-db6e-11ec-9d64-0242ac120001', 'Jonas', 'Jonaitis', 'D123456', '1972-05-27', 'Appendectomy'),
        ('47ab0796-db6e-11ec-9d64-0242ac120002', 'Petras', 'Petraitis', 'D654321', '1984-04-11', 'Tonsillectomy'),
        ('47ab0796-db6e-11ec-9d64-0242ac120003', 'Aloyzas', 'Kaminskas', 'D577972', '2014-04-98', 'Tooth Extraction'),
        ('47ab0796-db6e-11ec-9d64-0242ac120004', 'Elzyte', 'Petraityte', 'D369545', '1974-08-19', 'TAH'),
@@ -63,3 +63,6 @@ values (1,'GA', 'None'),
        (7,'LA', 'None'),
        (8,'RA', 'needs ECHO'),
        (9,'LA', 'None');
+
+-- insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
+-- values ( 'Jonas', 'Jonaitis', 'jonas@jonaitis.codeacademy.lt', 'Jonas007', 'Jonas007', 'LL572WE', '+37064725423');

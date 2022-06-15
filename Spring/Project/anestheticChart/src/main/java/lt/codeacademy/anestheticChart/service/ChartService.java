@@ -130,6 +130,8 @@ public class ChartService {
   @Transactional
   public void deleteChart(UUID uuid) {
     Optional<Chart> chartOptional = chartRepository.findByUuid(uuid);
-    chartOptional.ifPresent(chartRepository::delete);
+    Chart chart = chartOptional.get();
+    chartRepository.delete(chart);
+//    chartOptional.ifPresent(value -> chartRepository.deleteById(value.getId()));
   }
 }
