@@ -22,6 +22,7 @@ logging:
       codeacademy:
         anestheticChart:
           config: debug
+          filter: trace
 
 ---
 spring:
