@@ -2,6 +2,7 @@ package lt.codeacademy.anestheticChart.user.controller;
 
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.user.dto.UserDto;
 import lt.codeacademy.anestheticChart.user.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -12,20 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/users")
-public class UserController {
+public class UserController implements ChartEndPoints {
 
     private final UserService userService;
 
-    @GetMapping("/register")
+    @GetMapping(REGISTER_ROOT_PATH)
     public String getUserForm(Model model) {
         model.addAttribute("userDto", UserDto.builder().build());
     return "user";
     }
 
-    @PostMapping("/register")
+    @PostMapping(REGISTER_ROOT_PATH)
     public String register( UserDto userDto) {
         userService.register(userDto);
-        return "redirect:/users/register";
+        return "redirect:" + REGISTER_ROOT_PATH;
     }
 }

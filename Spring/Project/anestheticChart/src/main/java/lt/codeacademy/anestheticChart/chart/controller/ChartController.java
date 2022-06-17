@@ -1,6 +1,7 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.helper.MessageService;
 import lt.codeacademy.anestheticChart.service.ChartService;
@@ -18,15 +19,13 @@ import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/chart")
-public class ChartController {
-
+public class ChartController implements ChartEndPoints {
     private final ChartService chartService;
     private final MessageService messageService;
 
 
     //connects FullChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
-    @GetMapping
+    @GetMapping(CHART_ROOT_PATH)
     public String openAnestheticForm(Model model, String message){
         model.addAttribute("chart", FullChartDTO.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
@@ -35,7 +34,7 @@ public class ChartController {
 
     //post data from /chart/open from Thymeleaf. Initializes FullChartDTO fields. Goes to service and then to repository to write data in memory
     //adding message after successful commit
-    @PostMapping
+    @PostMapping(CHART_ROOT_PATH)
     public String createAnestheticChart(Model model, FullChartDTO fullChartDTO){
         chartService.addChart(fullChartDTO);
         model.addAttribute("chart", FullChartDTO.builder().build());
@@ -44,27 +43,27 @@ public class ChartController {
 
     //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
     //Pageable to sort charts to pages
-    @GetMapping("/page")
+    @GetMapping(PAGE_ROOT_PATH)
     public String getCharts(Model model, @PageableDefault(size = 3, sort = {"surname"}, direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
         return "anestheticCharts";
     }
 
     //gets anesthetic chart data from db using UUID and fills anesthetic chart template with it
-    @GetMapping("/update")
+    @GetMapping(UPDATE_ROOT_PATH)
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
         model.addAttribute("chart", chartService.getFullChartByUUID(uuid));
         return "anestheticChart";
     }
 
     //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
-    @PostMapping("/update")
+    @PostMapping(UPDATE_ROOT_PATH)
     public String updateChart(Model model, FullChartDTO fullChartDTO){
         chartService.updateChart(fullChartDTO);
         return "redirect:/chart/page";
     }
 
-    @GetMapping("/delete")
+    @GetMapping(DELETE_ROOT_PATH)
     public String deleteChart(@RequestParam UUID uuid){
         chartService.deleteChart(uuid);
         return "redirect:/chart/page";
