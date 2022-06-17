@@ -13,7 +13,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     http
             .authorizeRequests()
-                .antMatchers("/css/**", "/h2/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -23,18 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login-chart")
                 .defaultSuccessUrl("/chart", true)
                 .usernameParameter("loginEmail")
-                .passwordParameter("loginPassword")
-                .and()
-            .csrf()
-                .ignoringAntMatchers("/h2/**")
-                .and()
-            .headers()
-                .frameOptions()
-                .sameOrigin();;
+                .passwordParameter("loginPassword");
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-//    }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().requestMatchers(
+                PathRequest.toStaticResources().atCommonLocations(),
+                PathRequest.toH2Console()
+                );
+    }
 }
