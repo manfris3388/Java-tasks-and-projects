@@ -13,20 +13,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     http
             .authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
+                .antMatchers("/css/**", "/h2/**").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
             .formLogin()
-            .permitAll()
-            .loginPage("/login-chart")
-            .loginProcessingUrl("/login-chart")
-            .defaultSuccessUrl("/chart", true)
-            .usernameParameter("loginEmail")
-            .passwordParameter("loginPassword");
+                .permitAll()
+                .loginPage("/login-chart")
+                .loginProcessingUrl("/login-chart")
+                .defaultSuccessUrl("/chart", true)
+                .usernameParameter("loginEmail")
+                .passwordParameter("loginPassword")
+                .and()
+            .csrf()
+                .ignoringAntMatchers("/h2/**")
+                .and()
+            .headers()
+                .frameOptions()
+                .sameOrigin();;
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+//    }
 }
