@@ -25,11 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("loginPassword");
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().requestMatchers(
-                PathRequest.toStaticResources().atCommonLocations(),
-                PathRequest.toH2Console()
-                );
-    }
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().requestMatchers(
+//                PathRequest.toStaticResources().atCommonLocations(),
+//                PathRequest.toH2Console()
+//                );
+//    }
 }
