@@ -38,7 +38,7 @@
                 <option value="LT" th:text="Lietuvių"></option>
                 <option value="US" th:text="English"></option>
             </select>
-            <form class="d-flex" method="get" th:action="@{/user/chart/page/chart-finder}">
+            <form class="d-flex" method="get" th:action="@{${findPath}}">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="chartName">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>

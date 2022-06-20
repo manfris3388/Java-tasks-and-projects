@@ -31,4 +31,9 @@ public class GlobalModelAttributeAdvice implements ChartEndPoints {
   public String deleteEndPoint() {
     return DELETE_ROOT_PATH;
   }
+
+  @ModelAttribute("findPath")
+  public String findEndPoint() {
+    return FINDER_ROOT_PATH;
+  }
 }

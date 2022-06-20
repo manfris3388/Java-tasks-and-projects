@@ -1,6 +1,7 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.service.ChartService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,15 +13,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static lt.codeacademy.anestheticChart.ChartEndPoints.FINDER_ROOT_PATH;
+
 @Controller
-@RequestMapping("/user/chart/page/chart-finder")
+@RequestMapping(FINDER_ROOT_PATH)
 @RequiredArgsConstructor
-public class ChartFinderController {
+public class ChartFinderController{
     private final ChartService chartService;
 
     @GetMapping
     public String getChartByName(Model model, @RequestParam String chartName) {
-        return "forward:/user/chart/page/chart-finder/searchResult/" + chartName;
+        return "forward:" + FINDER_ROOT_PATH + "/searchResult/" + chartName;
     }
 
     @GetMapping("/searchResult/{chartName}")
