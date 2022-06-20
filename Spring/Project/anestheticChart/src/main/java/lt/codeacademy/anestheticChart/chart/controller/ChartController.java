@@ -38,7 +38,7 @@ public class ChartController implements ChartEndPoints {
     public String createAnestheticChart(Model model, FullChartDTO fullChartDTO){
         chartService.addChart(fullChartDTO);
         model.addAttribute("chart", FullChartDTO.builder().build());
-        return "redirect:/chart?message=chart.create.message.success";
+        return "redirect:/user/chart?message=chart.create.message.success";
     }
 
     //gets data from db. Sets up another Thymeleaf object. Connects URL to html template and Model Java to Thymeleaf to HTML, uses
@@ -60,12 +60,12 @@ public class ChartController implements ChartEndPoints {
     @PostMapping(UPDATE_ROOT_PATH)
     public String updateChart(Model model, FullChartDTO fullChartDTO){
         chartService.updateChart(fullChartDTO);
-        return "redirect:/chart/page";
+        return "redirect:/user/chart/page";
     }
 
     @GetMapping(DELETE_ROOT_PATH)
     public String deleteChart(@RequestParam UUID uuid){
         chartService.deleteChart(uuid);
-        return "redirect:/chart/page";
+        return "redirect:/user/chart/page";
     }
 }

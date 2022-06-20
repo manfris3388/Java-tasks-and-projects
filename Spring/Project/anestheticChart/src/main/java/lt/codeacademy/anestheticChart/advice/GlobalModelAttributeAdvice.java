@@ -17,8 +17,18 @@ public class GlobalModelAttributeAdvice implements ChartEndPoints {
     return PAGE_ROOT_PATH;
   }
 
-    @ModelAttribute("registerPath")
-    public String registerEndPoint() {
-        return REGISTER_ROOT_PATH;
-    }
+  @ModelAttribute("registerPath")
+  public String registerEndPoint() {
+    return REGISTER_ROOT_PATH;
+  }
+
+  @ModelAttribute("updatePath")
+  public String updateEndPoint() {
+    return UPDATE_ROOT_PATH;
+  }
+
+  @ModelAttribute("deletePath")
+  public String deleteEndPoint() {
+    return DELETE_ROOT_PATH;
+  }
 }

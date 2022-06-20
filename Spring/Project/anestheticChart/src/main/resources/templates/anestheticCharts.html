@@ -14,28 +14,28 @@
         <thead>
         <tr>
             <th scope="col">
-                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='name', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.name})"></a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='name', path=@{${pagePath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.name})"></a>
             </th>
             <th scope="col">
-                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='surname', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.surname})"></a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='surname', path=@{${pagePath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.surname})"></a>
             </th>
             <th scope="col" th:text="#{chart.hospitalNumber}"></th>
             <th scope="col" th:text="#{chart.dob}"></th>
             <th scope="col">
-                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='operation', path=@{/chart/page}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.operation})"></a>
+                <a th:replace="fragements/layout :: sortColumn(data=${chartsPage}, name='operation', path=@{${pagePath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{chart.operation})"></a>
             </th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="patientDemographics: ${chartsPage}">
-            <td><a th:href="@{'/chart/update?uuid=' + ${patientDemographics.uuid}}"
+            <td><a th:href="@{${updatePath} + '?uuid=' + ${patientDemographics.uuid}}"
                    th:text="${patientDemographics.name}"></a></td>
             <td th:text="${patientDemographics.surname}"></td>
             <td th:text="${patientDemographics.hospitalNumber}"></td>
             <td th:text="${patientDemographics.dob}"></td>
             <td th:text="${patientDemographics.operation}"></td>
-            <td><a type="button" class="btn btn-danger" th:href="@{/chart/delete(uuid=${patientDemographics.uuid})}"
+            <td><a type="button" class="btn btn-danger" th:href="@{${deletePath} + '?uuid=' + ${patientDemographics.uuid}}"
                    th:text="#{button.delete}"> </a></td>
         </tr>
         </tbody>
@@ -47,18 +47,18 @@
             <li class="page-item"
                 th:classappend="${!chartsPage.hasPrevious()} ? 'disabled'"
             ><a class="page-link" th:text="#{button.previous}"
-                th:href="@{/chart/page(page=${chartsPage.number} - 1,sort=${sortParam})}"></a>
+                th:href="@{${pagePath}(page=${chartsPage.number} - 1,sort=${sortParam})}"></a>
             </li>
 
             <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, chartsPage.totalPages - 1)}"
                 th:classappend="${pageNumber == chartsPage.number ? 'active' : ''}">
-                <a class="page-link" th:href="@{/chart/page(page=${pageNumber},sort=${sortParam})}"
+                <a class="page-link" th:href="@{${pagePath}(page=${pageNumber},sort=${sortParam})}"
                    th:text="${pageNumber + 1}"></a>
             </li>
 
             <li class="page-item"
                 th:classappend="${!chartsPage.hasNext()} ? 'disabled'"
-            ><a class="page-link" th:href="@{/chart/page(page=${chartsPage.number} + 1,sort=${sortParam})}"
+            ><a class="page-link" th:href="@{${pagePath}(page=${chartsPage.number} + 1,sort=${sortParam})}"
                 th:text="#{button.next}"></a></li>
         </ul>
     </div>
