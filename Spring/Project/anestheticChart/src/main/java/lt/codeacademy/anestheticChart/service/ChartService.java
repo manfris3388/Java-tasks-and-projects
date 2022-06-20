@@ -97,6 +97,17 @@ public class ChartService {
     return chartRepository.findAll(pageable).map(chartMapper::mapToChartDTO);
   }
 
+
+  public Page<FullChartDTO> getChartsBySurnamePageable(String chartName, Pageable pageable) {
+    return chartRepository.findBySurnameIsLikeIgnoreCase(
+            convertToLikeResult(chartName), pageable)
+            .map(chartMapper::mapToChartDTO);
+  }
+
+  private String convertToLikeResult(String value) {
+    return '%' + value + '%';
+  }
+
   public List<FullChartDTO> getCharts() {
     return chartRepository.findAll().stream()
         .map(chartMapper::mapToChartDTO)
