@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ public class ChartController implements ChartEndPoints {
 
     //post data from /chart/open from Thymeleaf. Initializes FullChartDTO fields. Goes to service and then to repository to write data in memory
     //adding message after successful commit
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(CHART_ROOT_PATH)
     public String createAnestheticChart(Model model, FullChartDTO fullChartDTO){
         chartService.addChart(fullChartDTO);
@@ -58,12 +60,14 @@ public class ChartController implements ChartEndPoints {
     }
 
     //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(UPDATE_ROOT_PATH)
     public String updateChart(Model model, FullChartDTO fullChartDTO){
         chartService.updateChart(fullChartDTO);
         return "redirect:" + PAGE_ROOT_PATH;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(DELETE_ROOT_PATH)
     public String deleteChart(@RequestParam UUID uuid){
         chartService.deleteChart(uuid);
