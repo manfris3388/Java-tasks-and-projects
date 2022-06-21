@@ -11,6 +11,10 @@ Drop table if exists vitals;
 Drop table if exists users;
 
 Drop table if exists CHARTS;
+
+DROP table if exists authority;
+
+drop table if exists users_authorities;
 CREATE TABLE charts
 (
     id              BIGSERIAL PRIMARY KEY,
@@ -92,4 +96,16 @@ create table users
     repeated_password varchar(100) not null,
     zip_code varchar(20) not null,
     phone_number varchar(20) not null
+);
+
+CREATE TABLE authority
+(
+    id                BIGSERIAL PRIMARY KEY,
+    name              VARCHAR(100)    NOT NULL
+);
+
+CREATE TABLE users_authorities
+(
+    user_id         BIGINT NOT NULL,
+    authorities_id  BIGINT NOT NULL
 )

@@ -65,5 +65,15 @@ values (1,'GA', 'None'),
        (9,'LA', 'None');
 
 insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
-values ( 'Jonas', 'Jonaitis', 'j@j.lt', '$2a$08$lAosnAVUX3d12cU4HXizWeCAuobKCiAid7nVLNpVdMIOsSN4Icka2', '$2a$08$lAosnAVUX3d12cU4HXizWeCAuobKCiAid7nVLNpVdMIOsSN4Icka2.', 'LL572WE', '+37064725423');
--- pass is a
+values ( 'Admin', 'Jonaitis', 'admin@j.lt', '$2a$08$2xZNrqMS04hMaGEBBaKQT.cgEpaUCgi6fREC2JaBITX/9vJLPcTqW', '$2a$08$2xZNrqMS04hMaGEBBaKQT.cgEpaUCgi6fREC2JaBITX/9vJLPcTqW', 'LL572WE', '+37064725423'),--pass admin
+       ( 'User', 'Jonaitis', 'user@j.lt', '$$2a$08$PE7PVEsWdRVyjlrm2y3NSuDnkMOlCGss6z2GRrqyAXTvfBbtUHDRe', '$2a$08$PE7PVEsWdRVyjlrm2y3NSuDnkMOlCGss6z2GRrqyAXTvfBbtUHDRe', 'LL572WE', '+37064725423'); --pass user
+INSERT INTO authority(name)
+VALUES
+    ('ADMIN'),
+    ('USER');
+
+INSERT INTO users_authorities(user_id, authorities_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 2);
