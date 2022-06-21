@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private String zipCode;
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.EAGER) //!! To bad use EAGER
+    @ManyToMany
     private Set<Authority> authorities;
 
     @Override
