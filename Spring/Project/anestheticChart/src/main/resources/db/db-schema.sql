@@ -88,8 +88,8 @@ create table users
     name varchar(20) not null ,
     surname varchar(20) not null,
     email varchar(50) not null,
-    password varchar(50) not null,
-    repeated_password varchar(50) not null,
+    password varchar(100) not null,
+    repeated_password varchar(100) not null,
     zip_code varchar(20) not null,
     phone_number varchar(20) not null
 )

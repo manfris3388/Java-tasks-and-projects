@@ -64,5 +64,6 @@ values (1,'GA', 'None'),
        (8,'RA', 'needs ECHO'),
        (9,'LA', 'None');
 
--- insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
--- values ( 'Jonas', 'Jonaitis', 'jonas@jonaitis.codeacademy.lt', 'Jonas007', 'Jonas007', 'LL572WE', '+37064725423');
+insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
+values ( 'Jonas', 'Jonaitis', 'jonas@jonaitis.codeacademy.lt', '$2a$10$5Xv4Exxul6wGMVZjHCMvuOAwfkwwsUblBwlRvGLvZ3UAOwzCNkMP.', '$2a$10$5Xv4Exxul6wGMVZjHCMvuOAwfkwwsUblBwlRvGLvZ3UAOwzCNkMP.', 'LL572WE', '+37064725423');
+-- pass is Jonas007
