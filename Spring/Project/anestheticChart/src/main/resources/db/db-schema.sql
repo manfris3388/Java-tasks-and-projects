@@ -8,13 +8,14 @@ Drop table if exists plans;
 
 Drop table if exists vitals;
 
+drop table if exists users_authorities;
+
 Drop table if exists users;
 
 Drop table if exists CHARTS;
 
 DROP table if exists authority;
 
-drop table if exists users_authorities;
 CREATE TABLE charts
 (
     id              BIGSERIAL PRIMARY KEY,
@@ -95,17 +96,21 @@ create table users
     password varchar(100) not null,
     repeated_password varchar(100) not null,
     zip_code varchar(20) not null,
-    phone_number varchar(20) not null
+    phone_number varchar(20) not null,
+    CONSTRAINT users_key UNIQUE (email)
 );
 
 CREATE TABLE authority
 (
     id                BIGSERIAL PRIMARY KEY,
-    name              VARCHAR(100)    NOT NULL
+    name              VARCHAR(100)    NOT NULL,
+    CONSTRAINT authority_key UNIQUE (name)
 );
 
 CREATE TABLE users_authorities
 (
     user_id         BIGINT NOT NULL,
-    authorities_id  BIGINT NOT NULL
-)
+    authorities_id  BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (authorities_id) REFERENCES authority(id)
+);
