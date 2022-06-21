@@ -65,5 +65,5 @@ values (1,'GA', 'None'),
        (9,'LA', 'None');
 
 insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
-values ( 'Jonas', 'Jonaitis', 'j@j.lt', '$2a$10$YLfUX04PYhPIUafuNFVVVuOXU69DbI305Rem2coUU198s4njX2rA6', '$2a$10$5Xv4Exxul6wGMVZjHCMvuOAwfkwwsUblBwlRvGLvZ3UAOwzCNkMP.', 'LL572WE', '+37064725423');
+values ( 'Jonas', 'Jonaitis', 'j@j.lt', '$2a$08$lAosnAVUX3d12cU4HXizWeCAuobKCiAid7nVLNpVdMIOsSN4Icka2', '$2a$08$lAosnAVUX3d12cU4HXizWeCAuobKCiAid7nVLNpVdMIOsSN4Icka2.', 'LL572WE', '+37064725423');
 -- pass is a

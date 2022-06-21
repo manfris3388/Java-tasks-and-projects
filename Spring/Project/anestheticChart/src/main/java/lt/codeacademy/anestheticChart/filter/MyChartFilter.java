@@ -17,11 +17,11 @@ public class MyChartFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        log.trace("------> my eshop filter implementation :::before::: do filter chain");
+        log.trace("------> my chart filter implementation :::before::: do filter chain");
 
         chain.doFilter(request, response);
 
-        log.trace("------> my eshop filter implementation :::after::: do filter chain");
+        log.trace("------> my chart filter implementation :::after::: do filter chain");
 
     }
 }
