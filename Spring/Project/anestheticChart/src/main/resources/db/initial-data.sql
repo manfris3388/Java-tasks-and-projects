@@ -66,7 +66,7 @@ values (1,'GA', 'None'),
 
 insert into users( name, surname, email, password, repeated_password, zip_code, phone_number)
 values ( 'Admin', 'Jonaitis', 'admin@j.lt', '$2a$08$2xZNrqMS04hMaGEBBaKQT.cgEpaUCgi6fREC2JaBITX/9vJLPcTqW', '$2a$08$2xZNrqMS04hMaGEBBaKQT.cgEpaUCgi6fREC2JaBITX/9vJLPcTqW', 'LL572WE', '+37064725423'),--pass admin
-       ( 'User', 'Jonaitis', 'user@j.lt', '$$2a$08$PE7PVEsWdRVyjlrm2y3NSuDnkMOlCGss6z2GRrqyAXTvfBbtUHDRe', '$2a$08$PE7PVEsWdRVyjlrm2y3NSuDnkMOlCGss6z2GRrqyAXTvfBbtUHDRe', 'LL572WE', '+37064725423'); --pass user
+       ( 'User', 'Jonaitis', 'user@j.lt', '$2a$08$on.qwvCiIYfNVX1KqyBVDu7G8Z3JjK6knmW3SnipkCfi1KqWBZF9.', '$2a$08$on.qwvCiIYfNVX1KqyBVDu7G8Z3JjK6knmW3SnipkCfi1KqWBZF9.', 'LL572WE', '+37064725423'); --pass user
 INSERT INTO authority(name)
 VALUES
     ('ADMIN'),
