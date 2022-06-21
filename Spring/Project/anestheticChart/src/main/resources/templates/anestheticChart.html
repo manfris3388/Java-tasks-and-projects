@@ -21,7 +21,7 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </li>
 </ul>
-<form method="post" th:object="${chart}">
+<form method="post" th:object="${chart}" th:action="@{${chartPath}}">
     <div>
         <h3> Patient details</h3><br><br>
         <input type="hidden" th:field="*{uuid}">
