@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.user.service;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.user.dto.UserDto;
 import lt.codeacademy.anestheticChart.user.entity.User;
+import lt.codeacademy.anestheticChart.user.mapper.UserRoleMapper;
 import lt.codeacademy.anestheticChart.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
   private final UserRepository userRepository;
+  private final UserRoleMapper userRoleMapper;
 
   public void register(UserDto userDto) {
     userRepository.save(
@@ -30,6 +32,7 @@ public class UserService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     return userRepository.findUserByEmailWithAuthorities(username)
+            .map(userRoleMapper::mapToUserRoleDto)
             .orElseThrow(() -> new UsernameNotFoundException("'" + username + "' not found!"));
   }
 }
