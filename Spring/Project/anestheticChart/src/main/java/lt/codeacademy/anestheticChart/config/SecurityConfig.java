@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 import static lt.codeacademy.anestheticChart.chart.controller.ChartController.CHART_ROOT_PATH;
@@ -41,9 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .usernameParameter("loginEmail")
         .passwordParameter("loginPassword")
         .and()
-        .logout()
-        .permitAll()
-        .and()
+            .logout()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login-chart")
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .permitAll()
+            .and()
         .headers()
         .permissionsPolicy();
   }
