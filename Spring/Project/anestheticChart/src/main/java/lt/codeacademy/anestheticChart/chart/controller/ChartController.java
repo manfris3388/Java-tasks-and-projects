@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
@@ -38,7 +39,7 @@ public class ChartController implements ChartEndPoints {
     //adding message after successful commit
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(CHART_ROOT_PATH)
-    public String createAnestheticChart(Model model, FullChartDTO fullChartDTO){
+    public String createAnestheticChart(Model model, @Valid FullChartDTO fullChartDTO){
         chartService.addChart(fullChartDTO);
         model.addAttribute("chart", FullChartDTO.builder().build());
         return "redirect:/user/chart?message=chart.create.message.success";

@@ -3,12 +3,15 @@ package lt.codeacademy.anestheticChart.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 @Data
 @Builder
 public class FullChartDTO {
     private UUID uuid;
+
+    @NotBlank
     private String name;
     private String surname;
     private String hospitalNumber;
