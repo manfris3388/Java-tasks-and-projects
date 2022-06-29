@@ -8,10 +8,14 @@ export default class MyCoolComponent extends React.Component {
         this.state = {name: 'World'}
     }
 
+    onChange = (e) => {
+        this.setState({name : e.target.value})
+    }
+
     render() {
         return(
             <>
-                <input type={'Text'} name={'Manfris'}/>
+                <input onChange={this.onChange}/>
                 <h1> Hello, {this.state.name}</h1>
             </>
         )
