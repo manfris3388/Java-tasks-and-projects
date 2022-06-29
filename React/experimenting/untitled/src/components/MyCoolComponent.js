@@ -9,11 +9,11 @@ export default class MyCoolComponent extends React.Component {
     }
 
     onChange = (e) => {
-        this.setState({name : e.target.value})
+        this.setState({name: e.target.value})
     }
 
     render() {
-        return(
+        return (
             <>
                 <input onChange={this.onChange}/>
                 <h1> Hello, {this.state.name}</h1>
