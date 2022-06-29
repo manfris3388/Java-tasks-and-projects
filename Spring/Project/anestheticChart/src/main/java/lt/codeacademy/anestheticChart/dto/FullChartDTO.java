@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Data
@@ -12,6 +13,11 @@ public class FullChartDTO {
     private UUID uuid;
 
     @NotBlank
+    @Size(
+            min = 3,
+            max = 40,
+            message = "Name turi buti daugiau nei {min} ir maziau nei {max}"
+    )
     private String name;
     private String surname;
     private String hospitalNumber;
