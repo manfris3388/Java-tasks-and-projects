@@ -12,7 +12,7 @@ import java.util.UUID;
 public class FullChartDTO {
     private UUID uuid;
 
-    @NotBlank
+    @NotBlank(message = "{name.blank}")
     @Size(
             min = 3,
             max = 40,

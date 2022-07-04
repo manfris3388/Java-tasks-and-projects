@@ -5,16 +5,15 @@ import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.helper.MessageService;
 import lt.codeacademy.anestheticChart.service.ChartService;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
@@ -39,9 +38,8 @@ public class ChartController implements ChartEndPoints {
     //adding message after successful commit
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(CHART_ROOT_PATH)
-    public String createAnestheticChart(Model model, @Valid FullChartDTO fullChartDTO){
+    public String createAnestheticChart(@Valid FullChartDTO fullChartDTO, BindingResult error){
         chartService.addChart(fullChartDTO);
-        model.addAttribute("chart", FullChartDTO.builder().build());
         return "redirect:/user/chart?message=chart.create.message.success";
     }
 

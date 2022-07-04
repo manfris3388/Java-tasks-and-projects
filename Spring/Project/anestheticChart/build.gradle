@@ -22,6 +22,7 @@ ext{
     postgresVersion = '42.1.4'
     h2Version = '2.1.212'
     thymeleafExtrasVersion = '3.0.4.RELEASE'
+    springBootValidationVersion = '2.7.1'
 }
 
 dependencies {
@@ -32,7 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5:${thymeleafExtrasVersion}"
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootValidationVersion}"
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
