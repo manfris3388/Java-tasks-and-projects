@@ -1,6 +1,5 @@
 package lt.codeacademy.anestheticChart.user.controller;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.user.dto.UserDto;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,7 +18,7 @@ public class UserController implements ChartEndPoints {
     @GetMapping(REGISTER_ROOT_PATH)
     public String getUserForm(Model model) {
         model.addAttribute("userDto", UserDto.builder().build());
-    return "user";
+    return "user/user";
     }
 
     @PostMapping(REGISTER_ROOT_PATH)

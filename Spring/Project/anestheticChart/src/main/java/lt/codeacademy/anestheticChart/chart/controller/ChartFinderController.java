@@ -1,7 +1,6 @@
 package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.service.ChartService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

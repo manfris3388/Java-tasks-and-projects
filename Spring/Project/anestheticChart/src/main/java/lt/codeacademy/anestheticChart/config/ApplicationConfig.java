@@ -46,6 +46,6 @@ public class ApplicationConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login-chart").setViewName("login");
+        registry.addViewController("/login-chart").setViewName("user/login");
     }
 }

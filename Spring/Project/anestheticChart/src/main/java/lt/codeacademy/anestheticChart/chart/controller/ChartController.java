@@ -31,7 +31,7 @@ public class ChartController implements ChartEndPoints {
     public String openAnestheticForm(Model model, String message){
         model.addAttribute("chart", FullChartDTO.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
-        return "anestheticChart";
+        return "charts/anestheticChart";
     }
 
     //post data from /chart/open from Thymeleaf. Initializes FullChartDTO fields. Goes to service and then to repository to write data in memory
@@ -48,14 +48,14 @@ public class ChartController implements ChartEndPoints {
     @GetMapping(PAGE_ROOT_PATH)
     public String getCharts(Model model, @PageableDefault(size = 3, sort = {"surname"}, direction = Sort.Direction.ASC) Pageable pageable){
         model.addAttribute("chartsPage", chartService.getChartsPaginated(pageable));
-        return "anestheticCharts";
+        return "charts/anestheticCharts";
     }
 
     //gets anesthetic chart data from db using UUID and fills anesthetic chart template with it
     @GetMapping(UPDATE_ROOT_PATH)
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
         model.addAttribute("chart", chartService.getFullChartByUUID(uuid));
-        return "anestheticChart";
+        return "charts/anestheticChart";
     }
 
     //connects HTML to URL also HTML to Java. Collects data from web page, converts from DTO to Entity and updates db
