@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public class CustomErrorViewResolver implements ErrorViewResolver {
-    @Override
-    public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
-        return null;
-    }
+  @Override
+  public ModelAndView resolveErrorView(
+      HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
+        if (status.equals(HttpStatus.NOT_FOUND)) {
+            return new ModelAndView("error/404.html");
+        }
+        return new ModelAndView("CustomErrorPage");
+  }
 }
