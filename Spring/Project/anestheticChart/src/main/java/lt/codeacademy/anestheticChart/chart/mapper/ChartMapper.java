@@ -1,12 +1,10 @@
-package lt.codeacademy.anestheticChart.mapper;
+package lt.codeacademy.anestheticChart.chart.mapper;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.entity.*;
-import lt.codeacademy.anestheticChart.repository.*;
+import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.entity.*;
+import lt.codeacademy.anestheticChart.chart.repository.*;
 import org.springframework.stereotype.Component;
-
-import java.util.UUID;
 
 @RequiredArgsConstructor
 @Component

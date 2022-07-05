@@ -1,6 +1,7 @@
-package lt.codeacademy.anestheticChart.config;
+package lt.codeacademy.anestheticChart.chart.config;
 
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anestheticChart.ChartEndPoints;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-
-import static lt.codeacademy.anestheticChart.chart.controller.ChartController.CHART_ROOT_PATH;
 
 @Configuration
 @RequiredArgsConstructor
@@ -38,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll()
         .loginPage("/login-chart")
         .loginProcessingUrl("/login-chart")
-        .defaultSuccessUrl(CHART_ROOT_PATH, true)
+        .defaultSuccessUrl(ChartEndPoints.CHART_ROOT_PATH, true)
         .usernameParameter("loginEmail")
         .passwordParameter("loginPassword")
         .and()

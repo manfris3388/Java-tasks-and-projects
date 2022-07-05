@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.dto;
+package lt.codeacademy.anestheticChart.chart.dto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.filter;
+package lt.codeacademy.anestheticChart.chart.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

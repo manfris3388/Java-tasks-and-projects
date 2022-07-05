@@ -1,6 +1,6 @@
 package lt.codeacademy.anestheticChart.model;
 
-import lt.codeacademy.anestheticChart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
 
 public class ChartDtoMother {
     private static final String NAME = "Jonelis";

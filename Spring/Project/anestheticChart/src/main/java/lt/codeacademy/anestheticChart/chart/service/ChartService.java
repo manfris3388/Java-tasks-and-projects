@@ -1,11 +1,11 @@
-package lt.codeacademy.anestheticChart.service;
+package lt.codeacademy.anestheticChart.chart.service;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.entity.*;
-import lt.codeacademy.anestheticChart.exceptions.NoSuchAnestheticChartException;
-import lt.codeacademy.anestheticChart.mapper.ChartMapper;
-import lt.codeacademy.anestheticChart.repository.*;
+import lt.codeacademy.anestheticChart.chart.exceptions.NoSuchAnestheticChartException;
+import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.entity.*;
+import lt.codeacademy.anestheticChart.chart.repository.*;
+import lt.codeacademy.anestheticChart.chart.mapper.ChartMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

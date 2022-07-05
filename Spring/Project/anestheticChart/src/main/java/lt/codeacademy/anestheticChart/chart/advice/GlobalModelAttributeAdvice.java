@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.advice;
+package lt.codeacademy.anestheticChart.chart.advice;
 
 import lt.codeacademy.anestheticChart.ChartEndPoints;
 import org.springframework.web.bind.annotation.ControllerAdvice;

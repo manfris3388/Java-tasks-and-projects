@@ -2,9 +2,9 @@ package lt.codeacademy.anestheticChart.chart.controller;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.ChartEndPoints;
-import lt.codeacademy.anestheticChart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.helper.MessageService;
-import lt.codeacademy.anestheticChart.service.ChartService;
+import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.helper.MessageService;
+import lt.codeacademy.anestheticChart.chart.service.ChartService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;

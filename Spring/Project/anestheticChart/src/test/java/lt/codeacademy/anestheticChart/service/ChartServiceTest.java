@@ -1,8 +1,10 @@
 package lt.codeacademy.anestheticChart.service;
 
-import lt.codeacademy.anestheticChart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.entity.Chart;
-import lt.codeacademy.anestheticChart.mapper.ChartMapper;
+import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.entity.Chart;
+import lt.codeacademy.anestheticChart.chart.mapper.ChartMapper;
+import lt.codeacademy.anestheticChart.chart.repository.*;
+import lt.codeacademy.anestheticChart.chart.service.ChartService;
 import lt.codeacademy.anestheticChart.model.ChartDtoMother;
 import lt.codeacademy.anestheticChart.repository.*;
 import org.junit.jupiter.api.Test;

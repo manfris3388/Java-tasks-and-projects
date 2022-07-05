@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.helper;
+package lt.codeacademy.anestheticChart.chart.helper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

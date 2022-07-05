@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.config;
+package lt.codeacademy.anestheticChart.chart.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
