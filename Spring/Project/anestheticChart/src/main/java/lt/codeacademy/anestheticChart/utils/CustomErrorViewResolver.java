@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CustomErrorViewResolver implements ErrorViewResolver {
@@ -14,6 +15,8 @@ public class CustomErrorViewResolver implements ErrorViewResolver {
         if (status.equals(HttpStatus.NOT_FOUND)) {
             return new ModelAndView("error/404.html");
         }
-        return new ModelAndView("CustomErrorPage");
+        Map<String,String> myMap = new HashMap<>();
+        myMap.put("myCustomText", "Is my any Text or Object");
+        return new ModelAndView("CustomErrorPage", myMap);
   }
 }
