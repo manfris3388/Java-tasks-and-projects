@@ -23,7 +23,10 @@ logging:
         anestheticChart:
           config: debug
           filter: trace
-
+server:
+  error:
+    whitelabel:
+      enabled: true
 ---
 spring:
   profiles:
