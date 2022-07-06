@@ -3,7 +3,6 @@ package lt.codeacademy.anestheticChart.chart.controller;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.chart.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.chart.helper.MessageService;
 import lt.codeacademy.anestheticChart.chart.service.ChartService;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +12,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +29,7 @@ public class ChartController implements ChartEndPoints {
     //connects FullChartDTO to anaestheticChart.html. Also assigns parameters to thymeleaf through Model creating Thymeleaf object.
     @GetMapping(CHART_ROOT_PATH)
     public String openAnestheticForm(Model model, String message){
-        model.addAttribute("chart", FullChartDTO.builder().build());
+        model.addAttribute("fullChartDTO", FullChartDTO.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
         return "charts/anestheticChart";
     }
@@ -41,6 +39,9 @@ public class ChartController implements ChartEndPoints {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(CHART_ROOT_PATH)
     public String createAnestheticChart(@Valid FullChartDTO fullChartDTO, BindingResult error){
+        if (error.hasErrors()){
+            return "charts/anestheticChart";
+        }
         chartService.addChart(fullChartDTO);
         return "redirect:/user/chart?message=chart.create.message.success";
     }
