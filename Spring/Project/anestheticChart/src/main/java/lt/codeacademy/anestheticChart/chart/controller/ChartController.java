@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.chart.controller;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.ChartEndPoints;
 import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.chart.exceptions.NoSuchAnestheticChartException;
 import lt.codeacademy.anestheticChart.chart.helper.MessageService;
 import lt.codeacademy.anestheticChart.chart.service.ChartService;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,5 +73,11 @@ public class ChartController implements ChartEndPoints {
     public String deleteChart(@RequestParam UUID uuid){
         chartService.deleteChart(uuid);
         return "redirect:" + PAGE_ROOT_PATH;
+    }
+
+    @ExceptionHandler(NoSuchAnestheticChartException.class)
+    public String chartNotFound(NoSuchAnestheticChartException e, Model model) {
+        model.addAttribute("chartId", e.getChartId());
+        return "error/chartNotFound";
     }
 }

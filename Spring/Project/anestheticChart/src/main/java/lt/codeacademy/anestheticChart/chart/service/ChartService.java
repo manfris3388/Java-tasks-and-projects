@@ -118,7 +118,7 @@ public class ChartService {
     return chartRepository
         .findByUuid(uuid)
         .map(chartMapper::mapToChartDTO)
-        .orElseThrow(NoSuchAnestheticChartException::new);
+        .orElseThrow(() -> new NoSuchAnestheticChartException(uuid));
   }
 
   @Transactional

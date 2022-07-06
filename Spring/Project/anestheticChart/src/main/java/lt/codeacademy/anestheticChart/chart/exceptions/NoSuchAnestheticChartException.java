@@ -1,9 +1,13 @@
 package lt.codeacademy.anestheticChart.chart.exceptions;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
+import java.util.UUID;
+
+//@ResponseStatus(HttpStatus.NOT_FOUND)
+@RequiredArgsConstructor
+@Getter
 public class NoSuchAnestheticChartException extends RuntimeException {
-
+    private final UUID chartId;
 }
