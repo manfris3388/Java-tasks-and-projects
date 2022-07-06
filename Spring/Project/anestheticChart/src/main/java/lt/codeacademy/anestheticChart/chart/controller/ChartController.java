@@ -74,10 +74,4 @@ public class ChartController implements ChartEndPoints {
         chartService.deleteChart(uuid);
         return "redirect:" + PAGE_ROOT_PATH;
     }
-
-    @ExceptionHandler(NoSuchAnestheticChartException.class)
-    public String chartNotFound(NoSuchAnestheticChartException e, Model model) {
-        model.addAttribute("chartId", e.getChartId());
-        return "error/chartNotFound";
-    }
 }
