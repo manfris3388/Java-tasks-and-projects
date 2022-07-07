@@ -12,11 +12,11 @@ import java.util.UUID;
 public class FullChartDTO {
     private UUID uuid;
 
-    @NotBlank(message = "{name.blank}")
+    @NotBlank(message = "{validate.name.blank}")
     @Size(
             min = 3,
             max = 40,
-            message = "Name turi buti daugiau nei {min} ir maziau nei {max}"
+            message = "{validate.name.size}"
     )
     private String name;
     private String surname;
