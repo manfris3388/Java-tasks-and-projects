@@ -32,17 +32,29 @@
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
         </div>
 
+        <div>
         <label th:text="#{chart.surname}">Surname</label>
         <input type="text" placeholder="" th:field="*{surname}"><br><br>
+            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+        </div>
 
+        <div>
         <label th:text="#{chart.hospitalNumber}"></label>
         <input type="text" placeholder="D123456" th:field="*{hospitalNumber}"><br><br>
+            <span th:if="${#fields.hasErrors('hospitalNumber')}" th:errors="*{hospitalNumber}"></span>
+        </div>
 
+        <div>
         <label th:text="#{chart.dob}"></label>
         <input type="text" th:placeholder="#{placeholder.dob}" th:field="*{dob}"><br><br>
+            <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></span>
+        </div>
 
+        <div>
         <label th:text="#{chart.operation}"></label>
         <input type="text" placeholder="" th:field="*{operation}"><br><br><br>
+            <span th:if="${#fields.hasErrors('operation')}" th:errors="*{operation}"></span>
+        </div>
     </div>
     <div>
         <h3 th:text="#{chart.evaluation.clinical}"></h3><br><br>

@@ -15,14 +15,40 @@ public class FullChartDTO {
     @NotBlank(message = "{validate.name.blank}")
     @Size(
             min = 3,
-            max = 40,
+            max = 20,
             message = "{validate.name.size}"
     )
     private String name;
+
+    @NotBlank(message = "{validate.surname.blank}")
+    @Size(
+            min = 3,
+            max = 20,
+            message = "{validate.surname.size}"
+    )
     private String surname;
+
+    @NotBlank(message = "{validate.hospitalNumber.blank}")
+    @Size(
+            max = 20,
+            message = "{validate.hospitalNumber.size}"
+    )
     private String hospitalNumber;
+
+    @NotBlank(message = "{validate.dob.blank}")
+    @Size(
+            max = 20,
+            message = "{validate.dob.size}"
+    )
     private String dob;
+
+    @NotBlank(message = "{validate.operation.blank}")
+    @Size(
+            max = 20,
+            message = "{validate.operation.size}"
+    )
     private String operation;
+
     private String pmh;
     private String dh;
     private String airwayAssessment;
