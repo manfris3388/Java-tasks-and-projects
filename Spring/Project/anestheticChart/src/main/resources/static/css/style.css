@@ -3,6 +3,10 @@
     color: red;
 }
 
+.error-block {
+    background-color: #c69e9e;
+}
+
 .form-control{
     background-color: aliceblue;
 }
