@@ -1,0 +1,38 @@
+package lt.codeacademy.anetheticChart.user.service;
+
+import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anetheticChart.user.dto.UserDto;
+import lt.codeacademy.anetheticChart.user.entity.User;
+import lt.codeacademy.anetheticChart.user.mapper.UserRoleMapper;
+import lt.codeacademy.anetheticChart.user.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class UserService implements UserDetailsService {
+  private final UserRepository userRepository;
+  private final UserRoleMapper userRoleMapper;
+
+  public void register(UserDto userDto) {
+    userRepository.save(
+        User.builder()
+            .email(userDto.getEmail())
+            .name(userDto.getName())
+            .surname(userDto.getSurname())
+            .password(userDto.getPassword())
+            .repeatedPassword(userDto.getRepeatedPassword()) // FIXME: do not save as plain text, for security reason!!!!
+            .phoneNumber(userDto.getPhoneNumber())
+            .zipCode(userDto.getZipCode())
+            .build());
+  }
+
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    return userRepository.findUserByEmailWithAuthorities(username)
+            .map(userRoleMapper::mapToUserRoleDto)
+            .orElseThrow(() -> new UsernameNotFoundException("'" + username + "' not found!"));
+  }
+}

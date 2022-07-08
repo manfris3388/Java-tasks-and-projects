@@ -1,1 +1,4 @@
 rootProject.name = 'anestheticChart'
+include 'anestheticChart-main'
+include 'anestheticChart-mvc'
+
