@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.chart.controller;
+package lt.codeacademy.anestheticChart.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
