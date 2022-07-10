@@ -1,25 +1,23 @@
 package lt.codeacademy.anestheticChart.api.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
-import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/charts")
-public class ProductApiController {
+@Api(tags = "Chart Controller")
+public class ChartApiController {
 
     private final ChartService chartService;
 
