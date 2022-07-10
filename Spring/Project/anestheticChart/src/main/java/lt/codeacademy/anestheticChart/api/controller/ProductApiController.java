@@ -1,6 +1,10 @@
 package lt.codeacademy.anestheticChart.api.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
 import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.http.MediaType;
@@ -19,15 +23,17 @@ public class ProductApiController {
 
     private final ChartService chartService;
 
-    @ResponseBody
-    @GetMapping(value = "/json", produces = MediaType.APPLICATION_JSON_VALUE) // by default produces JSON MIME type
-    public List<FullChartDTO> getJsonProducts() {
-        return chartService.getCharts();
-    }
-
-    @ResponseBody
-    @GetMapping(value = "/xml", produces = MediaType.APPLICATION_XML_VALUE) // by default produces JSON MIME type
-    public List<FullChartDTO> getXmlProducts() {
-        return chartService.getCharts();
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ApiOperation(
+            value = "Get all charts",
+            tags = "getCharts",
+            notes = "Get all charts from db and any other information could be here")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Kai sekmingai grąžina anestezijos lapus"),
+            @ApiResponse(code = 401, message = "Reikalauja prisijungimo gaunant anestezijos lapų sarasą"),
+            @ApiResponse(code = 403, message = "Neturite reikalingu teisių gauti produktų sarasą")
+    })
+    public ChartsResponse getCharts() {
+        return ChartsResponse.builder().charts(chartService.getCharts()).build();
     }
 }
