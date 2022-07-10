@@ -1,6 +1,6 @@
 package lt.codeacademy.anestheticChart.Helper;
 
-import lt.codeacademy.anestheticChart.chart.helper.MessageService;
+import lt.codeacademy.anestheticChart.mvc.chart.helper.MessageService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

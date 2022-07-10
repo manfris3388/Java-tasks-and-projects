@@ -1,8 +1,8 @@
 package lt.codeacademy.anestheticChart.api.controller;
 
 import lombok.RequiredArgsConstructor;
-import lt.codeacademy.anestheticChart.chart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.chart.service.ChartService;
+import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
+import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
