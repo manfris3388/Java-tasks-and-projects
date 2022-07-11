@@ -1,5 +1,6 @@
 package lt.codeacademy.anestheticChart.api.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,5 +11,7 @@ import java.util.List;
 @Builder
 @Getter
 public class ChartsResponse {
+
+    @ApiModelProperty(notes = "Products list", required = true, allowEmptyValue = false)
     private List<FullChartDTO> charts;
 }
