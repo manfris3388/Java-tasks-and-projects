@@ -8,19 +8,18 @@ import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/charts")
+@RequestMapping(ChartApiController.PRODUCTS_ROOT_PATH)
 @Api(tags = "Chart Controller")
 public class ChartApiController {
+    public static final String PRODUCTS_ROOT_PATH = "/api/charts";
+    private static final String UUID_PATH = "/api/{uuid}";
 
     private final ChartService chartService;
 
@@ -41,7 +40,7 @@ public class ChartApiController {
 
 
     @GetMapping(
-            path = "/{uuid}",
+            path = UUID_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ApiOperation(value = "Get one chart by id")
     @ApiResponses(value = {
@@ -53,5 +52,9 @@ public class ChartApiController {
         return ChartsResponse.builder()
                 .charts(List.of(chartService.getFullChartByUUID(uuid)))
                 .build();
+    }
+    @DeleteMapping(path = UUID_PATH)
+    public void deleteChart(@PathVariable("uuid") UUID chartUUID) {
+        chartService.deleteChart(chartUUID);
     }
 }
