@@ -6,10 +6,12 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
+import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,5 +58,9 @@ public class ChartApiController {
     @DeleteMapping(path = UUID_PATH)
     public void deleteChart(@PathVariable("uuid") UUID chartUUID) {
         chartService.deleteChart(chartUUID);
+    }
+    @PostMapping
+    public void createChart(@Valid @RequestBody FullChartDTO fullChartDTO) {
+        chartService.addChart(fullChartDTO);
     }
 }
