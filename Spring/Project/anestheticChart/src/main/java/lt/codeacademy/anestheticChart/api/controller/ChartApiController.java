@@ -42,7 +42,6 @@ public class ChartApiController {
                 .build();
     }
 
-
     @GetMapping(
             path = UUID_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -52,19 +51,31 @@ public class ChartApiController {
             @ApiResponse(code = 401, message = "Reikalauja prisijungimo gaunant anestezijos lapa"),
             @ApiResponse(code = 403, message = "Neturite reikalingu teisiu gauti anestezijos lapa")
     })
+
     public ChartsResponse getCharts(@PathVariable("uuid") UUID uuid) {
         return ChartsResponse.builder()
                 .charts(List.of(chartService.getFullChartByUUID(uuid)))
                 .build();
     }
+
     @DeleteMapping(path = UUID_PATH)
     public void deleteChart(@PathVariable("uuid") UUID chartUUID) {
         chartService.deleteChart(chartUUID);
     }
+
     @PostMapping
     public ResponseEntity<Void> createChart(@Valid @RequestBody FullChartDTO fullChartDTO) {
 
         chartService.addChart(fullChartDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> updateProduct(@Valid @RequestBody FullChartDTO fullChartDTO) {
+        if (chartService.updateChart(fullChartDTO)) {
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }

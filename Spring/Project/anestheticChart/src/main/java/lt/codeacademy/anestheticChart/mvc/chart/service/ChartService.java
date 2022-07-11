@@ -122,7 +122,7 @@ public class ChartService {
   }
 
   @Transactional
-  public void updateChart(FullChartDTO fullChartDTO) {
+  public boolean updateChart(FullChartDTO fullChartDTO) {
     Optional<Chart> chartOptional = chartRepository.findByUuid(fullChartDTO.getUuid());
     if (chartOptional.isPresent()) {
       Chart chart =
@@ -190,7 +190,9 @@ public class ChartService {
                       .chart(chart)
                       .build();
       planRepository.save(plan);
+      return true;
     }
+    return false;
   }
 
   // makes a check if entity is present and deletes it if it is not null
