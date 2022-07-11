@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
 import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -60,7 +62,9 @@ public class ChartApiController {
         chartService.deleteChart(chartUUID);
     }
     @PostMapping
-    public void createChart(@Valid @RequestBody FullChartDTO fullChartDTO) {
+    public ResponseEntity<Void> createChart(@Valid @RequestBody FullChartDTO fullChartDTO) {
+
         chartService.addChart(fullChartDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
