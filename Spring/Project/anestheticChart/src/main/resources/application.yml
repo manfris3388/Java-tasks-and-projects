@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    include: security-off
   main:
     banner-mode: console
   jpa:
@@ -15,6 +17,9 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      max-file-size: 5MB
 #  security:
 #    user:
 #      name: user@chart.lt
