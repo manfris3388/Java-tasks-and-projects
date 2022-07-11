@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.api.controller;
 import lombok.AllArgsConstructor;
 import lt.codeacademy.anestheticChart.api.service.FileService;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,11 @@ public class FileController {
 
     @GetMapping("/api/file/download")
     public ResponseEntity<Resource> getFileByFileName(@RequestParam String fileName) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
         return ResponseEntity.ok()
+                .headers(headers)
                 .contentType(fileService.getFileMediaTypeByFileName(fileName))
                 .body(fileService.getFile(fileName));
     }
