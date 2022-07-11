@@ -1,5 +1,6 @@
 package lt.codeacademy.anestheticChart.api.controller;
 
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import lt.codeacademy.anestheticChart.api.service.FileService;
 import org.springframework.core.io.Resource;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @AllArgsConstructor
 @RestController
+@Api(tags = "File Controller")
 public class FileController {
 
     private final FileService fileService;

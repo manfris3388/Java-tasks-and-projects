@@ -12,6 +12,6 @@ import java.util.List;
 @Getter
 public class ChartsResponse {
 
-    @ApiModelProperty(notes = "Products list", required = true, allowEmptyValue = false)
+    @ApiModelProperty(notes = "Charts list", required = true, allowEmptyValue = false)
     private List<FullChartDTO> charts;
 }
