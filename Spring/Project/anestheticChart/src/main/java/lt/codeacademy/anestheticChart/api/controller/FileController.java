@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
+import lt.codeacademy.anestheticChart.api.dto.FileResponse;
 import lt.codeacademy.anestheticChart.api.service.FileService;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -31,8 +32,9 @@ public class FileController {
     })
     @PostMapping(FILE_UPLOAD_PATH)
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveFile(@RequestParam MultipartFile file) {
-        fileService.saveFile(file);
+    public FileResponse saveFile(@RequestParam MultipartFile file) {
+
+        return fileService.saveFile(file);
     }
 
     @ApiOperation(value = "Get image by name", httpMethod = "GET")
