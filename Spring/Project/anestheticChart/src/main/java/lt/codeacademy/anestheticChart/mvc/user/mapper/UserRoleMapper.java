@@ -1,9 +1,9 @@
 package lt.codeacademy.anestheticChart.mvc.user.mapper;
 
 import lt.codeacademy.anestheticChart.mvc.user.dto.UserDto;
-import lt.codeacademy.anestheticChart.mvc.user.entity.User;
+import lt.codeacademy.anestheticChart.jpa.entities.user_mvc.User;
 import lt.codeacademy.anestheticChart.mvc.user.dto.UserRoleDto;
-import lt.codeacademy.anestheticChart.mvc.user.entity.Authority;
+import lt.codeacademy.anestheticChart.jpa.entities.user_mvc.Authority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 

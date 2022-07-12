@@ -1,7 +1,6 @@
-package lt.codeacademy.anestheticChart.mvc.user.entity;
+package lt.codeacademy.anestheticChart.jpa.entities.user_mvc;
 
 import lombok.Getter;
-import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

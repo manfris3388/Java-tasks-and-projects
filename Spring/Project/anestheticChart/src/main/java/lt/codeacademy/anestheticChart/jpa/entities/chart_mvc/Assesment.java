@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.mvc.chart.entity;
+package lt.codeacademy.anestheticChart.jpa.entities.chart_mvc;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,17 +12,18 @@ import javax.persistence.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Imaging {
+@Table(name = "ASSESMENT")
+public class Assesment {
 
     @Id
     private Long chartId;
-    private String ecg;
-
-    @Column(name = "other_img")
-    private String otherIMG;
+    private String pmh;
+    private String dh;
+    private String airwayAssesment;
+    private String anestheticAssesment;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn(name = "chart_id")
+    @JoinColumn(name="chart_id")
     private Chart chart;
 }

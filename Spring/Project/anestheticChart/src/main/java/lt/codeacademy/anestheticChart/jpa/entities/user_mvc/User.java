@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.mvc.user.entity;
+package lt.codeacademy.anestheticChart.jpa.entities.user_mvc;
 
 import lombok.*;
 
