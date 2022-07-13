@@ -9,8 +9,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Profile("security-off")
-@Configuration
-public class SecurityOffConfig  extends WebSecurityConfigurerAdapter {
+//@Configuration
+public class SecurityOffConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -21,5 +21,4 @@ public class SecurityOffConfig  extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
 }
