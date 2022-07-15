@@ -1,6 +1,6 @@
 package lt.codeacademy.anestheticChart.jpa.repositories.chart_mvc;
 
-import lt.codeacademy.anestheticChart.jpa.entities.chart_mvc.Chart;
+import lt.codeacademy.anestheticChart.jpa.entity.chart_mvc.Chart;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

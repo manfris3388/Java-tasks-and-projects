@@ -2,7 +2,7 @@ package lt.codeacademy.anestheticChart.api.service;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.FileResponse;
-import lt.codeacademy.anestheticChart.jpa.entities.file.File;
+import lt.codeacademy.anestheticChart.jpa.entity.file.File;
 import lt.codeacademy.anestheticChart.jpa.repositories.file.FileRepository;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;

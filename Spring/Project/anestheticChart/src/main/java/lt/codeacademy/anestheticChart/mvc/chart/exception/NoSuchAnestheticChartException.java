@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.mvc.chart.exceptions;
+package lt.codeacademy.anestheticChart.mvc.chart.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

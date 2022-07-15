@@ -1,6 +1,6 @@
 package lt.codeacademy.anestheticChart.mvc;
 
-import lt.codeacademy.anestheticChart.mvc.chart.exceptions.NoSuchAnestheticChartException;
+import lt.codeacademy.anestheticChart.mvc.chart.exception.NoSuchAnestheticChartException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

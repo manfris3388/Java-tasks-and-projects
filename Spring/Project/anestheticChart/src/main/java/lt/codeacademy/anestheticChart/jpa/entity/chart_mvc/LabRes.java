@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.jpa.entities.chart_mvc;
+package lt.codeacademy.anestheticChart.jpa.entity.chart_mvc;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,23 +12,24 @@ import javax.persistence.*;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "VITALS")
-public class Vitals {
+@Table(name = "LAB_RES")
+public class LabRes {
 
     @Id
     private Long chartId;
-    private Integer sats;
-    private Integer rr;
-    private Integer hr;
-    private Integer sbp;
-    private Integer dbp;
-    private String otherVitals;
+
+    private Integer na;
+    private Double k;
+    private Double urea;
+    private Integer cr;
+    @Column(name = "other_lab_res")
+    private String otherLabRes;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name="chart_id")
     private Chart chart;
-//    @OneToOne(mappedBy = "vitals")
+//    @OneToOne(mappedBy = "labRes")
 //    @MapsId
 ////    @JoinColumn(name = "chart_id")
 //    private Chart chart;

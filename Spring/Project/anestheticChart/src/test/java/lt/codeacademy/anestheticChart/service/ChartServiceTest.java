@@ -2,7 +2,7 @@ package lt.codeacademy.anestheticChart.service;
 
 import lt.codeacademy.anestheticChart.jpa.repositories.chart_mvc.*;
 import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
-import lt.codeacademy.anestheticChart.jpa.entities.chart_mvc.Chart;
+import lt.codeacademy.anestheticChart.jpa.entity.chart_mvc.Chart;
 import lt.codeacademy.anestheticChart.mvc.chart.mapper.ChartMapper;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import lt.codeacademy.anestheticChart.model.ChartDtoMother;

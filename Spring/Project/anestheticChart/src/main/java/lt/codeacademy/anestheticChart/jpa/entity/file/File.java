@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.jpa.entities.file;
+package lt.codeacademy.anestheticChart.jpa.entity.file;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
