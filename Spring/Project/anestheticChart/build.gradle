@@ -23,6 +23,9 @@ ext{
     h2Version = '2.1.212'
     thymeleafExtrasVersion = '3.0.4.RELEASE'
     srpingfoxVersion = '3.0.0'
+    jjwt_apiVersion = '0.11.5'
+    jjwt_implVersion = '0.11.5'
+    jjwt_jacksonVersion = '0.11.5'
 }
 
 dependencies {
@@ -36,9 +39,13 @@ dependencies {
     implementation "io.springfox:springfox-boot-starter:${srpingfoxVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+    implementation "io.jsonwebtoken:jjwt-api:${jjwt_apiVersion}"
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwt_implVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwt_jacksonVersion}"
+
 }
 
 tasks.named('test') {
