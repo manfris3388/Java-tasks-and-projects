@@ -2,6 +2,7 @@ package lt.codeacademy.anestheticChart.mvc.chart.config;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.mvc.ChartEndPoints;
+import lt.codeacademy.anestheticChart.mvc.user.service.UserService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -25,52 +27,53 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf()
-        .ignoringAntMatchers()
-        .and()
-        .authorizeRequests()
-        .antMatchers( "/")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .formLogin()
-        .permitAll()
-        .loginPage("/login-chart")
-        .loginProcessingUrl("/login-chart")
-        .defaultSuccessUrl(ChartEndPoints.CHART_ROOT_PATH, true)
-        .usernameParameter("loginEmail")
-        .passwordParameter("loginPassword")
-        .and()
+    http
+            .csrf()
+                .ignoringAntMatchers()
+                .and()
+            .authorizeRequests()
+                .antMatchers("/")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+            .formLogin()
+                .permitAll()
+                .loginPage("/login-chart")
+                .loginProcessingUrl("/login-chart")
+                .defaultSuccessUrl(ChartEndPoints.CHART_ROOT_PATH, true)
+                .usernameParameter("loginEmail")
+                .passwordParameter("loginPassword")
+                .and()
             .logout()
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("/login-chart")
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .permitAll()
-            .and()
-        .headers()
-        .permissionsPolicy();
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login-chart")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .permitAll()
+                .and()
+            .headers()
+                .permissionsPolicy();
   }
 
-//  @Override
-//  public void configure(WebSecurity web) throws Exception {
-//    web.ignoring()
-//        .requestMatchers(
-//            PathRequest.toStaticResources()
-//                .atCommonLocations()); // PathRequest.toH2Console() jei turim H2 ir nenorim
-//                                       // ivedineti slaptazodzio
-//  }
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring()
+        .requestMatchers(
+            PathRequest.toStaticResources()
+                .atCommonLocations()); // PathRequest.toH2Console() jei turim H2 ir nenorim
+    // ivedineti slaptazodzio
+  }
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
-            .userDetailsService(userDetailsService);
-//            .passwordEncoder(passwordEncoder());
+            .userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder());
   }
 
-//  @Bean
-//  public PasswordEncoder passwordEncoder() {
-//    return new BCryptPasswordEncoder();
-////    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//  }
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+//    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    return new BCryptPasswordEncoder();
+  }
 }

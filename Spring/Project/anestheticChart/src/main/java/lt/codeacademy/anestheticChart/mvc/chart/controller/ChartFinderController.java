@@ -28,6 +28,6 @@ public class ChartFinderController{
     @GetMapping("/searchResult/{chartName}")
     public String getChartsBySurnameSearchResult(Model model, @PathVariable String chartName, @PageableDefault(size = 3, sort = {"surname"}, direction = Sort.Direction.ASC)Pageable pageable) {
         model.addAttribute("chartsPage", chartService.getChartsBySurnamePageable(chartName, pageable));
-        return "anestheticCharts";
+        return "charts/anestheticCharts";
     }
 }

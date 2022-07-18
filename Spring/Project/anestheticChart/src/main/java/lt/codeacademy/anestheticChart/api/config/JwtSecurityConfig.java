@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.api.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.filter.JwtAuthenticationFilter;
+import lt.codeacademy.anestheticChart.api.service.JwtProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final ObjectMapper objectMapper;
     private final UserDetailsService userDetailsService;
+    private final JwtProvider jwtProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -53,7 +55,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // set filters
         http
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), objectMapper));
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), objectMapper, jwtProvider));
     }
 
     @Override

@@ -2,7 +2,10 @@ package lt.codeacademy.anestheticChart.api.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.codeacademy.anestheticChart.api.dto.LoginRequest;
+import lt.codeacademy.anestheticChart.api.service.JwtProvider;
+import lt.codeacademy.anestheticChart.mvc.user.dto.UserRoleDto;
 import lt.codeacademy.anestheticChart.mvc.user.service.UserService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,10 +22,12 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final ObjectMapper objectMapper;
+    private final JwtProvider jwtProvider;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, ObjectMapper objectMapper, JwtProvider jwtProvider) {
         super(authenticationManager);
         this.objectMapper = objectMapper;
+        this.jwtProvider = jwtProvider;
     }
 
     //HttpServletRequest passes request information to servlet()
@@ -45,7 +50,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        //
+        response.addHeader(HttpHeaders.AUTHORIZATION, jwtProvider.getToken((UserRoleDto) authResult.getPrincipal()));
     }
 
 }
