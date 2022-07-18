@@ -1,6 +1,7 @@
 package lt.codeacademy.anestheticChart.mvc.chart.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
@@ -10,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
+@Profile("mvc")
 @Component
 @Slf4j
 public class MyChartFilter implements Filter {

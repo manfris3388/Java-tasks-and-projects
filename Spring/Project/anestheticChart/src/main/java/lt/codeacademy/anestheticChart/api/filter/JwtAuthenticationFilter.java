@@ -5,6 +5,7 @@ import lt.codeacademy.anestheticChart.api.dto.LoginRequest;
 import lt.codeacademy.anestheticChart.api.service.JwtProvider;
 import lt.codeacademy.anestheticChart.mvc.user.dto.UserRoleDto;
 import lt.codeacademy.anestheticChart.mvc.user.service.UserService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Profile("rest")
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final ObjectMapper objectMapper;

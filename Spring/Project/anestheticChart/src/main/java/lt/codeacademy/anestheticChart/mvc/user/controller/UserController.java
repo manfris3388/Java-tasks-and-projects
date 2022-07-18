@@ -1,4 +1,4 @@
-package lt.codeacademy.anestheticChart.mvc.chart.mapper.controller;
+package lt.codeacademy.anestheticChart.mvc.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.mvc.ChartEndPoints;
