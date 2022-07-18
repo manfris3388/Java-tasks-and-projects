@@ -1,10 +1,7 @@
 package lt.codeacademy.anestheticChart.api.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.LoginRequest;
-import lt.codeacademy.anestheticChart.jpa.entity.user_mvc.User;
 import lt.codeacademy.anestheticChart.mvc.user.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

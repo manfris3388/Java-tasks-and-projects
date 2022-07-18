@@ -11,7 +11,6 @@ public class UserDto {
     private String surname;
     private String email;
     private String password;
-    private String repeatedPassword;
     private String zipCode;
     private String phoneNumber;
 

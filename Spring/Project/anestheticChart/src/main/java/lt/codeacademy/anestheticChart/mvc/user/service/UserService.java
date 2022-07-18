@@ -23,7 +23,6 @@ public class UserService implements UserDetailsService {
             .name(userDto.getName())
             .surname(userDto.getSurname())
             .password(userDto.getPassword())
-            .repeatedPassword(userDto.getRepeatedPassword()) // FIXME: do not save as plain text, for security reason!!!!
             .phoneNumber(userDto.getPhoneNumber())
             .zipCode(userDto.getZipCode())
             .build());

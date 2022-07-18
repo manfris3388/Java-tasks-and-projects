@@ -20,7 +20,6 @@ public class UserRoleMapper {
                         .name(userEntity.getName())
                         .surname(userEntity.getSurname())
                         .password(userEntity.getPassword())
-                        .repeatedPassword(userEntity.getRepeatedPassword())
                         .phoneNumber(userEntity.getPhoneNumber())
                         .zipCode(userEntity.getZipCode())
                         .build())
