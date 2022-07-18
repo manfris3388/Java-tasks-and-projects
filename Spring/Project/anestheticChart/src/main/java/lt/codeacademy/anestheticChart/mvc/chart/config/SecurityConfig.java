@@ -52,25 +52,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .permissionsPolicy();
   }
 
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-    web.ignoring()
-        .requestMatchers(
-            PathRequest.toStaticResources()
-                .atCommonLocations()); // PathRequest.toH2Console() jei turim H2 ir nenorim
-                                       // ivedineti slaptazodzio
-  }
+//  @Override
+//  public void configure(WebSecurity web) throws Exception {
+//    web.ignoring()
+//        .requestMatchers(
+//            PathRequest.toStaticResources()
+//                .atCommonLocations()); // PathRequest.toH2Console() jei turim H2 ir nenorim
+//                                       // ivedineti slaptazodzio
+//  }
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
+            .userDetailsService(userDetailsService);
+//            .passwordEncoder(passwordEncoder());
   }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-//    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-  }
+//  @Bean
+//  public PasswordEncoder passwordEncoder() {
+//    return new BCryptPasswordEncoder();
+////    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//  }
 }
