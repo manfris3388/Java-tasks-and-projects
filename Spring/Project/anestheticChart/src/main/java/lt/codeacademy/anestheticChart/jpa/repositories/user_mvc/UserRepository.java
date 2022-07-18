@@ -1,6 +1,6 @@
 package lt.codeacademy.anestheticChart.jpa.repositories.user_mvc;
 
-import lt.codeacademy.anestheticChart.jpa.entity.user_mvc.User;
+import lt.codeacademy.anestheticChart.jpa.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

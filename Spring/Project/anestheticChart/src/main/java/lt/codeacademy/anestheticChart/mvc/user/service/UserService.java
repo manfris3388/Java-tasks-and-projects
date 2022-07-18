@@ -2,7 +2,7 @@ package lt.codeacademy.anestheticChart.mvc.user.service;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.mvc.user.dto.UserDto;
-import lt.codeacademy.anestheticChart.jpa.entity.user_mvc.User;
+import lt.codeacademy.anestheticChart.jpa.entity.user.User;
 import lt.codeacademy.anestheticChart.mvc.user.mapper.UserRoleMapper;
 import lt.codeacademy.anestheticChart.jpa.repositories.user_mvc.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
