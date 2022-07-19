@@ -57,7 +57,7 @@ public class ChartController implements ChartEndPoints {
     //gets anesthetic chart data from db using UUID and fills anesthetic chart template with it
     @GetMapping(UPDATE_ROOT_PATH)
     public String getChartUpdateWindow(Model model, @RequestParam UUID uuid){
-        model.addAttribute("chart", chartService.getFullChartByUUID(uuid));
+        model.addAttribute("fullChartDTO", chartService.getFullChartByUUID(uuid));
         return "charts/anestheticChart";
     }
 

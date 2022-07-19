@@ -6,139 +6,133 @@
 <div th:replace="fragements/layout::navbar">Cia yra navbar (menu)</div>
 <div class="container">
     <h1 th:text="#{chart.create}"></h1><br><br>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    <form method="post" th:object="${fullChartDTO}" th:action="@{${chartPath}}">
-        <div class="mb-3">
-            <ul class="error-block" th:if="${#fields.hasErrors()}">
-                <li th:each="error: ${#fields.errors()}" th:text="${error}"></li>
-            </ul>
-        </div>
-        <div>
-            <h3> Patient details</h3><br>
-            <input type="hidden" th:field="*{uuid}">
-
+        <form method="post" th:object="${fullChartDTO}" th:action="@{${chartPath}}">
             <div class="mb-3">
-                <label th:text="#{chart.name}"></label>
-                <input class="form-control" type="text" placeholder="" th:field="*{name}" th:errorclass="hasError">
-                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="hasError"></span><br>
+                <ul class="error-block" th:if="${#fields.hasErrors()}">
+                    <li th:each="error: ${#fields.errors()}" th:text="${error}"></li>
+                </ul>
+            </div>
+            <div>
+                <h3> Patient details</h3><br>
+                <input type="hidden" th:field="*{uuid}">
+
+                <div class="mb-3">
+                    <label th:text="#{chart.name}"></label>
+                    <input class="form-control" type="text" placeholder="" th:field="*{name}" th:errorclass="hasError">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="hasError"></span><br>
+                </div>
+
+                <div>
+                    <label th:text="#{chart.surname}">Surname</label>
+                    <input class="form-control" type="text" placeholder="" th:field="*{surname}"
+                           th:errorclass="hasError">
+                    <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"
+                          th:errorclass="hasError"></span><br>
+                </div>
+
+                <div>
+                    <label th:text="#{chart.hospitalNumber}"></label>
+                    <input class="form-control" type="text" placeholder="D123456" th:field="*{hospitalNumber}"
+                           th:errorclass="hasError">
+                    <span th:if="${#fields.hasErrors('hospitalNumber')}" th:errors="*{hospitalNumber}"
+                          th:errorclass="hasError"></span><br>
+                </div>
+
+                <div>
+                    <label th:text="#{chart.dob}"></label>
+                    <input class="form-control" type="text" th:placeholder="#{placeholder.dob}" th:field="*{dob}"
+                           th:errorclass="hasError">
+                    <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" th:errorclass="hasError"></span><br>
+                </div>
+
+                <div>
+                    <label th:text="#{chart.operation}"></label>
+                    <input class="form-control" type="text" placeholder="" th:field="*{operation}"
+                           th:errorclass="hasError">
+                    <span th:if="${#fields.hasErrors('operation')}" th:errors="*{operation}"
+                          th:errorclass="hasError"></span><br>
+                </div>
+            </div>
+            <div>
+                <h3 th:text="#{chart.evaluation.clinical}"></h3><br>
+
+                <label th:text="#{chart.pmh}"></label>
+                <textarea class="form-control" placeholder="" name="PMH" th:field="*{pmh}"></textarea><br>
+
+                <label th:text="#{chart.dh}"></label>
+                <textarea class="form-control" placeholder="" name="DH" th:field="*{dh}"></textarea><br>
+
+                <label th:text="#{chart.assessment.airway}"></label>
+                <textarea class="form-control" placeholder="" name="AirwayAssessment"
+                          th:field="*{airwayAssessment}"></textarea><br>
+
+                <label th:text="#{chart.assessment.anesthetic}"></label>
+                <textarea class="form-control" placeholder="" name="AnestheticAssessment"
+                          th:field="*{anestheticAssessment}"></textarea><br>
             </div>
 
             <div>
-                <label th:text="#{chart.surname}">Surname</label>
-                <input class="form-control" type="text" placeholder="" th:field="*{surname}" th:errorclass="hasError">
-                <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" th:errorclass="hasError"></span><br>
+                <h3 th:text="#{chart.param.vital}"></h3><br>
+
+                <label th:text="#{chart.param.vital.sats}"></label>
+                <input class="form-control" type="number" name="Sats" th:field="*{sats}"><br>
+
+                <label th:text="#{chart.param.vital.rr}"></label>
+                <input class="form-control" type="number" name="RR" th:field="*{rr}"><br>
+
+                <label th:text="#{chart.param.vital.hr}"></label>
+                <input class="form-control" type="number" name="HR" th:field="*{hr}"><br>
+
+                <label th:text="#{chart.param.vital.bp}"></label>
+                <input class="form-control" type="number" name="SBP" th:field="*{sbp}">
+                <span>/</span>
+                <input class="form-control" type="number" name="DBP" th:field="*{dbp}"><br>
+
+                <label th:text="#{chart.param.vital.other}"></label>
+                <textarea class="form-control" name="OtherVitals" th:field="*{otherVitals}"></textarea><br>
             </div>
 
             <div>
-                <label th:text="#{chart.hospitalNumber}"></label>
-                <input class="form-control" type="text" placeholder="D123456" th:field="*{hospitalNumber}" th:errorclass="hasError">
-                <span th:if="${#fields.hasErrors('hospitalNumber')}" th:errors="*{hospitalNumber}" th:errorclass="hasError"></span><br>
+                <h3 th:text="#{chart.param.lab}"></h3><br>
+
+                <label th:text="#{chart.param.lab.sodium}"></label>
+                <input class="form-control" type="number" name="Na" th:field="*{na}"><br>
+
+                <label th:text="#{chart.param.lab.potasium}"></label>
+                <input class="form-control" type="text" name="K" th:field="*{k}"><br>
+
+                <label th:text="#{chart.param.lab.urea}"></label>
+                <input class="form-control" type="text" name="Urea" th:field="*{urea}"><br>
+
+                <label th:text="#{chart.param.lab.creatinine}"></label>
+                <input class="form-control" type="number" name="Cr" th:field="*{cr}"><br>
+
+                <label th:text="#{chart.param.lab.other}"></label>
+                <textarea class="form-control" name="OtherLabRes" th:field="*{otherLabRes}"></textarea><br>
             </div>
 
             <div>
-                <label th:text="#{chart.dob}"></label>
-                <input class="form-control" type="text" th:placeholder="#{placeholder.dob}" th:field="*{dob}" th:errorclass="hasError">
-                <span th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}" th:errorclass="hasError"></span><br>
+                <h3 th:text="#{chart.param.other}"></h3><br>
+
+                <label th:text="#{chart.param.other.ECG}"></label>
+                <textarea class="form-control" name="ECG" th:field="*{ecg}"></textarea><br>
+
+                <label th:text="#{chart.param.other.imaging}"></label>
+                <textarea class="form-control" name="OtherIMG" th:field="*{otherIMG}"></textarea><br>
             </div>
 
             <div>
-                <label th:text="#{chart.operation}"></label>
-                <input class="form-control" type="text" placeholder="" th:field="*{operation}" th:errorclass="hasError">
-                <span th:if="${#fields.hasErrors('operation')}" th:errors="*{operation}" th:errorclass="hasError"></span><br>
+                <h3 th:text="#{chart.plan.preoperative}"></h3><br>
+
+                <label th:text="#{chart.plan.preoperative.anesthetic}"></label>
+                <textarea class="form-control" name="AnestheticPlan" th:field="*{anestheticPlan}"></textarea><br>
+
+                <label th:text="#{chart.plan.preoperative.furtherInvestigationAndManagement}"></label>
+                <textarea class="form-control" name="AnestheticWorkup" th:field="*{anestheticWorkup}"></textarea><br>
             </div>
-        </div>
-        <div>
-            <h3 th:text="#{chart.evaluation.clinical}"></h3><br>
-
-            <label th:text="#{chart.pmh}"></label>
-            <textarea class="form-control" placeholder="" name="PMH" th:field="*{pmh}"></textarea><br>
-
-            <label th:text="#{chart.dh}"></label>
-            <textarea class="form-control" placeholder="" name="DH" th:field="*{dh}"></textarea><br>
-
-            <label th:text="#{chart.assessment.airway}"></label>
-            <textarea class="form-control" placeholder="" name="AirwayAssessment" th:field="*{airwayAssessment}"></textarea><br>
-
-            <label th:text="#{chart.assessment.anesthetic}"></label>
-            <textarea class="form-control" placeholder="" name="AnestheticAssessment"
-                      th:field="*{anestheticAssessment}"></textarea><br>
-        </div>
-
-        <div>
-            <h3 th:text="#{chart.param.vital}"></h3><br>
-
-            <label th:text="#{chart.param.vital.sats}"></label>
-            <input class="form-control" type="number" name="Sats" th:field="*{sats}"><br>
-
-            <label th:text="#{chart.param.vital.rr}"></label>
-            <input class="form-control" type="number" name="RR" th:field="*{rr}"><br>
-
-            <label th:text="#{chart.param.vital.hr}"></label>
-            <input class="form-control" type="number" name="HR" th:field="*{hr}"><br>
-
-            <label th:text="#{chart.param.vital.bp}"></label>
-            <input class="form-control" type="number" name="SBP" th:field="*{sbp}">
-            <span>/</span>
-            <input class="form-control" type="number" name="DBP" th:field="*{dbp}"><br>
-
-            <label th:text="#{chart.param.vital.other}"></label>
-            <textarea class="form-control" name="OtherVitals" th:field="*{otherVitals}"></textarea><br>
-        </div>
-
-        <div>
-            <h3 th:text="#{chart.param.lab}"></h3><br>
-
-            <label th:text="#{chart.param.lab.sodium}"></label>
-            <input class="form-control" type="number" name="Na" th:field="*{na}"><br>
-
-            <label th:text="#{chart.param.lab.potasium}"></label>
-            <input class="form-control" type="text" name="K" th:field="*{k}"><br>
-
-            <label th:text="#{chart.param.lab.urea}"></label>
-            <input class="form-control" type="text" name="Urea" th:field="*{urea}"><br>
-
-            <label th:text="#{chart.param.lab.creatinine}"></label>
-            <input class="form-control" type="number" name="Cr" th:field="*{cr}"><br>
-
-            <label th:text="#{chart.param.lab.other}"></label>
-            <textarea class="form-control" name="OtherLabRes" th:field="*{otherLabRes}"></textarea><br>
-        </div>
-
-        <div>
-            <h3 th:text="#{chart.param.other}"></h3><br>
-
-            <label th:text="#{chart.param.other.ECG}"></label>
-            <textarea class="form-control" name="ECG" th:field="*{ecg}"></textarea><br>
-
-            <label th:text="#{chart.param.other.imaging}"></label>
-            <textarea class="form-control" name="OtherIMG" th:field="*{otherIMG}"></textarea><br>
-        </div>
-
-        <div>
-            <h3 th:text="#{chart.plan.preoperative}"></h3><br>
-
-            <label th:text="#{chart.plan.preoperative.anesthetic}"></label>
-            <textarea class="form-control" name="AnestheticPlan" th:field="*{anestheticPlan}"></textarea><br>
-
-            <label th:text="#{chart.plan.preoperative.furtherInvestigationAndManagement}"></label>
-            <textarea class="form-control" name="AnestheticWorkup" th:field="*{anestheticWorkup}"></textarea><br>
-        </div>
-        <div th:text="${message}"></div>
-        <button class="btn btn-primary" type="submit" th:text="#{chart.submit}"></button>
-    </form>
+            <div th:text="${message}"></div>
+            <button class="btn btn-primary" type="submit" th:text="#{chart.submit}"></button>
+        </form>
 </div>
 <div th:replace="fragements/layout::footer"></div>
 </body>
