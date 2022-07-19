@@ -1,15 +1,19 @@
 package lt.codeacademy.anestheticChart.api.service;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lt.codeacademy.anestheticChart.mvc.user.dto.UserRoleDto;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -40,9 +44,21 @@ public class JwtProvider {
         .compact();
   }
 
-  public Authentication parseToken(String replace) {
+  public Authentication parseToken(String token) {
+    // validate token by secret key and get JWT payload as Claims
+    Claims parsedJwtBody = Jwts.parserBuilder()
+            .setSigningKey(secretKey)
+            .build()
+            .parseClaimsJws(token)
+            .getBody();
 
-    return null;// new UsernamePasswordAuthenticationToken(username, null, roles)
+
+    String username = parsedJwtBody.getSubject();
+    List<GrantedAuthority> authorities = ((List<String>) parsedJwtBody.get("roles")).stream()
+            .map(SimpleGrantedAuthority::new)
+            .collect(Collectors.toList());
+
+    return new UsernamePasswordAuthenticationToken(username, null, authorities);
 
   }
 }
