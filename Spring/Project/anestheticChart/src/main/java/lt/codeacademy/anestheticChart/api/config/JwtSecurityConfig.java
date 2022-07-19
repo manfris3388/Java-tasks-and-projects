@@ -3,6 +3,7 @@ package lt.codeacademy.anestheticChart.api.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.filter.JwtAuthenticationFilter;
+import lt.codeacademy.anestheticChart.api.filter.JwtAuthorizationFilter;
 import lt.codeacademy.anestheticChart.api.service.JwtProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Profile("rest")
@@ -58,7 +60,8 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // set filters
         http
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), objectMapper, jwtProvider));
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), objectMapper, jwtProvider))
+                .addFilterBefore(new JwtAuthorizationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

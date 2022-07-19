@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
 import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
