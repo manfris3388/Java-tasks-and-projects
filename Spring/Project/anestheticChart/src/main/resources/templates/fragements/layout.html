@@ -23,16 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{${pagePath}}" th:text="#{chart.title}"></a>
+                    <a class="nav-link" th:href="@{${pagePath}}" th:text="#{chart.title}"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{${chartPath}}" th:text="#{chart.create}"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{${registerPath}}" th:text="#{user.create}"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             <select id="languageSelector">
