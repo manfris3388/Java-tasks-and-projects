@@ -18,6 +18,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static lt.codeacademy.anestheticChart.mvc.ChartEndPoints.LOGIN_ROOT_PATH;
+import static lt.codeacademy.anestheticChart.mvc.ChartEndPoints.REGISTER_ROOT_PATH;
+
 @Profile("mvc")
 @Configuration
 @RequiredArgsConstructor
@@ -29,10 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
             .csrf()
-                .ignoringAntMatchers("/", "/login-chart")
+                .ignoringAntMatchers("/", LOGIN_ROOT_PATH, REGISTER_ROOT_PATH)
                 .and()
             .authorizeRequests()
-                .antMatchers("/")
+                .antMatchers("/", LOGIN_ROOT_PATH, REGISTER_ROOT_PATH)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
