@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           Learn React
         </a>
         <h1>Hello World</h1>
+        <hr/>
+        <Product/>
       </header>
     </div>
   );
