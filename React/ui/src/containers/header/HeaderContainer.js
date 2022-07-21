@@ -4,7 +4,7 @@ import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from '
 const HeaderContainer = () =>
     <Navbar bg="light" expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#">E-Shop</Navbar.Brand>
+            <Navbar.Brand href="#">Anesthetic Chart</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav
@@ -12,7 +12,7 @@ const HeaderContainer = () =>
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link href="#action2">Products</Nav.Link>
+                    <Nav.Link href="#action2">Charts</Nav.Link>
                     <Nav.Link href="#" disabled>
                         Users
                     </Nav.Link>
