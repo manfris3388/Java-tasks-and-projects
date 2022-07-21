@@ -21,8 +21,6 @@ import java.util.stream.Collectors;
 @Component
 public class JwtProvider {
 
-  private static final Date NOW = new Date();
-
   @Value("#{${security.jwt.validity-time} * 60 * 1000}")
   private long tokenValidityInMillis;
 
@@ -36,13 +34,14 @@ public class JwtProvider {
   }
 
   public String getToken(UserRoleDto principal) {
+    final Date now = new Date();
     return Jwts.builder()
         .setHeaderParam("typ", "JWT")
         .setIssuer("anestheticChart-api")
         .setAudience("anestheticChart-ui")
         .setSubject(principal.getUsername())
-        .setIssuedAt(NOW)
-        .setExpiration(new Date(NOW.getTime() + tokenValidityInMillis))
+        .setIssuedAt(now)
+        .setExpiration(new Date(now.getTime() + tokenValidityInMillis))
         .claim(
             "roles",
             principal.getAuthorities().stream()
@@ -68,5 +67,8 @@ public class JwtProvider {
 
     return new UsernamePasswordAuthenticationToken(username, null, authorities);
 
+  }
+  public Long getExpiresInSeconds() {
+    return tokenValidityInMillis / 1000;
   }
 }
