@@ -2,6 +2,7 @@ package lt.codeacademy.anestheticChart.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.ChartsResponse;
+import lt.codeacademy.anestheticChart.commons.swagger.OpenApi;
 import lt.codeacademy.anestheticChart.mvc.chart.dto.FullChartDTO;
 import lt.codeacademy.anestheticChart.mvc.chart.service.ChartService;
 import org.springframework.context.annotation.Profile;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Profile("rest")
 @RestController
 @RequiredArgsConstructor
+@OpenApi
 public class ChartApiController implements ChartApiSpecs {
 
   private final ChartService chartService;

@@ -1,5 +1,6 @@
 package lt.codeacademy.anestheticChart.api.config;
 
+import lt.codeacademy.anestheticChart.commons.swagger.OpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,7 +19,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(getInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("lt.codeacademy.anestheticChart.api"))
+                .apis(RequestHandlerSelectors.withClassAnnotation(OpenApi.class))
                 .build();
     }
 

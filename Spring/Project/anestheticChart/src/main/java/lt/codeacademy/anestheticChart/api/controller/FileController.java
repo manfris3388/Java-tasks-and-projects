@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import lt.codeacademy.anestheticChart.api.dto.FileResponse;
 import lt.codeacademy.anestheticChart.api.service.FileService;
+import lt.codeacademy.anestheticChart.commons.swagger.OpenApi;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @RestController
 @Api(tags = "File Management")
+@OpenApi
 public class FileController {
     private static final String FILE_ROOT_PATH = "api/file";
     private static final String FILE_UPLOAD_PATH = FILE_ROOT_PATH + "/upload";
