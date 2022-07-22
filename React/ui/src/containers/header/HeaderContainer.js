@@ -1,10 +1,20 @@
-import {Button, Container, Form, FormControl, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {
+    Button,
+    Container,
+    Form,
+    FormControl,
+    Nav,
+    Navbar,
+    NavDropdown,
+} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-const HeaderContainer = () =>
+const HeaderContainer = () => (
     <Navbar bg="light" expand="lg">
         <Container fluid>
-            <Navbar.Brand to="/" as={ NavLink }>Anesthetic Chart</Navbar.Brand>
+            <Navbar.Brand to="/" as={NavLink}>
+                Anesthetic Chart
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav
@@ -12,8 +22,12 @@ const HeaderContainer = () =>
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link to="/charts" as={ NavLink }>Charts</Nav.Link>
-                    <Nav.Link to="/charts/create" as={ NavLink }>New Chart</Nav.Link>
+                    <Nav.Link to="/charts" as={NavLink}>
+                        Charts
+                    </Nav.Link>
+                    <Nav.Link to="/charts/create" as={NavLink}>
+                        New Chart
+                    </Nav.Link>
                     <Nav.Link href="#" disabled>
                         Users
                     </Nav.Link>
@@ -36,6 +50,7 @@ const HeaderContainer = () =>
                 </Nav.Link>
             </Navbar.Collapse>
         </Container>
-    </Navbar>;
+    </Navbar>
+);
 
 export default HeaderContainer;
