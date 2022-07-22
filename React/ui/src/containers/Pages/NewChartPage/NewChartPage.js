@@ -1,3 +1,5 @@
-const NewProductPage = () => <h1>This is New Product Page</h1>
+import Chart from '../../../components/Chart';
 
-export default NewProductPage;
+const NewChartPage = () => <Chart />;
+
+export default NewChartPage;
