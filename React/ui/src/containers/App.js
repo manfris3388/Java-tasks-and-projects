@@ -1,9 +1,10 @@
 import HeaderContainer from './header/HeaderContainer';
 import FooterContainer from './footer/FooterContainer';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
 import NewChartPage from './Pages/NewChartPage/NewChartPage';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 import ChartPage from './Pages/ChartPage/ChartPage';
 
 function App() {
