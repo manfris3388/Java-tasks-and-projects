@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import {Button, Container, Form} from "react-bootstrap";
-import FormTemplate from "../../../components/FormTemplate/FormTemplate";
+import { Button, Container, Form } from 'react-bootstrap';
+import FormTemplate from '../../../components/FormTemplate/FormTemplate';
 
 const NewChartPage = () => {
     const [chart, setChart] = useState({
@@ -20,23 +20,24 @@ const NewChartPage = () => {
         });
     };
 
-     const createChartInfo = () => {
-         const {name, surname, hospitalNumber, dob, operation} = chart;
-         return visible &&
-         <>
-             <hr/>
-             <div>
-                 Sukurtas anestezijos lapas:
-                 <div>{name}</div>
-                 <div>{surname}</div>
-                 <div>{hospitalNumber}</div>
-                 <div>{dob}</div>
-                 <div>{operation}</div>
-             </div>
-         </>
-     }
-
-
+    const createChartInfo = () => {
+        const { name, surname, hospitalNumber, dob, operation } = chart;
+        return (
+            visible && (
+                <>
+                    <hr />
+                    <div>
+                        Sukurtas anestezijos lapas:
+                        <div>{name}</div>
+                        <div>{surname}</div>
+                        <div>{hospitalNumber}</div>
+                        <div>{dob}</div>
+                        <div>{operation}</div>
+                    </div>
+                </>
+            )
+        );
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -61,28 +62,28 @@ const NewChartPage = () => {
                     name="surname"
                     labelText="Patient's surname"
                 />
-                 <FormTemplate
+                <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
                     placeholderText="Write hospital number"
                     name="hospitalNumber"
                     labelText="Patient's hospital number"
                 />
-                 <FormTemplate
+                <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
                     placeholderText="Write date of birth"
                     name="dob"
                     labelText="Patient's date of birth"
                 />
-                 <FormTemplate
+                <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
                     placeholderText="Write operation"
                     name="operation"
                     labelText="Patient's operation"
                 />
-                <Button variant='primary' type='submit'>
+                <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
