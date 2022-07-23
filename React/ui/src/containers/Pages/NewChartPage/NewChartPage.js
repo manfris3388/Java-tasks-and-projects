@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {Button, Container, Form} from "react-bootstrap";
 
 const NewChartPage = () => {
     const [chart, setChart] = useState({
@@ -23,59 +24,48 @@ const NewChartPage = () => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <label htmlFor="name">Name:</label>
-                <input
-                    name="name"
-                    id="name"
-                    value={chart.name}
-                    onChange={handleChange}
-                />
-            </div>
+        <Container>
+            <Form onSubmit={onSubmit}>
+                <Form.Group className='mb-3' controlId='name'>
+                    <Form.Label>Patient's name</Form.Label>
+                    <Form.Control placeholder='Write name'
+                                  name="name"
+                                  onChange={handleChange} />
+                </Form.Group>
 
-            <div>
-                <label htmlFor="surname">Surname:</label>
-                <input
-                    name="surname"
-                    id="surname"
-                    value={chart.surname}
-                    onChange={handleChange}
-                />
-            </div>
+                <Form.Group className='mb-3' controlId='surname'>
+                    <Form.Label>Patient's surname</Form.Label>
+                    <Form.Control placeholder='Write surname'
+                                  name="surname"
+                                  onChange={handleChange} />
+                </Form.Group>
 
-            <div>
-                <label htmlFor="hospitalNumber">Hospital Number:</label>
-                <input
-                    name="hospitalNumber"
-                    id="hospitalNumber"
-                    value={chart.hospitalNumber}
-                    onChange={handleChange}
-                />
-            </div>
+                <Form.Group className='mb-3' controlId='hospitalNumber'>
+                    <Form.Label>Hospital number</Form.Label>
+                    <Form.Control placeholder='Write hospital number'
+                                  name="hospitalNumber"
+                                  onChange={handleChange} />
+                </Form.Group>
 
-            <div>
-                <label htmlFor="dob">Date of Birth:</label>
-                <textarea
-                    name="dob"
-                    id="dob"
-                    value={chart.dob}
-                    onChange={handleChange}
-                />
-            </div>
+                <Form.Group className='mb-3' controlId='dob'>
+                    <Form.Label>Date of birth</Form.Label>
+                    <Form.Control placeholder='Write date of birth'
+                                  name="dob"
+                                  onChange={handleChange} />
+                </Form.Group>
 
-            <div>
-                <label htmlFor="operation">Operation:</label>
-                <textarea
-                    name="operation"
-                    id="operation"
-                    value={chart.operation}
-                    onChange={handleChange}
-                />
-            </div>
+                <Form.Group className='mb-3' controlId='operation'>
+                    <Form.Label>Operation</Form.Label>
+                    <Form.Control placeholder='Write the type of operation'
+                                  name="operation"
+                                  onChange={handleChange} />
+                </Form.Group>
 
-            <button type="submit">Submit</button>
-        </form>
+                <Button variant='primary' type='submit'>
+                    Submit
+                </Button>
+            </Form>
+        </Container>
     );
 };
 
