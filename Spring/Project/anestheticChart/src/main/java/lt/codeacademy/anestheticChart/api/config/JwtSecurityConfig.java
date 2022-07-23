@@ -20,14 +20,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static lt.codeacademy.anestheticChart.api.controller.ChartApiSpecs.CHARTS_ROOT_PATH;
+
 
 @Profile("rest")
 @RequiredArgsConstructor
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    private final ObjectMapper objectMapper;
     private final UserDetailsService userDetailsService;
     private final JwtProvider jwtProvider;
 
@@ -52,7 +52,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         // set authorization request access
         http = http
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/login", CHARTS_ROOT_PATH).permitAll()
                 .antMatchers(
                         "/swagger-ui/**",
                         "/swagger-resources/**",
