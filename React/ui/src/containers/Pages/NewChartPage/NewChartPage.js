@@ -11,6 +11,8 @@ const NewChartPage = () => {
         operation: '',
     });
 
+    const [visible, setVisible] = useState(false);
+
     const handleChange = (e) => {
         setChart({
             ...chart,
@@ -20,8 +22,8 @@ const NewChartPage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         console.log(chart);
+        setVisible(true);
     };
 
     return (
@@ -62,17 +64,23 @@ const NewChartPage = () => {
                     name="operation"
                     labelText="Patient's operation"
                 />
-                 <FormTemplate
-                    className="mb-3"
-                    onChange={handleChange}
-                    placeholderText="Write operation"
-                    name="operation"
-                    labelText="Patient's operation"
-                />
                 <Button variant='primary' type='submit'>
                     Submit
                 </Button>
             </Form>
+            { visible &&
+                <>
+                    <hr/>
+                    <div>
+                        Sukurtas anestezijos lapas:
+                        <div>{chart.name}</div>
+                        <div>{chart.surname}</div>
+                        <div>{chart.hospitalNumber}</div>
+                        <div>{chart.dob}</div>
+                        <div>{chart.operation}</div>
+                    </div>
+                </>
+            }
         </Container>
     );
 };
