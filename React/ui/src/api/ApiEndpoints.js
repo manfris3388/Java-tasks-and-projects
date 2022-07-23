@@ -1,9 +1,7 @@
 import HTTP from './AxiosConfig';
 
-const getChartsApi = () => HTTP.get('/charts');
-
-const createProductApi = (productData) =>
-    HTTP.post('/charts', productData)
+const getChartsApi = (chartData) =>
+    HTTP.get('/charts', chartData)
         .finally(response =>
             new Promise((resolve, reject) => {
                 setTimeout(() => {
@@ -11,5 +9,7 @@ const createProductApi = (productData) =>
                 }, 3000);
             })
         );
+
+const postChartsApi = () => HTTP.post('/charts');
 
 export {getChartsApi}

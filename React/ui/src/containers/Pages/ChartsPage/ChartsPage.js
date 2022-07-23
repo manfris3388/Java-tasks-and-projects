@@ -1,7 +1,7 @@
 
 import {useEffect, useState} from 'react';
-import {getChartsApi} from "../../../api/ApiEndpoints";
 import {Card, Col, Container, Row, Spinner} from 'react-bootstrap';
+import {getChartsApi} from "../../../api/ApiEndpoints";
 
 const ChartsPage = () => {
 
