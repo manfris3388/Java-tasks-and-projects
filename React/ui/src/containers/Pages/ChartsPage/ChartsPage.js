@@ -1,11 +1,12 @@
 
 import {useEffect, useState} from 'react';
 import {getChartsApi} from "../../../api/ApiEndpoints";
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import {Card, Col, Container, Row, Spinner} from 'react-bootstrap';
 
 const ChartsPage = () => {
 
     const [chartFields, setChartFields] = useState([])
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getChartsApi()
@@ -13,13 +14,16 @@ const ChartsPage = () => {
                 setChartFields(data.charts)
             })
             .catch((error) => console.log('error', error))
+            .finally(() => setLoading(false));
     },[])
 
     return (
         <Container fluid>
             <h1 className={"text-center"}>Charts list</h1>
             <Row xs={1} md={2} className="g-4">
-                {chartFields.map(chart => (
+                {loading
+                    ? <Spinner className="text-center" animation='border' />:
+                chartFields.map(chart => (
                     <Col key={chart.chartId}>
                         <Card>
                             <Card.Header>
