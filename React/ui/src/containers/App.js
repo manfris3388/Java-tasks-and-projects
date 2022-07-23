@@ -1,22 +1,15 @@
 import HeaderContainer from './header/HeaderContainer';
 import FooterContainer from './footer/FooterContainer';
 import './App.css';
-import HomePage from './Pages/HomePage/HomePage';
-import NewChartPage from './Pages/NewChartPage/NewChartPage';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Routes } from 'react-router-dom';
-import ChartPage from './Pages/ChartPage/ChartPage';
+import { BrowserRouter } from 'react-router-dom';
+import Pages from './Pages';
 
 function App() {
     return (
         <BrowserRouter>
             <div className="mainApp">
                 <HeaderContainer />
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/charts/create" element={<NewChartPage />} />
-                    <Route path="/charts/:chartId" element={<ChartPage />} />
-                </Routes>
+                <Pages />
                 <FooterContainer />
             </div>
         </BrowserRouter>
