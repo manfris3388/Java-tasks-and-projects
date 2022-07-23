@@ -20,18 +20,21 @@ const NewChartPage = () => {
         });
     };
 
-    const createChartInfo = visible &&
-        <>
-            <hr/>
-            <div>
-                Sukurtas anestezijos lapas:
-                <div>{chart.name}</div>
-                <div>{chart.surname}</div>
-                <div>{chart.hospitalNumber}</div>
-                <div>{chart.dob}</div>
-                <div>{chart.operation}</div>
-            </div>
-        </>
+     const createChartInfo = () => {
+         const {name, surname, hospitalNumber, dob, operation} = chart;
+         return visible &&
+         <>
+             <hr/>
+             <div>
+                 Sukurtas anestezijos lapas:
+                 <div>{name}</div>
+                 <div>{surname}</div>
+                 <div>{hospitalNumber}</div>
+                 <div>{dob}</div>
+                 <div>{operation}</div>
+             </div>
+         </>
+     }
 
 
 
@@ -83,7 +86,7 @@ const NewChartPage = () => {
                     Submit
                 </Button>
             </Form>
-            {createChartInfo}
+            {createChartInfo()}
         </Container>
     );
 };
