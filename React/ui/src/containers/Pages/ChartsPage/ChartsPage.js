@@ -14,7 +14,7 @@ const ChartsPage = () => {
                 setChartFields(data.charts)
             })
             .catch((error) => console.log('error', error))
-    })
+    },[])
 
     return (
         <Container fluid>
