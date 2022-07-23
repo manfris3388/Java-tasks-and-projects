@@ -1,5 +1,7 @@
-import HTTP from "./AxiosConfig";
+import HTTP from './AxiosConfig';
 
-const getCharts = () => HTTP.get("/charts")
+const getChartsApi = () => HTTP.get('/charts');
 
-const createProduct = (productData) => HTTP.post("/charts", productData)
+const createProductApi = (productData) => HTTP.post('/charts', productData);
+
+export {getChartsApi}
