@@ -1,16 +1,17 @@
 import { useState } from 'react';
 
 const Chart = () => {
-    const [product, setProduct] = useState({
+    const [chart, setChart] = useState({
         name: '',
-        quantity: '',
-        price: '',
-        description: '',
+        surname: '',
+        hospitalNumber: '',
+        dob: '',
+        operation: '',
     });
 
     const handleChange = (e) => {
-        setProduct({
-            ...product,
+        setChart({
+            ...chart,
             [e.target.name]: e.target.value,
         });
     };
@@ -18,7 +19,7 @@ const Chart = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(product);
+        console.log(chart);
     };
 
     return (
@@ -28,37 +29,47 @@ const Chart = () => {
                 <input
                     name="name"
                     id="name"
-                    value={product.name}
+                    value={chart.name}
                     onChange={handleChange}
                 />
             </div>
 
             <div>
-                <label htmlFor="quantity">Quantity:</label>
+                <label htmlFor="surname">Surname:</label>
                 <input
-                    name="quantity"
-                    id="quantity"
-                    value={product.quantity}
+                    name="surname"
+                    id="surname"
+                    value={chart.surname}
                     onChange={handleChange}
                 />
             </div>
 
             <div>
-                <label htmlFor="price">Price:</label>
+                <label htmlFor="hospitalNumber">Hospital Number:</label>
                 <input
-                    name="price"
-                    id="price"
-                    value={product.price}
+                    name="hospitalNumber"
+                    id="hospitalNumber"
+                    value={chart.hospitalNumber}
                     onChange={handleChange}
                 />
             </div>
 
             <div>
-                <label htmlFor="description">Description:</label>
+                <label htmlFor="dob">Date of Birth:</label>
                 <textarea
-                    name="description"
-                    id="description"
-                    value={product.description}
+                    name="dob"
+                    id="dob"
+                    value={chart.dob}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="operation">Operation:</label>
+                <textarea
+                    name="operation"
+                    id="operation"
+                    value={chart.operation}
                     onChange={handleChange}
                 />
             </div>
