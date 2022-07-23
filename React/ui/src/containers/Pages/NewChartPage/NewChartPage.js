@@ -20,6 +20,21 @@ const NewChartPage = () => {
         });
     };
 
+    const createChartInfo = visible &&
+        <>
+            <hr/>
+            <div>
+                Sukurtas anestezijos lapas:
+                <div>{chart.name}</div>
+                <div>{chart.surname}</div>
+                <div>{chart.hospitalNumber}</div>
+                <div>{chart.dob}</div>
+                <div>{chart.operation}</div>
+            </div>
+        </>
+
+
+
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(chart);
@@ -68,19 +83,7 @@ const NewChartPage = () => {
                     Submit
                 </Button>
             </Form>
-            { visible &&
-                <>
-                    <hr/>
-                    <div>
-                        Sukurtas anestezijos lapas:
-                        <div>{chart.name}</div>
-                        <div>{chart.surname}</div>
-                        <div>{chart.hospitalNumber}</div>
-                        <div>{chart.dob}</div>
-                        <div>{chart.operation}</div>
-                    </div>
-                </>
-            }
+            {createChartInfo}
         </Container>
     );
 };
