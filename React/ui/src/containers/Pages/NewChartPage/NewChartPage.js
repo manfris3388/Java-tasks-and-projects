@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {Button, Container, Form} from "react-bootstrap";
+import FormTemplate from "../../../components/FormTemplate/FormTemplate";
 
 const NewChartPage = () => {
     const [chart, setChart] = useState({
@@ -26,41 +27,48 @@ const NewChartPage = () => {
     return (
         <Container>
             <Form onSubmit={onSubmit}>
-                <Form.Group className='mb-3' controlId='name'>
-                    <Form.Label>Patient's name</Form.Label>
-                    <Form.Control placeholder='Write name'
-                                  name="name"
-                                  onChange={handleChange} />
-                </Form.Group>
-
-                <Form.Group className='mb-3' controlId='surname'>
-                    <Form.Label>Patient's surname</Form.Label>
-                    <Form.Control placeholder='Write surname'
-                                  name="surname"
-                                  onChange={handleChange} />
-                </Form.Group>
-
-                <Form.Group className='mb-3' controlId='hospitalNumber'>
-                    <Form.Label>Hospital number</Form.Label>
-                    <Form.Control placeholder='Write hospital number'
-                                  name="hospitalNumber"
-                                  onChange={handleChange} />
-                </Form.Group>
-
-                <Form.Group className='mb-3' controlId='dob'>
-                    <Form.Label>Date of birth</Form.Label>
-                    <Form.Control placeholder='Write date of birth'
-                                  name="dob"
-                                  onChange={handleChange} />
-                </Form.Group>
-
-                <Form.Group className='mb-3' controlId='operation'>
-                    <Form.Label>Operation</Form.Label>
-                    <Form.Control placeholder='Write the type of operation'
-                                  name="operation"
-                                  onChange={handleChange} />
-                </Form.Group>
-
+                <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write name"
+                    name="name"
+                    labelText="Patient's name"
+                />
+                <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write surname"
+                    name="surname"
+                    labelText="Patient's surname"
+                />
+                 <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write hospital number"
+                    name="hospitalNumber"
+                    labelText="Patient's hospital number"
+                />
+                 <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write date of birth"
+                    name="dob"
+                    labelText="Patient's date of birth"
+                />
+                 <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write operation"
+                    name="operation"
+                    labelText="Patient's operation"
+                />
+                 <FormTemplate
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write operation"
+                    name="operation"
+                    labelText="Patient's operation"
+                />
                 <Button variant='primary' type='submit'>
                     Submit
                 </Button>
