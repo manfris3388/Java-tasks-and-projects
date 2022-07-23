@@ -10,7 +10,6 @@ const ChartsPage = () => {
     useEffect(() => {
         getChartsApi()
             .then(({data}) => {
-                console.log('response', data)
                 setChartFields(data.charts)
             })
             .catch((error) => console.log('error', error))
