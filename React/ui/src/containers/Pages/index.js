@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
 import NewChartPage from './NewChartPage/NewChartPage';
 import ChartPage from './ChartPage/ChartPage';
-import ChartsPage from "./ChartsPage/ChartsPage";
+import ChartsPage from './ChartsPage/ChartsPage';
 
 export default () => (
     <Routes>

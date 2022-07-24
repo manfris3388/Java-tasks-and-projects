@@ -1,15 +1,15 @@
 import HTTP from './AxiosConfig';
 
-const getChartsApi = (chartData) =>
-    HTTP.get('/charts', chartData)
-        .finally(response =>
+const getChartsEndpoint = (chartData) =>
+    HTTP.get('/charts', chartData).finally(
+        (response) =>
             new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(response);
-                }, 3000);
+                }, 2000);
             })
-        );
+    );
 
-const postChartsApi = () => HTTP.post('/charts');
+const postChartsEndpoint = () => HTTP.post('/charts');
 
-export {getChartsApi}
+export { getChartsEndpoint };
