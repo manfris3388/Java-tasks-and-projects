@@ -1,21 +1,19 @@
 import { Field, Form, Formik } from 'formik';
 import {Button, Container, Spinner} from 'react-bootstrap';
 import FormikFieldInputGroup from '../../../components/FormikFieldInputGroup/FormikFieldInputGroup';
+import * as Yup from 'yup';
 
+const validationSchema = Yup.object().shape({
+    email: Yup.string()
+        .min(5, 'Ilgis turi buti ne mazesnis nei 5')
+        .required()
+        //.email()
+        .matches(/^(.+)@(.+)$/, 'email neatitinka standarto'),
+    password: Yup.string()
+        .min(6, 'Slaptazodzio ilgis turi buti >= 6')
+        .required(),
+});
 const Login = () => {
-    const validate = (login) => {
-        const errors = {};
-
-        if (!login.email.includes('@')) {
-            errors.email = 'Elektroninis pastas turi tureti @!';
-        }
-        if (login.password.length < 8) {
-            errors.password = 'Slaptazodis per trumpas!';
-        }
-
-        return errors;
-    };
-
     return (
         <Formik
             initialValues={{
@@ -25,7 +23,7 @@ const Login = () => {
             onSubmit={(login, helper) => {
                 console.log('login', login);
             }}
-            validate={validate}
+            validationSchema={validationSchema}
         >
             {(props) => {
                 console.log('React formik props', props);
