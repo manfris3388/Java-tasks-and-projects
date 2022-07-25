@@ -1,7 +1,7 @@
 import HTTP from './AxiosConfig';
 
 const getChartsEndpoint = (chartData) =>
-    HTTP.get('/charts', chartData).finally(
+    HTTP.get('/api/charts', chartData).finally(
         (response) =>
             new Promise((resolve, reject) => {
                 setTimeout(() => {
@@ -10,6 +10,20 @@ const getChartsEndpoint = (chartData) =>
             })
     );
 
-const postChartsEndpoint = () => HTTP.post('/charts');
+const postChartsEndpoint = () => HTTP.post('/api/charts');
 
-export { getChartsEndpoint };
+/**
+ * i.e. loginData:
+ * {
+ *     username: string;
+ *     password: string;
+ * }
+ * @param loginData
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+const loginEndpoint = (loginData) => HTTP.post("/login", loginData)
+
+export {
+    getChartsEndpoint,
+    loginEndpoint
+};
