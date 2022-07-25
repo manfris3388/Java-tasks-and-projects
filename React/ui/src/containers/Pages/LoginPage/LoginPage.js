@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { loginEndpoint } from '../../../api/ApiEndpoints';
 import { AuthUserContext } from '../../../context/AuthUserContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -17,9 +18,9 @@ const validationSchema = Yup.object().shape({
         .required(),
 });
 
-const Login = () => {
+const LoginPage = () => {
     const { putAuthUser } = useContext(AuthUserContext);
-
+    const navigate = useNavigate();
     const postLogin = (login, helper) => {
         loginEndpoint({
             username: login.email,
@@ -27,6 +28,7 @@ const Login = () => {
         })
             .then(({ data }) => {
                 putAuthUser(data);
+                navigate('/');
             })
             .catch((error) => console.log(error))
             .finally(() => helper.setSubmitting(false));
@@ -84,4 +86,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginPage;

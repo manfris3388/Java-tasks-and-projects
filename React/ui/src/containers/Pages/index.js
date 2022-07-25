@@ -3,7 +3,7 @@ import HomePage from './HomePage/HomePage';
 import NewChartPage from './NewChartPage/NewChartPage';
 import ChartPage from './ChartPage/ChartPage';
 import ChartsPage from './ChartsPage/ChartsPage';
-import Login from './Login/Login';
+import LoginPage from './LoginPage/LoginPage';
 
 export default () => (
     <Routes>
@@ -11,6 +11,6 @@ export default () => (
         <Route path="/charts" element={<ChartsPage />} />
         <Route path="/charts/:chartId" element={<ChartPage />} />
         <Route path="/charts/create" element={<NewChartPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
     </Routes>
 );
