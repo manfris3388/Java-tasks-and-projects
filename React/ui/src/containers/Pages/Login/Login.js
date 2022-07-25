@@ -1,4 +1,5 @@
-import {Field, Form, Formik} from 'formik';
+import {ErrorMessage, Field, Form, Formik} from 'formik';
+import {Container} from "react-bootstrap";
 
 const Login = () => {
     const validate = (login) => {
@@ -8,7 +9,7 @@ const Login = () => {
             errors.email = "Elektroninis pastas turi tureti @!";
         }
         if (login.password.length < 8) {
-            errors.password = 'Slaptazodis per trumpas';
+            errors.password = 'Slaptazodis per trumpas!';
         }
 
         return errors;
@@ -28,26 +29,25 @@ const Login = () => {
             {props => {
                 console.log('React formik props', props)
 
-                return (<Form>
-                        <div>
-                            <label>Email</label>
-                            <Field name="email"/>
-                            {props.errors.email && (
-                                <span>{props.errors.email}</span>
-                            )}
-                        </div>
-                        <div>
-                            <label>Password</label>
-                            <Field name="password"/>
-                            {props.errors.password && (
-                                <span>{props.errors.password}</span>
-                            )}
-                        </div>
+                return (
+                    <Container>
+                        <Form>
+                            <div>
+                                <label>Email</label>
+                                <Field name="email"/>
+                                <ErrorMessage name='email' style={{color: 'red'}} component={'div'}/>
+                            </div>
+                            <div>
+                                <label>Password</label>
+                                <Field name="password"/>
+                                <ErrorMessage name='password' style={{color: 'red'}} component={'div'}/>
+                            </div>
 
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </Form>
+                            <div>
+                                <button type="submit">Submit</button>
+                            </div>
+                        </Form>
+                    </Container>
                 )
             }
             }
