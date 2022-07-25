@@ -26,9 +26,10 @@ const ChartsPage = () => {
                         <Col key={chart.chartId}>
                             <Card>
                                 <Card.Header>
-                                    <div className="d-flex justify-content-lg-around">
-                                        <div>{chart.name}</div>
-                                        <div>{chart.surname}</div>
+                                    <div className="d-flex justify-content-center">
+                                        <div>
+                                            {chart.name} {chart.surname}
+                                        </div>
                                     </div>
                                 </Card.Header>
                                 <Card.Body>
