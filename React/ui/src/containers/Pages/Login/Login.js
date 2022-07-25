@@ -1,5 +1,10 @@
 import {ErrorMessage, Field, Form, Formik} from 'formik';
-import {Container} from "react-bootstrap";
+import {
+    Button,
+    Container,
+    Form as BootstrapForm,
+    InputGroup,
+} from 'react-bootstrap';
 
 const Login = () => {
     const validate = (login) => {
@@ -28,19 +33,64 @@ const Login = () => {
         >
             {props => {
                 console.log('React formik props', props)
-
                 return (
                     <Container>
                         <Form>
                             <div>
-                                <label>Email</label>
-                                <Field name="email"/>
-                                <ErrorMessage name='email' style={{color: 'red'}} component={'div'}/>
+                                <Field name="email">
+                                    {({field, form}) => {  // form -> Field form props
+                                        console.log('field', field)
+                                        console.log('form', form)
+                                        const isValid = !form.errors[field.name];
+                                        const isInvalid = form.touched[field.name] && !isValid;
+                                        return (
+                                            <BootstrapForm.Group controlId='email'>
+                                                <BootstrapForm.Label>Email:</BootstrapForm.Label>
+                                                <InputGroup>
+                                                    <BootstrapForm.Control
+                                                        type='text'
+                                                        name={field.name}
+                                                        isValid={form.touched[field.name] && isValid}
+                                                        isInvalid={isInvalid}
+                                                        feedback={form.errors[field.name]}
+                                                        onChange={field.onChange}
+                                                    />
+                                                    <BootstrapForm.Control.Feedback type="invalid">
+                                                        {form.errors[field.name]}
+                                                    </BootstrapForm.Control.Feedback>
+                                                </InputGroup>
+                                            </BootstrapForm.Group>
+                                        );
+                                    }}
+                                </Field>
                             </div>
                             <div>
-                                <label>Password</label>
-                                <Field name="password"/>
-                                <ErrorMessage name='password' style={{color: 'red'}} component={'div'}/>
+                                <Field name="password">
+                                    {({field, form}) => {  // form -> Field form props
+                                        console.log('field', field)
+                                        console.log('form', form)
+                                        const isValid = !form.errors[field.name];
+                                        const isInvalid = form.touched[field.name] && !isValid;
+                                        return (
+                                            <BootstrapForm.Group controlId='password'>
+                                                <BootstrapForm.Label>Email:</BootstrapForm.Label>
+                                                <InputGroup>
+                                                    <BootstrapForm.Control
+                                                        type='text'
+                                                        name={field.name}
+                                                        isValid={form.touched[field.name] && isValid}
+                                                        isInvalid={isInvalid}
+                                                        feedback={form.errors[field.name]}
+                                                        onChange={field.onChange}
+                                                    />
+                                                    <BootstrapForm.Control.Feedback type="invalid">
+                                                        {form.errors[field.name]}
+                                                    </BootstrapForm.Control.Feedback>
+                                                </InputGroup>
+                                            </BootstrapForm.Group>
+                                        );
+                                    }}
+                                </Field>
                             </div>
 
                             <div>
@@ -52,7 +102,8 @@ const Login = () => {
             }
             }
         </Formik>
-    );
+    )
+        ;
 };
 
 export default Login;
