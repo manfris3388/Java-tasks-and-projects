@@ -21,9 +21,6 @@ const postChartsEndpoint = () => HTTP.post('/api/charts');
  * @param loginData
  * @returns {Promise<AxiosResponse<any>>}
  */
-const loginEndpoint = (loginData) => HTTP.post("/login", loginData)
+const loginEndpoint = (loginData) => HTTP.post('/login', loginData);
 
-export {
-    getChartsEndpoint,
-    loginEndpoint
-};
+export { getChartsEndpoint, loginEndpoint };

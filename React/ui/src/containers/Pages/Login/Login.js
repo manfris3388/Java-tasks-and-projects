@@ -1,8 +1,10 @@
 import { Field, Form, Formik } from 'formik';
-import {Button, Container, Spinner} from 'react-bootstrap';
+import { Button, Container, Spinner } from 'react-bootstrap';
 import FormikFieldInputGroup from '../../../components/FormikFieldInputGroup/FormikFieldInputGroup';
 import * as Yup from 'yup';
-import {loginEndpoint} from "../../../api/ApiEndpoints";
+import { loginEndpoint } from '../../../api/ApiEndpoints';
+import { AuthUserContext } from '../../../context/AuthUserContext';
+import { useContext } from 'react';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -14,17 +16,22 @@ const validationSchema = Yup.object().shape({
         .min(4, 'Slaptazodzio ilgis turi buti >= 6')
         .required(),
 });
-const postLogin = (login, helper) => {
-    loginEndpoint({
-        username: login.email,
-        password: login.password,
-    }).then((response) =>
-        console.log('login response', response),
-    )
-        .catch((error) => console.log(error))
-        .finally(() => helper.setSubmitting(false));
-}
+
 const Login = () => {
+    const { putAuthUser } = useContext(AuthUserContext);
+
+    const postLogin = (login, helper) => {
+        loginEndpoint({
+            username: login.email,
+            password: login.password,
+        })
+            .then(({ data }) => {
+                putAuthUser(data);
+            })
+            .catch((error) => console.log(error))
+            .finally(() => helper.setSubmitting(false));
+    };
+
     return (
         <Formik
             initialValues={{
@@ -52,22 +59,22 @@ const Login = () => {
                             />
 
                             <div className="text-center">
-                                {props.isSubmitting
-                                    ? <Button variant='primary' disabled>
+                                {props.isSubmitting ? (
+                                    <Button variant="primary" disabled>
                                         <Spinner
-                                            as='span'
-                                            animation='grow'
-                                            size='sm'
-                                            role='status'
-                                            aria-hidden='true'
+                                            as="span"
+                                            animation="grow"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"
                                         />
                                         Processing...
                                     </Button>
-                                    :  <Button type='submit'
-                                               variant='primary'>
+                                ) : (
+                                    <Button type="submit" variant="primary">
                                         Submit
                                     </Button>
-                                }
+                                )}
                             </div>
                         </Form>
                     </Container>
