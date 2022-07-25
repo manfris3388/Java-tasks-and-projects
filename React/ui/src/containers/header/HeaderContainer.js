@@ -28,8 +28,8 @@ const HeaderContainer = () => (
                     <Nav.Link to="/charts/create" as={NavLink}>
                         New Chart
                     </Nav.Link>
-                    <Nav.Link to="login" as={NavLink}>
-                        Login
+                    <Nav.Link href="#">
+                        User
                     </Nav.Link>
                 </Nav>
                 <NavDropdown title="Languages" id="navbarScrollingDropdown">
@@ -45,7 +45,7 @@ const HeaderContainer = () => (
                     />
                     <Button variant="outline-success">Search</Button>
                 </Form>
-                <Nav.Link href="#" disabled>
+                <Nav.Link to="login" as={NavLink}>
                     Login
                 </Nav.Link>
             </Navbar.Collapse>

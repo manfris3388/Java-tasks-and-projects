@@ -25,38 +25,42 @@ const Login = () => {
             }}
             validate={validate}
         >
-            {(props) => (
-                <Form>
-                    <div>
-                        <label>Email</label>
-                        <input
-                            name="email"
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.name}
-                        />
-                        {props.errors.email && (
-                            <span>{props.errors.email}</span>
-                        )}
-                    </div>
-                    <div>
-                        <label>Password</label>
-                        <input
-                            name="password"
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.name}
-                        />
-                        {props.errors.password && (
-                            <span>{props.errors.password}</span>
-                        )}
-                    </div>
+            {props => {
+                console.log('React formik props', props)
 
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </Form>
-            )}
+                return (<Form>
+                        <div>
+                            <label>Email</label>
+                            <input
+                                name="email"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.name}
+                            />
+                            {props.errors.email && (
+                                <span>{props.errors.email}</span>
+                            )}
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input
+                                name="password"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.name}
+                            />
+                            {props.errors.password && (
+                                <span>{props.errors.password}</span>
+                            )}
+                        </div>
+
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </Form>
+                )
+            }
+            }
         </Formik>
     );
 };
