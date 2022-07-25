@@ -14,6 +14,16 @@ const validationSchema = Yup.object().shape({
         .min(4, 'Slaptazodzio ilgis turi buti >= 6')
         .required(),
 });
+const postLogin = (login, helper) => {
+    loginEndpoint({
+        username: login.email,
+        password: login.password,
+    }).then((response) =>
+        console.log('login response', response),
+    )
+        .catch((error) => console.log(error))
+        .finally(() => helper.setSubmitting(false));
+}
 const Login = () => {
     return (
         <Formik
@@ -21,14 +31,7 @@ const Login = () => {
                 email: '',
                 password: '',
             }}
-            onSubmit={(login, helper) => {
-                loginEndpoint({
-                    username: login.email,
-                    password: login.password
-                }).then((response) =>
-                    console.log('login response', response)
-                );
-            }}
+            onSubmit={postLogin}
             validationSchema={validationSchema}
         >
             {(props) => {
