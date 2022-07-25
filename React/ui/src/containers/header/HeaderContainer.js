@@ -28,9 +28,7 @@ const HeaderContainer = () => (
                     <Nav.Link to="/charts/create" as={NavLink}>
                         New Chart
                     </Nav.Link>
-                    <Nav.Link href="#">
-                        User
-                    </Nav.Link>
+                    <Nav.Link href="#">User</Nav.Link>
                 </Nav>
                 <NavDropdown title="Languages" id="navbarScrollingDropdown">
                     <NavDropdown.Item href="#action3">LT</NavDropdown.Item>
