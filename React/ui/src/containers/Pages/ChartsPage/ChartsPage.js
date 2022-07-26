@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { getChartsEndpoint } from '../../../api/ApiEndpoints';
+import {useTranslation} from "react-i18next";
 
 const ChartsPage = () => {
     const [chartFields, setChartFields] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation('common');
 
     useEffect(() => {
         getChartsEndpoint()
@@ -17,7 +19,7 @@ const ChartsPage = () => {
 
     return (
         <Container fluid>
-            <h1 className={'text-center'}>Charts list</h1>
+            <h1 className={'text-center'}>{t("chartList")}</h1>
             <Row xs={1} md={2} className="g-4">
                 {loading ? (
                     <Spinner className="text-center" animation="border" />

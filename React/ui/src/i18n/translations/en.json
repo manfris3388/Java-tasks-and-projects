@@ -3,8 +3,10 @@
     "hello": "Hello, $t(name)!",
     "name": "World",
     "anestheticChart": "Anesthetic Chart",
+    "chartList": "Chart List",
     "buttons": {
-      "submit": "Submit"
+      "submit": "Submit",
+      "submitting": "Processing..."
     }
   },
   "chartForm": {
@@ -30,5 +32,9 @@
     "search": "Search",
     "login": "Login",
     "logout": "Logout"
+  },
+  "user": {
+    "email": "Email",
+    "password": "Password"
   }
 }

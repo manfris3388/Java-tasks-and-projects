@@ -2,8 +2,10 @@
   "common": {
     "hello": "Labas, {{name}}!",
     "anestheticChart": "Anestezijos lapas",
+    "chartList": "Formų sąrašas",
     "buttons": {
-      "submit": "Išsaugoti"
+      "submit": "Išsaugoti",
+      "submitting": "Kraunama..."
     }
   },
   "chartForm": {
@@ -29,5 +31,9 @@
     "search": "Paieška",
     "login": "Prisijungimas",
     "logout": "Atsijungimas"
+  },
+  "user": {
+    "email": "Elektroninis paštas",
+    "password": "Slaptažodis"
   }
 }

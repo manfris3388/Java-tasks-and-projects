@@ -6,6 +6,7 @@ import { loginEndpoint } from '../../../api/ApiEndpoints';
 import { AuthUserContext } from '../../../context/AuthUserContext';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -21,6 +22,7 @@ const validationSchema = Yup.object().shape({
 const LoginPage = () => {
     const { putAuthUser } = useContext(AuthUserContext);
     const navigate = useNavigate();
+    const { t } = useTranslation('user');
     const postLogin = (login, helper) => {
         loginEndpoint({
             username: login.email,
@@ -49,13 +51,13 @@ const LoginPage = () => {
                         <Form>
                             <Field
                                 name="email"
-                                labelText="Email:"
+                                labelText={t("email")}
                                 type="text"
                                 component={FormikFieldInputGroup}
                             />
                             <Field
                                 name="password"
-                                labelText="Password:"
+                                labelText={t("password")}
                                 type="password"
                                 component={FormikFieldInputGroup}
                             />
@@ -74,7 +76,7 @@ const LoginPage = () => {
                                     </Button>
                                 ) : (
                                     <Button type="submit" variant="primary">
-                                        Submit
+                                        {t("common:buttons.submit")}
                                     </Button>
                                 )}
                             </div>
