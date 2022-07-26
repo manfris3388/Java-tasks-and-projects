@@ -1,5 +1,6 @@
 {
   "common": {
-    "hello": "Hello hello, {{name}}!"
+    "hello": "Hello, $t(name)!",
+    "name": "World"
   }
 }
