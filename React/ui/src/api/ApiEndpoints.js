@@ -10,7 +10,7 @@ const getChartsEndpoint = (chartData) =>
             })
     );
 
-const postChartsEndpoint = () => HTTP.post('/api/charts');
+const postChartsEndpoint = (chartData) => HTTP.post('/api/charts', chartData);
 
 /**
  * i.e. loginData:
@@ -23,4 +23,4 @@ const postChartsEndpoint = () => HTTP.post('/api/charts');
  */
 const loginEndpoint = (loginData) => HTTP.post('/login', loginData);
 
-export { getChartsEndpoint, loginEndpoint };
+export { getChartsEndpoint, postChartsEndpoint, loginEndpoint };

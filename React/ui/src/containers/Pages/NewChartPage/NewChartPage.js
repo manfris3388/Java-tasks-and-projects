@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import {useContext, useState} from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import FormTemplate from '../../../components/FormTemplate/FormTemplate';
+import {AuthUserContext} from "../../../context/AuthUserContext";
+import {postChartsEndpoint} from "../../../api/ApiEndpoints";
 
 const NewChartPage = () => {
     const [chart, setChart] = useState({
@@ -12,6 +14,8 @@ const NewChartPage = () => {
     });
 
     const [visible, setVisible] = useState(false);
+
+    const { authUser } = useContext(AuthUserContext)
 
     const handleChange = (e) => {
         setChart({
@@ -41,8 +45,10 @@ const NewChartPage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(chart);
-        setVisible(true);
+
+        postChartsEndpoint(chart)
+            .then((response) => setVisible(true))
+
     };
 
     return (

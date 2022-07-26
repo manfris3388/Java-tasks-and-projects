@@ -8,6 +8,7 @@ import {
     AuthUserContext,
     initialAuthUserObj,
 } from '../context/AuthUserContext';
+import {saveToSessionStorage, StorageKey} from "../utils/SessionStorage";
 
 function App() {
     const [authUser, setAuthUser] = useState(initialAuthUserObj);
@@ -17,6 +18,7 @@ function App() {
         putAuthUser: (data) => {
             // data = { username: '', fullname: '', jwtToken: ''}
             setAuthUser(data);
+            saveToSessionStorage(StorageKey.jwt, data.jwtToken)
         },
     };
     return (
