@@ -10,14 +10,16 @@ import {
 import { NavLink } from 'react-router-dom';
 import { AuthUserContext } from '../../context/AuthUserContext';
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const HeaderContainer = () => {
     const { authUser } = useContext(AuthUserContext);
+    const { t } = useTranslation('header');
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
                 <Navbar.Brand to="/" as={NavLink}>
-                    Anesthetic Chart
+                    {t('common:anestheticChart')}
                 </Navbar.Brand>
                 <div>
                     <strong>{authUser.fullname}</strong>
@@ -30,32 +32,32 @@ const HeaderContainer = () => {
                         navbarScroll
                     >
                         <Nav.Link to="/charts" as={NavLink}>
-                            Charts
+                            {t('charts')}
                         </Nav.Link>
                         <Nav.Link to="/charts/create" as={NavLink}>
-                            New Chart
+                            {t('newChart')}
                         </Nav.Link>
-                        <Nav.Link href="#">User</Nav.Link>
+                        <Nav.Link href="#">{t('user')}</Nav.Link>
                     </Nav>
                     <NavDropdown title="Languages" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action3">LT</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">EN</NavDropdown.Item>
+                        <NavDropdown.Item href="?lng=lt">LT</NavDropdown.Item>
+                        <NavDropdown.Item href="?lng=en">EN</NavDropdown.Item>
                     </NavDropdown>
                     <Form className="d-flex">
                         <FormControl
                             type="search"
-                            placeholder="Search"
+                            placeholder={t('search')}
                             className="me-2"
-                            aria-label="Search"
+                            aria-label={t('search')}
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button variant="outline-success">{t('search')}</Button>
                     </Form>
                     {!authUser.username ? (
                         <Nav.Link to="/login" as={NavLink}>
-                            Login
+                            {t('login')}
                         </Nav.Link>
                     ) : (
-                        <Nav.Link href="/login">Logout</Nav.Link>
+                        <Nav.Link href="/login">{t('logout')}</Nav.Link>
                     )}
                 </Navbar.Collapse>
             </Container>

@@ -1,8 +1,9 @@
-import {useContext, useState} from 'react';
+import { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import FormTemplate from '../../../components/FormTemplate/FormTemplate';
-import {AuthUserContext} from "../../../context/AuthUserContext";
-import {postChartsEndpoint} from "../../../api/ApiEndpoints";
+import { AuthUserContext } from '../../../context/AuthUserContext';
+import { postChartsEndpoint } from '../../../api/ApiEndpoints';
+import { useTranslation } from 'react-i18next';
 
 const NewChartPage = () => {
     const [chart, setChart] = useState({
@@ -15,7 +16,9 @@ const NewChartPage = () => {
 
     const [visible, setVisible] = useState(false);
 
-    const { authUser } = useContext(AuthUserContext)
+    const { authUser } = useContext(AuthUserContext);
+
+    const { t } = useTranslation('chartForm');
 
     const handleChange = (e) => {
         setChart({
@@ -46,9 +49,7 @@ const NewChartPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        postChartsEndpoint(chart)
-            .then((response) => setVisible(true))
-
+        postChartsEndpoint(chart).then((response) => setVisible(true));
     };
 
     return (
@@ -57,40 +58,40 @@ const NewChartPage = () => {
                 <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write name"
+                    placeholderText={t('placeholders.name')}
                     name="name"
-                    labelText="Patient's name"
+                    labelText={t('labels.name')}
                 />
                 <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write surname"
+                    placeholderText={t('placeholders.surname')}
                     name="surname"
-                    labelText="Patient's surname"
+                    labelText={t('labels.surname')}
                 />
                 <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write hospital number"
+                    placeholderText={t('placeholders.hospitalNumber')}
                     name="hospitalNumber"
-                    labelText="Patient's hospital number"
+                    labelText={t('labels.hospitalNumber')}
                 />
                 <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write date of birth"
+                    placeholderText={t('placeholders.dob')}
                     name="dob"
-                    labelText="Patient's date of birth"
+                    labelText={t('labels.dob')}
                 />
                 <FormTemplate
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write operation"
+                    placeholderText={t('placeholders.operation')}
                     name="operation"
-                    labelText="Patient's operation"
+                    labelText={t('labels.operation')}
                 />
                 <Button variant="primary" type="submit">
-                    Submit
+                    {t('common:buttons.submit')}
                 </Button>
             </Form>
             {createChartInfo()}

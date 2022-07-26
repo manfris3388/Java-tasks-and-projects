@@ -1,5 +1,33 @@
 {
   "common": {
-    "hello": "Labas, labas {{name}}!"
+    "hello": "Labas, {{name}}!",
+    "anestheticChart": "Anestezijos lapas",
+    "buttons": {
+      "submit": "Išsaugoti"
+    }
+  },
+  "chartForm": {
+    "labels": {
+      "name": "Paciento vardas",
+      "surname": "Paciento pavardė",
+      "hospitalNumber": "Ligoninės numeris",
+      "dob": "Gimimo metai",
+      "operation": "Operacija"
+    },
+    "placeholders": {
+      "name": "Įrašykite ligonio vardą",
+      "surname": "Įrašykite ligonio pavardę",
+      "hospitalNumber": "Įrašykite ligoninės numerį",
+      "dob": "Įrašykite gimimo metus",
+      "operation": "Įrašykite operaciją"
+    }
+  },
+  "header": {
+    "charts": "Formos",
+    "newChart": "Naujos formos",
+    "user": "Vartotojas",
+    "search": "Paieška",
+    "login": "Prisijungimas",
+    "logout": "Atsijungimas"
   }
 }

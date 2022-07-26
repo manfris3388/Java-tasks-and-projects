@@ -1,6 +1,34 @@
 {
   "common": {
     "hello": "Hello, $t(name)!",
-    "name": "World"
+    "name": "World",
+    "anestheticChart": "Anesthetic Chart",
+    "buttons": {
+      "submit": "Submit"
+    }
+  },
+  "chartForm": {
+    "labels": {
+      "name": "Patient's name",
+      "surname": "Patient's surname",
+      "hospitalNumber": "Hospital number",
+      "dob": "Date of birth",
+      "operation": "Operation"
+    },
+    "placeholders": {
+      "name": "Write patient's name",
+      "surname": "Write patient's surname",
+      "hospitalNumber": "Write hospital number",
+      "dob": "Write date of birth",
+      "operation": "Write operation"
+    }
+  },
+  "header": {
+    "charts": "Charts",
+    "newChart": "New Chart",
+    "user": "User",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout"
   }
 }
