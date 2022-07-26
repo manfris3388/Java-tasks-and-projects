@@ -18,7 +18,7 @@ import java.util.UUID;
 @Api(tags = "Chart Controller")
 public interface ChartApiSpecs {
   String CHARTS_ROOT_PATH = "/api/charts";
-  String UUID_PATH = "/api/{uuid}";
+  String UUID_PATH = "/{uuid}";
 
   @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
   @ApiOperation(
@@ -57,7 +57,7 @@ public interface ChartApiSpecs {
   @PostMapping
   ResponseEntity<Void> createChart(@Valid @RequestBody FullChartDTO fullChartDTO);
 
-  @PutMapping
+  @PutMapping(UUID_PATH)
   @ApiOperation(value = "Update chart", httpMethod = "PUT")
   ResponseEntity<Void> updateChart(@Valid @RequestBody FullChartDTO fullChartDTO);
 }

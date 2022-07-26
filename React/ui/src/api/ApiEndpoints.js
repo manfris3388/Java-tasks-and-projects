@@ -12,6 +12,8 @@ const getChartsEndpoint = (chartData) =>
 
 const postChartsEndpoint = (chartData) => HTTP.post('/api/charts', chartData);
 
+const deleteChartEndpoint = ({ uuid }) => HTTP.post('/api/charts/', uuid);
+
 /**
  * i.e. loginData:
  * {
@@ -23,4 +25,9 @@ const postChartsEndpoint = (chartData) => HTTP.post('/api/charts', chartData);
  */
 const loginEndpoint = (loginData) => HTTP.post('/login', loginData);
 
-export { getChartsEndpoint, postChartsEndpoint, loginEndpoint };
+export {
+    getChartsEndpoint,
+    postChartsEndpoint,
+    loginEndpoint,
+    deleteChartEndpoint,
+};

@@ -6,7 +6,8 @@
     "chartList": "Chart List",
     "buttons": {
       "submit": "Submit",
-      "submitting": "Processing..."
+      "submitting": "Processing...",
+      "delete": "Delete"
     }
   },
   "chartForm": {

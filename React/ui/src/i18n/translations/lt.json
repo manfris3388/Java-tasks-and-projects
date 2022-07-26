@@ -5,7 +5,8 @@
     "chartList": "Formų sąrašas",
     "buttons": {
       "submit": "Išsaugoti",
-      "submitting": "Kraunama..."
+      "submitting": "Kraunama...",
+      "delete": "Trinti"
     }
   },
   "chartForm": {

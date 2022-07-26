@@ -38,7 +38,7 @@ server:
 security:
   jwt:
     # validity time in minutes
-    validity-time: 30
+    validity-time: 1440
 ---
 spring:
   profiles:

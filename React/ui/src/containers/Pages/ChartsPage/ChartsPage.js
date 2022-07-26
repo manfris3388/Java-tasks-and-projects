@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { getChartsEndpoint } from '../../../api/ApiEndpoints';
-import {useTranslation} from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 const ChartsPage = () => {
     const [chartFields, setChartFields] = useState([]);
@@ -19,7 +19,7 @@ const ChartsPage = () => {
 
     return (
         <Container fluid>
-            <h1 className={'text-center'}>{t("chartList")}</h1>
+            <h1 className={'text-center'}>{t('chartList')}</h1>
             <Row xs={1} md={2} className="g-4">
                 {loading ? (
                     <Spinner className="text-center" animation="border" />
@@ -28,9 +28,17 @@ const ChartsPage = () => {
                         <Col key={chart.chartId}>
                             <Card>
                                 <Card.Header>
-                                    <div className="d-flex justify-content-center">
+                                    <div className="d-flex justify-content-between">
                                         <div>
                                             {chart.name} {chart.surname}
+                                        </div>
+                                        <div>
+                                            <button
+                                                type="delete"
+                                                className="btn btn-danger"
+                                            >
+                                                {t('buttons.delete')}
+                                            </button>
                                         </div>
                                     </div>
                                 </Card.Header>
