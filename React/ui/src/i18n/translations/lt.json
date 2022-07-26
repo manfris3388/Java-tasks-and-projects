@@ -1,5 +1,5 @@
 {
   "common": {
-    "hello": "Labas, {{name}}!"
+    "hello": "Labas, labas {{name}}!"
   }
 }
