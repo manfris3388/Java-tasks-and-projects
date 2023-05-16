@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +13,8 @@ public class Main {
     System.out.println("Pakeisti visas raides a i w: " + text.replaceAll("a", "w"));
     System.out.println("Pakeisti e i RAIDE: " + text.replaceAll("e", "RAIDE"));
     System.out.println("Paskutinis zodis: " + text.substring(text.lastIndexOf(" ")));
-    String [] words = text.split(" ");
-    for (int i = words.length - 1; i >= 0; i-- ){
+    String[] words = text.split(" ");
+    for (int i = words.length - 1; i >= 0; i--) {
       System.out.print(words[i] + " ");
     }
   }
